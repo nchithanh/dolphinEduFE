@@ -1,0 +1,190 @@
+.ops-shell {
+  --ops-nav-open-w: min(14.5rem, 15.5svw);
+  --ops-aside-w: min(22rem, 28svw);
+  --ops-board-gap: var(--ops-space-section, 1.35rem);
+  --ops-chat-open-w: min(26rem, 88vw);
+  --ops-pane-dur: 280ms;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  height: 100svh;
+  min-height: 100svh;
+  overflow: hidden;
+  background: var(--kuct-bg);
+}
+
+.ops-shell__main {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  font-size: var(--ops-type-body);
+  color: var(--kuct-text);
+  background-color: var(--kuct-bg);
+  background-image: none;
+}
+
+.ops-shell__canvas {
+  box-sizing: border-box;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  padding:
+    clamp(1.1rem, 1.6svw, 1.5rem)
+    clamp(1.15rem, 1.8svw, 1.75rem)
+    clamp(1.1rem, 1.6svw, 1.5rem);
+  overflow: auto;
+  background: none;
+}
+
+.ops-nav {
+  width: var(--ops-nav-open-w);
+  min-width: 0;
+  visibility: visible;
+  transition:
+    width var(--ops-pane-dur) var(--ops-ease),
+    max-height var(--ops-pane-dur) var(--ops-ease),
+    opacity var(--ops-pane-dur) var(--ops-ease),
+    border-width var(--ops-pane-dur) var(--ops-ease),
+    box-shadow var(--ops-pane-dur) var(--ops-ease),
+    visibility 0s linear 0s;
+}
+
+.ops-nav__pane {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: var(--ops-nav-open-w);
+  min-width: var(--ops-nav-open-w);
+  height: 100%;
+  min-height: 0;
+  padding: 1rem 0.75rem 0.85rem;
+}
+
+.ops-shell--nav-collapsed .ops-nav {
+  width: 0;
+  opacity: 0;
+  border-right-width: 0;
+  box-shadow: none;
+  pointer-events: none;
+  visibility: hidden;
+  transition:
+    width var(--ops-pane-dur) var(--ops-ease),
+    max-height var(--ops-pane-dur) var(--ops-ease),
+    opacity var(--ops-pane-dur) var(--ops-ease),
+    border-width var(--ops-pane-dur) var(--ops-ease),
+    box-shadow var(--ops-pane-dur) var(--ops-ease),
+    visibility 0s linear var(--ops-pane-dur);
+}
+
+.ops-chat-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  margin: 0;
+  padding: 0;
+  background: rgb(26 22 37 / 0.28);
+  border: 0;
+  cursor: pointer;
+  animation: ops-chat-backdrop-in var(--ops-pane-dur) var(--ops-ease);
+}
+
+@keyframes ops-chat-backdrop-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.ops-chat {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 50;
+  display: flex;
+  width: var(--ops-chat-open-w);
+  height: 100svh;
+  min-width: 0;
+  transform: translateX(0);
+  visibility: visible;
+  transition:
+    transform var(--ops-pane-dur) var(--ops-ease),
+    visibility 0s linear 0s;
+}
+
+.ops-chat__pane {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+  min-height: 0;
+}
+
+.ops-shell--chat-collapsed .ops-chat {
+  transform: translateX(100%);
+  visibility: hidden;
+  pointer-events: none;
+  box-shadow: none;
+  transition:
+    transform var(--ops-pane-dur) var(--ops-ease),
+    visibility 0s linear var(--ops-pane-dur);
+}
+
+@media (max-width: 64rem) {
+  .ops-shell {
+    --ops-nav-open-w: min(13rem, 24svw);
+    --ops-aside-w: min(18.5rem, 34svw);
+  }
+
+  .ops-shell__canvas {
+    padding: 0.85rem 0.9rem 1rem;
+  }
+}
+
+@media (max-width: 52rem) {
+  .ops-shell {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr);
+  }
+
+  .ops-shell__main {
+    min-height: 0;
+  }
+
+  .ops-nav {
+    width: 100%;
+    max-height: 70svh;
+    border-right-width: 0;
+    border-bottom: 1px solid var(--kuct-border);
+  }
+
+  .ops-nav__pane {
+    width: 100%;
+    min-width: 100%;
+  }
+
+  .ops-shell--nav-collapsed .ops-nav {
+    width: 100%;
+    max-height: 0;
+    border-bottom-width: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ops-nav,
+  .ops-chat,
+  .ops-shell--nav-collapsed .ops-nav,
+  .ops-shell--chat-collapsed .ops-chat {
+    transition: none;
+  }
+
+  .ops-chat-backdrop {
+    animation: none;
+  }
+}

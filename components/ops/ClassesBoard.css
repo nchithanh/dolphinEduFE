@@ -1,0 +1,236 @@
+@import "./EduTable.css";
+
+.ops-classes {
+  box-sizing: border-box;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  width: 100%;
+  min-height: 0;
+}
+
+.ops-kpi-card__sub {
+  margin-left: 0.2rem;
+  font-size: 0.85em;
+  font-weight: 600;
+  color: var(--kuct-muted);
+}
+
+.ops-classes__today {
+  flex-shrink: 0;
+  margin: 0;
+}
+
+.ops-classes__today-title {
+  margin: 0 0 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 650;
+  color: var(--kuct-text);
+}
+
+/* Cột trái: crumb + head + KPI + bảng | cột phải: detail full height từ đỉnh */
+.ops-classes .ops-classes__layout {
+  flex: 1 1 auto;
+  align-items: stretch;
+  min-height: 0;
+  gap: var(--ops-board-gap, var(--ops-space-section, 1.35rem));
+  grid-template-columns: minmax(0, 1fr) var(--ops-aside-w, min(20rem, 26svw));
+}
+
+/* Override EduTable .ops-board__layout { align-items: start } */
+.ops-classes .ops-board__layout.ops-classes__layout {
+  align-items: stretch;
+}
+
+.ops-classes__main {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+}
+
+.ops-classes__main > .ops-crumb,
+.ops-classes__main > .ops-page__head,
+.ops-classes__main > .ops-kpi-row,
+.ops-classes__main > .ops-classes__today {
+  flex-shrink: 0;
+}
+
+.ops-classes__main > .ops-page__head {
+  margin-bottom: 0.15rem;
+}
+
+.ops-classes__main > .ops-table-card {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.ops-classes__main .ops-table-tools,
+.ops-classes__main .ops-table-foot {
+  flex-shrink: 0;
+}
+
+.ops-classes__main .ops-table-wrap {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+}
+
+.ops-classes__aside {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+}
+
+.ops-classes__aside > .ops-detail,
+.ops-classes__aside > .ops-aside-hint {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-self: stretch;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.ops-classes__aside > .ops-aside-hint {
+  overflow: auto;
+}
+
+.ops-classes__aside .ops-detail__head,
+.ops-classes__aside .ops-detail__hero {
+  flex-shrink: 0;
+}
+
+.ops-classes__aside > .ops-detail .ops-detail__split {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.ops-classes__aside .ops-detail__pane {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  min-height: 0;
+  overflow: auto;
+}
+
+.ops-classes__range {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.15rem;
+  padding: 0.35rem 0.65rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--kuct-muted);
+  background: var(--kuct-panel);
+  border: 1px solid var(--kuct-border);
+  border-radius: var(--ops-radius);
+  white-space: nowrap;
+}
+
+.ops-classes__block-title {
+  margin: 0.85rem 0 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--kuct-muted);
+}
+
+.ops-classes__fill {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  width: 100%;
+}
+
+.ops-classes__fill .ops-meter {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  background: var(--kuct-panel);
+}
+
+.ops-classes__roster-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.ops-classes__roster-head .ops-classes__block-title {
+  margin-top: 0.85rem;
+}
+
+.ops-classes__link {
+  padding: 0;
+  font: inherit;
+  font-size: 0.75rem;
+  font-weight: 650;
+  color: var(--kuct-accent);
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.ops-classes__roster-wrap {
+  max-height: 14rem;
+  overflow: auto;
+  border: 1px solid var(--kuct-border);
+  border-radius: var(--ops-radius);
+}
+
+.ops-classes__roster-table {
+  margin: 0;
+}
+
+.ops-classes__roster-table .ops-roster__name {
+  display: block;
+  font-weight: 600;
+}
+
+.ops-classes__roster-table .ops-roster__phone {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--kuct-muted);
+}
+
+.ops-classes__actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  margin-top: 0.35rem;
+}
+
+.ops-classes__actions .ops-page__cta,
+.ops-classes__actions .ops-page__ghost {
+  width: 100%;
+  justify-content: center;
+}
+
+.ops-classes__stub-list {
+  margin: 0.5rem 0 0;
+  padding: 0 0 0 1.1rem;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: var(--kuct-text);
+}
+
+@media (max-width: 64rem) {
+  .ops-classes .ops-classes__layout {
+    grid-template-columns: 1fr;
+  }
+}

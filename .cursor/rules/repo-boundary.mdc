@@ -1,0 +1,19 @@
+---
+description: This FE is standalone Edu — do not mix Ops spa or marketing site
+alwaysApply: true
+---
+
+# Repo boundary — Dolphin Edu FE only
+
+Treat **this product frontend** as the source of truth for Dolphin Edu UI.
+
+## Do
+
+- Read / edit only files inside `dolphin_edu/` (`app/`, `components/`, `lib/`, `data/`, `context/`, `documentations/`).
+- Product SoT: `context/` + `documentations/` + `AGENTS.md`.
+
+## Do not
+
+- Copy spa domain from `dolphin_ops/` into Edu seed/copy.
+- Import marketing site copy as app spec.
+- Call Ops menu API (`:8081`) from this hardcoded FE.

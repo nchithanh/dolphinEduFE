@@ -1,0 +1,366 @@
+@import "./EduTable.css";
+
+.ops-clist {
+  box-sizing: border-box;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  width: 100%;
+  min-height: 0;
+}
+
+.ops-clist .ops-clist__layout {
+  flex: 1 1 auto;
+  align-items: stretch;
+  min-height: 0;
+  gap: var(--ops-board-gap, var(--ops-space-section, 1.35rem));
+  grid-template-columns: minmax(0, 1fr) var(--ops-aside-w, min(20rem, 26svw));
+}
+
+.ops-clist .ops-board__layout.ops-clist__layout {
+  align-items: stretch;
+}
+
+.ops-clist__main {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+}
+
+.ops-clist__main > .ops-crumb,
+.ops-clist__main > .ops-page__head,
+.ops-clist__main > .ops-kpi-row,
+.ops-clist__main > .ops-seg {
+  flex-shrink: 0;
+}
+
+.ops-clist__main > .ops-page__head {
+  margin-bottom: 0;
+}
+
+.ops-clist__main > .ops-table-card {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.ops-clist__main .ops-table-tools,
+.ops-clist__main .ops-table-foot {
+  flex-shrink: 0;
+}
+
+.ops-clist__main .ops-table-wrap {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+}
+
+.ops-clist__aside {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+}
+
+.ops-clist__aside > .ops-detail,
+.ops-clist__aside > .ops-aside-hint {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-self: stretch;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.ops-clist__aside > .ops-aside-hint {
+  overflow: auto;
+}
+
+.ops-clist__aside .ops-detail__head,
+.ops-clist__aside .ops-clist__profile,
+.ops-clist__aside .ops-clist__stat-grid {
+  flex-shrink: 0;
+}
+
+.ops-clist__aside > .ops-detail .ops-detail__split {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.ops-clist__aside .ops-detail__pane {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  min-height: 0;
+  overflow: auto;
+}
+
+.ops-clist__head-acts {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.ops-clist__av {
+  width: 1.85rem;
+  height: 1.85rem;
+  font-size: 0.5625rem;
+}
+
+.ops-clist__courses {
+  display: -webkit-box;
+  max-width: 12rem;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-height: 1.35;
+}
+
+.ops-clist__sort {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.15rem;
+  padding: 0.35rem 0.65rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--kuct-muted);
+  background: var(--kuct-panel);
+  border: 1px solid var(--kuct-border);
+  border-radius: var(--ops-radius);
+  white-space: nowrap;
+}
+
+.ops-clist__seg-bar {
+  display: flex;
+  overflow: hidden;
+  height: 0.65rem;
+  margin: 0 0 0.75rem;
+  border-radius: 999px;
+  background: var(--kuct-panel);
+}
+
+.ops-clist__seg-bar > span {
+  display: block;
+  min-width: 0.35rem;
+  height: 100%;
+}
+
+.ops-clist__seg .ops-seg__title {
+  margin-bottom: 0.45rem;
+}
+
+.ops-clist__seg-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.35rem 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ops-clist__seg-grid li {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.1rem;
+  min-width: 0;
+}
+
+.ops-clist__seg-mark {
+  position: relative;
+  width: 0.45rem;
+  height: 0.45rem;
+  margin-bottom: 0.2rem;
+  background: var(--seg);
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--seg) 22%, transparent);
+}
+
+.ops-clist__seg-mark::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 2px;
+  height: 0.85rem;
+  margin-top: 0.1rem;
+  background: linear-gradient(to bottom, color-mix(in srgb, var(--seg) 45%, transparent), transparent);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.ops-clist__seg-label {
+  margin-top: 0.65rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--kuct-muted);
+}
+
+.ops-clist__seg-count {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--kuct-text);
+}
+
+.ops-clist__seg-pct {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: var(--kuct-muted);
+}
+
+@media (max-width: 48rem) {
+  .ops-clist__seg-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.ops-clist__trend {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  max-height: 4.25rem;
+  margin: 0.15rem 0 0.2rem;
+}
+
+.ops-clist__profile {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 0.65rem;
+}
+
+.ops-clist__meta-line {
+  margin: 0.35rem 0 0;
+  font-size: 0.75rem;
+  color: var(--kuct-muted);
+}
+
+.ops-clist__stat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.4rem;
+  margin: 0 0 0.7rem;
+  padding: 0;
+  list-style: none;
+}
+
+.ops-clist__stat-grid li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.12rem;
+  padding: 0.45rem 0.5rem;
+  background: var(--kuct-panel);
+  border: 1px solid var(--kuct-border);
+  border-radius: calc(var(--ops-radius) - 2px);
+}
+
+.ops-clist__stat-grid span {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--kuct-muted);
+}
+
+.ops-clist__stat-grid strong {
+  font-size: 0.8125rem;
+  font-weight: 650;
+  color: var(--kuct-text);
+}
+
+.ops-clist__section-title {
+  margin: 0.65rem 0 0.45rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--kuct-text);
+}
+
+.ops-clist__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 0 0 0.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+.ops-clist__tags li {
+  padding: 0.2rem 0.5rem;
+  font-size: 0.6875rem;
+  font-weight: 650;
+  color: var(--kuct-accent);
+  background: color-mix(in srgb, var(--kuct-accent) 12%, white);
+  border-radius: 999px;
+}
+
+.ops-clist__quick {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.4rem;
+  margin-bottom: 0.35rem;
+}
+
+.ops-clist__quick .ops-page__cta,
+.ops-clist__quick .ops-page__ghost {
+  width: 100%;
+  justify-content: center;
+  min-height: 2rem;
+  padding: 0.35rem 0.55rem;
+  font-size: 0.75rem;
+}
+
+.ops-clist__class-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ops-clist__class-list li {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.65rem;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid var(--kuct-border);
+}
+
+.ops-clist__class-list li:last-child {
+  border-bottom: 0;
+}
+
+.ops-clist__class-fill {
+  display: flex;
+  flex: 0 0 4.5rem;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 650;
+  color: var(--kuct-accent);
+}
+
+.ops-clist__stub-list {
+  margin: 0.35rem 0 0;
+  padding: 0 0 0 1.1rem;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: var(--kuct-text);
+}
+
+@media (max-width: 64rem) {
+  .ops-clist .ops-clist__layout {
+    grid-template-columns: 1fr;
+  }
+}

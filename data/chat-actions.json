@@ -1,0 +1,115 @@
+{
+  "meta": {
+    "id": "dolphin-edu-chat-actions",
+    "locale": "vi",
+    "note": "Demo keyword router — không phải NLU. Khớp substring, action đầu tiên thắng. Chat không mở tool stub / inbox / tác vụ spa."
+  },
+  "none": {
+    "chip": "Chưa khớp tool — chọn bên trái"
+  },
+  "actions": [
+    {
+      "id": "enroll-student",
+      "phrases": [
+        "thêm long vào hip-hop",
+        "thêm long vào hiphop",
+        "thêm lan vào hip-hop",
+        "thêm lan vào hiphop",
+        "ghi danh lan",
+        "thêm học viên",
+        "ghi danh"
+      ],
+      "stage": "courses",
+      "view": "enroll",
+      "chip": "Đã ghi danh vào khóa",
+      "extract": ["student", "course"]
+    },
+    {
+      "id": "generate-classes",
+      "phrases": [
+        "sinh lớp waacking",
+        "sinh lớp contemporary",
+        "sinh lớp",
+        "tạo lớp từ khóa",
+        "generate class"
+      ],
+      "stage": "courses",
+      "view": "generate",
+      "chip": "Đã sinh lớp từ khóa",
+      "extract": ["course"]
+    },
+    {
+      "id": "open-course-form",
+      "phrases": ["tạo khóa", "khóa mới", "thêm khóa", "mở form khóa"],
+      "stage": "courses",
+      "view": "form",
+      "chip": "Đã mở form Khóa học",
+      "extract": []
+    },
+    {
+      "id": "open-student-360",
+      "phrases": [
+        "hồ sơ học viên hương",
+        "hồ sơ",
+        "student 360",
+        "360",
+        "hương",
+        "lan",
+        "minh"
+      ],
+      "stage": "students",
+      "view": "360",
+      "chip": "Đã mở Học viên",
+      "extract": ["student"]
+    },
+    {
+      "id": "open-students-list",
+      "phrases": ["danh sách học viên", "học viên", "student"],
+      "stage": "students",
+      "view": "list",
+      "chip": "Đã mở Học viên",
+      "extract": []
+    },
+    {
+      "id": "open-ongoing-classes",
+      "phrases": ["lớp đang diễn ra", "đang diễn ra"],
+      "stage": "classes",
+      "view": "list",
+      "chip": "Đã mở Lớp đang diễn ra",
+      "classFilter": "ongoing",
+      "extract": []
+    },
+    {
+      "id": "open-courses-list",
+      "phrases": ["khóa học", "course", "danh sách khóa"],
+      "stage": "courses",
+      "view": "list",
+      "chip": "Đã mở Khóa học",
+      "extract": []
+    },
+    {
+      "id": "open-overview",
+      "phrases": ["tổng quan", "overview", "dashboard"],
+      "stage": "overview",
+      "view": "list",
+      "chip": "Đã mở Tổng quan",
+      "extract": []
+    },
+    {
+      "id": "open-classes-list",
+      "phrases": [
+        "danh sách lớp hôm nay",
+        "lớp hôm nay",
+        "lịch lớp",
+        "lớp học",
+        "hôm nay",
+        "lớp",
+        "xem lịch"
+      ],
+      "stage": "classes",
+      "view": "list",
+      "chip": "Đã mở Lớp học",
+      "extract": []
+    }
+  ]
+}

@@ -1,0 +1,180 @@
+@import "./tokens.css";
+
+:root {
+  --ops-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  /* Design system — Edu canvas only (overrides tokens.css). */
+  --ops-radius: 0.75rem;
+  --ops-radius-sm: 0.625rem;
+  --ops-radius-btn: 0.625rem;
+  --ops-control-h: 2.5rem;
+  --ops-space-section: 1.35rem;
+  --ops-space-block: 1rem;
+  --ops-type-title: 1.75rem;
+  --ops-type-section: 1rem;
+  --ops-type-metric: 1.5rem;
+  --ops-type-body: 0.875rem;
+  --ops-type-meta: 0.75rem;
+  --kuct-bg: #f8f8fc;
+  --kuct-surface: #ffffff;
+  --kuct-soft: #fafafd;
+  --kuct-accent: #8b5cf6;
+  --kuct-accent-2: #7c3aed;
+  --kuct-accent-3: #a78bfa;
+  --kuct-accent-rgb: 139, 92, 246;
+  --kuct-text: #1e2330;
+  --kuct-muted: #5f667a;
+  --kuct-border: rgb(30 35 48 / 0.08);
+  --kuct-on-accent: #ffffff;
+  --kuct-panel: #f3f0fb;
+  --kuct-panel-2: #ffffff;
+  --kuct-menu-hover: #f4f2fa;
+  --kuct-shadow: 0 1px 2px rgb(30 35 48 / 0.04), 0 6px 16px rgb(30 35 48 / 0.04);
+  --kuct-btn-from: #7c3aed;
+  --kuct-btn-mid: #8b5cf6;
+  --kuct-btn-to: #a78bfa;
+  --ops-lilac: #c4b5fd;
+  --ops-lavender: #f3f0fb;
+  --ops-peach: #fde68a;
+  --ops-peach-ink: #b45309;
+  --ops-paid: #16a34a;
+  --ops-unpaid: #dc2626;
+  --ops-pending: #5f667a;
+  --ops-warning: #d97706;
+  --ops-header-h: 3.5rem;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--kuct-bg);
+  color: var(--kuct-text);
+  font-family: var(--font-inter), Inter, ui-sans-serif, system-ui, sans-serif;
+  font-feature-settings: "cv11", "ss01";
+  font-size: var(--ops-type-body);
+  line-height: 1.45;
+}
+
+a {
+  color: var(--kuct-accent);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(var(--kuct-accent-rgb) / 0.55) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: rgb(var(--kuct-accent-rgb) / 0.55);
+  border-radius: 999px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--kuct-accent);
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+@keyframes ops-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ops-mascot-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes ops-bubble-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.35rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ops-canvas-enter {
+  animation: ops-fade-up 0.32s var(--ops-ease) both;
+}
+
+.ops-stagger > * {
+  animation: ops-fade-up 0.34s var(--ops-ease) both;
+}
+
+.ops-stagger > *:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.ops-stagger > *:nth-child(2) {
+  animation-delay: 0.06s;
+}
+
+.ops-stagger > *:nth-child(3) {
+  animation-delay: 0.12s;
+}
+
+.ops-stagger > *:nth-child(4) {
+  animation-delay: 0.18s;
+}
+
+.ops-stagger > *:nth-child(5) {
+  animation-delay: 0.24s;
+}
+
+.ops-stagger > *:nth-child(6) {
+  animation-delay: 0.3s;
+}
+
+.ops-stagger > *:nth-child(7) {
+  animation-delay: 0.36s;
+}
+
+.ops-stagger > *:nth-child(8) {
+  animation-delay: 0.42s;
+}
+
+.ops-stagger > *:nth-child(n + 9) {
+  animation-delay: 0.48s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ops-canvas-enter,
+  .ops-stagger > *,
+  .ops-chat__banner,
+  .ops-chat__mascot,
+  .ops-chat__hello,
+  .ops-chat__sub,
+  .ops-chat__suggest-item,
+  .ops-chat__bubble {
+    animation: none !important;
+  }
+
+  .ops-over__card:hover,
+  .ops-chat__tile:hover,
+  .ops-booking:hover,
+  .ops-tasks__row:hover,
+  .ops-clist__row:hover {
+    transform: none;
+  }
+}

@@ -1,0 +1,73 @@
+.ops-inbox {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.ops-inbox__split {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: 0.75rem;
+  align-items: start;
+}
+
+.ops-inbox__col {
+  min-width: 0;
+}
+
+.ops-inbox__thread {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-height: 12rem;
+  padding: 0.85rem 1rem;
+  overflow: auto;
+  background: var(--kuct-surface);
+  border: 1px solid var(--kuct-border);
+  border-radius: var(--ops-radius);
+}
+
+.ops-inbox__thread-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.35rem;
+}
+
+.ops-inbox__who {
+  margin: 0;
+  font-size: 0.9375rem;
+  font-weight: 650;
+}
+
+.ops-inbox__meta {
+  margin: 0.15rem 0 0;
+  font-size: 0.75rem;
+  color: var(--kuct-muted);
+}
+
+.ops-inbox__msg {
+  margin: 0;
+  max-width: 95%;
+  padding: 0.5rem 0.65rem;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  border-radius: var(--ops-radius);
+}
+
+.ops-inbox__msg--customer {
+  background: var(--kuct-panel);
+}
+
+.ops-inbox__msg--ai,
+.ops-inbox__msg--staff {
+  align-self: flex-end;
+  color: var(--kuct-on-accent);
+  background: var(--kuct-accent);
+}
+
+@media (max-width: 40rem) {
+  .ops-inbox__split {
+    grid-template-columns: 1fr;
+  }
+}

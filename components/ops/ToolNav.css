@@ -1,0 +1,332 @@
+.ops-nav {
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  background: var(--kuct-surface);
+  border-right: 1px solid var(--kuct-border);
+}
+
+.ops-nav__pane {
+  overflow: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.ops-nav__pane::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+.ops-nav__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  width: 100%;
+  padding: 0.2rem 0.45rem 0.45rem;
+}
+
+.ops-nav__mark {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 1.65rem;
+  height: 1.65rem;
+  border-radius: 0.45rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: var(--kuct-on-accent);
+  background: var(--kuct-accent);
+}
+
+.ops-nav__brand-text {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  flex-direction: column;
+}
+
+.ops-nav__org {
+  overflow: hidden;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ops-nav__who {
+  overflow: hidden;
+  font-size: 0.6875rem;
+  color: var(--kuct-muted);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ops-nav__search {
+  position: relative;
+  display: block;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.ops-nav__search-icon {
+  position: absolute;
+  top: 50%;
+  left: 0.65rem;
+  display: grid;
+  place-items: center;
+  color: var(--kuct-muted);
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.ops-nav__search input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0.35rem 3rem 0.35rem 1.85rem;
+  font: inherit;
+  font-size: 0.75rem;
+  color: var(--kuct-text);
+  background: var(--kuct-bg);
+  border: 1px solid var(--kuct-border);
+  border-radius: 999px;
+}
+
+.ops-nav__search input::placeholder {
+  color: var(--kuct-muted);
+}
+
+.ops-nav__search input:hover {
+  background: var(--kuct-menu-hover);
+}
+
+.ops-nav__search input:focus {
+  outline: 2px solid color-mix(in srgb, var(--kuct-accent) 40%, transparent);
+  outline-offset: 0;
+}
+
+.ops-nav__kbd {
+  position: absolute;
+  top: 50%;
+  right: 0.45rem;
+  padding: 0.08rem 0.35rem;
+  font: inherit;
+  font-size: 0.625rem;
+  font-weight: 650;
+  color: var(--kuct-muted);
+  background: var(--kuct-panel);
+  border: 1px solid var(--kuct-border);
+  border-radius: 0.35rem;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.ops-nav__sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+
+.ops-nav__block + .ops-nav__block {
+  margin-top: 0.35rem;
+}
+
+.ops-nav__block {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.ops-nav__group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0.15rem 0 0.15rem;
+  padding: 0.28rem 0.55rem;
+  font: inherit;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-align: left;
+  color: var(--kuct-muted);
+  background: none;
+  border: 0;
+  border-radius: 0.45rem;
+  cursor: pointer;
+}
+
+.ops-nav__group:hover {
+  background: var(--kuct-menu-hover);
+}
+
+.ops-nav__group-chev {
+  font-size: 0.625rem;
+}
+
+.ops-nav__menu {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.ops-nav__menu::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+.ops-nav__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.12rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ops-nav__list li {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.ops-nav__item {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.5rem 0.7rem;
+  text-align: left;
+  font: inherit;
+  font-size: var(--ops-type-body, 0.875rem);
+  font-weight: 500;
+  color: var(--kuct-text);
+  background: transparent;
+  border: 0;
+  border-radius: var(--ops-radius-sm, 0.625rem);
+  cursor: pointer;
+  transition: background 0.18s var(--ops-ease), color 0.18s var(--ops-ease);
+}
+
+.ops-nav__item svg:first-of-type {
+  flex: none;
+  color: var(--kuct-muted);
+}
+
+.ops-nav__label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ops-nav__chev {
+  flex: none;
+  display: grid;
+  margin-left: auto;
+  color: var(--kuct-muted);
+  opacity: 0.55;
+}
+
+.ops-nav__soon {
+  flex: none;
+  margin-left: auto;
+  padding: 0.05rem 0.3rem;
+  font-size: 0.5rem;
+  font-weight: 650;
+  color: var(--kuct-muted);
+  border: 1px dashed var(--kuct-border);
+  border-radius: 0.35rem;
+  white-space: nowrap;
+}
+
+.ops-nav__item:hover {
+  background: var(--kuct-menu-hover);
+}
+
+.ops-nav__item:hover svg:first-of-type {
+  color: var(--kuct-text);
+}
+
+.ops-nav__item--current {
+  font-weight: 600;
+  color: var(--kuct-accent);
+  background: color-mix(in srgb, var(--kuct-accent) 10%, white);
+}
+
+.ops-nav__item--current svg:first-of-type {
+  color: var(--kuct-accent);
+}
+
+.ops-nav__item:focus-visible {
+  outline: 2px solid var(--kuct-accent);
+  outline-offset: 2px;
+}
+
+.ops-nav__empty {
+  margin: 0.4rem 0.55rem;
+  font-size: 0.75rem;
+  color: var(--kuct-muted);
+}
+
+.ops-nav__retry {
+  padding: 0;
+  font: inherit;
+  font-weight: 650;
+  color: var(--kuct-accent);
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.ops-nav__retry:hover {
+  text-decoration: underline;
+}
+
+.ops-nav__collapse {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  margin: 0;
+  padding: 0;
+  color: var(--kuct-muted);
+  background: transparent;
+  border: 0;
+  border-radius: 0.625rem;
+  cursor: pointer;
+}
+
+.ops-nav__collapse:focus-visible {
+  outline: 2px solid var(--kuct-accent);
+  outline-offset: 2px;
+}
+
+.ops-nav__collapse:hover:not(:disabled) {
+  background: var(--kuct-menu-hover);
+  color: var(--kuct-text);
+}
+
+@media (max-width: 52rem) {
+  .ops-nav {
+    max-height: none;
+  }
+
+  .ops-nav__collapse {
+    display: none;
+  }
+}

@@ -1,0 +1,37 @@
+---
+description: Always update documentations/ (+ context/) when code in this repo changes
+alwaysApply: true
+---
+
+# Update documentations/ (this repo)
+
+Repo này (**Dolphin Edu FE**) là **source độc lập**. Khi **đổi code** (hành vi UI, nav, matching, seed, chat intent, shell…), cập nhật docs **trong cùng task**.
+
+## Do
+
+- Sửa file khớp dưới `documentations/` (index: `documentations/README.md`).
+- Nếu đổi scope / product truth / tool / constraint → sửa thêm `context/` liên quan.
+- Thêm dòng ngắn vào `documentations/changelog.md` cho thay đổi không trivial.
+- Ưu tiên sửa doc có sẵn; giữ ngắn, bám code thật — không marketing fluff.
+- Ghi kế hoạch update docs trong confirm-before-acting (khi rule đó áp dụng).
+
+## Do not
+
+- Bỏ qua docs vì “đổi nhỏ” nếu đã đổi nav ready, status booking, matching, seed shape, chat actions, hoặc màn canvas mới.
+- Viết secret / token / private key vào docs.
+- Dùng hoặc cập nhật knowledge / docs của **Dolphin Ops spa** hoặc **repo marketing** — không phải spec app này.
+- Invent giá, SLA, metric proof — thiếu thì **TODO**.
+
+## Map
+
+| Đổi gì | Cập nhật |
+| --- | --- |
+| Host / stack / chrome / nav demo | `documentations/overview.md` |
+| Scope slice (in/out) | `context/scope.md` |
+| Product model / Care vs Ops | `context/product.md` |
+| FE/BE / subdomain architecture | `context/architecture.md` |
+| Tool registry | `context/tools.md` |
+| Hard limits | `context/constraints.md` |
+| Canva / design prompt | `documentations/canva-ai-design.md` |
+| Chat phrases | `data/chat-actions.json` (+ ghi chú overview nếu đổi router) |
+| Bất kỳ mục trên | + `documentations/changelog.md` |

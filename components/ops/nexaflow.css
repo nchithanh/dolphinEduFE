@@ -1,0 +1,103 @@
+/* Edu canvas chrome. Do not copy to marketing / shared brand. */
+
+.ops-shell {
+  background: var(--kuct-bg);
+}
+
+.ops-shell__main {
+  background-color: var(--kuct-bg);
+  background-image: none;
+}
+
+.ops-shell__canvas {
+  background: none;
+}
+
+.ops-nav,
+.ops-chat,
+.ops-bar {
+  background: var(--kuct-surface);
+}
+
+.ops-nav {
+  border-right: 1px solid var(--kuct-border);
+  box-shadow: none;
+}
+
+.ops-chat {
+  box-shadow: -12px 0 32px rgb(30 35 48 / 0.12);
+}
+
+.ops-bar {
+  border-bottom: 1px solid var(--kuct-border);
+}
+
+.ops-nav__item--current {
+  color: var(--kuct-accent);
+  background: color-mix(in srgb, var(--kuct-accent) 9%, white);
+  box-shadow: inset 2px 0 0 var(--kuct-accent);
+}
+
+.ops-kpi__card,
+.ops-kpi-card,
+.ops-table-card,
+.ops-detail,
+.ops-res,
+.ops-info__card,
+.ops-book__form,
+.ops-book__aside,
+.ops-360__panel,
+.ops-approve__panel,
+.ops-soon__hero,
+.ops-inbox__thread,
+.ops-chat__tile,
+.ops-chat__box-wrap,
+.ops-chat__banner,
+.ops-more__menu,
+.ops-over__board,
+.ops-wid,
+.ops-rooms__usage {
+  background: var(--kuct-surface);
+  border-color: var(--kuct-border);
+  box-shadow: var(--kuct-shadow);
+}
+
+.ops-res--current {
+  background: color-mix(in srgb, var(--kuct-accent) 8%, white);
+  box-shadow:
+    var(--kuct-shadow),
+    0 0 0 1px rgb(var(--kuct-accent-rgb) / 0.2);
+}
+
+.ops-page__cta {
+  background: var(--kuct-accent);
+  box-shadow: 0 2px 8px rgb(var(--kuct-accent-rgb) / 0.22);
+}
+
+.ops-page__cta:hover:not(:disabled) {
+  background: var(--kuct-accent-2);
+  filter: none;
+}
+
+.ops-chat__bubble--user {
+  background: var(--kuct-accent);
+  box-shadow: 0 4px 12px rgb(var(--kuct-accent-rgb) / 0.2);
+}
+
+.ops-chat__bubble--agent {
+  background: var(--kuct-surface);
+  border-color: var(--kuct-border);
+}
+
+.ops-nav__search input,
+.ops-tool__search input,
+.ops-tool__select,
+.ops-book__field input,
+.ops-book__field select,
+.ops-book__field textarea,
+.ops-bar__search input,
+.ops-table-search input,
+.ops-table-tools select {
+  background: var(--kuct-soft, var(--kuct-surface));
+  border-color: var(--kuct-border);
+}

@@ -1,0 +1,45 @@
+.ops-soon {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.ops-soon__badge {
+  display: inline-block;
+  margin-left: 0.35rem;
+  padding: 0.12rem 0.45rem;
+  vertical-align: middle;
+  font-size: 0.6875rem;
+  font-weight: 650;
+  color: var(--kuct-muted);
+  border: 1px dashed var(--kuct-border);
+  border-radius: 0.35rem;
+}
+
+.ops-soon__ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.ops-soon__chip {
+  display: inline-flex;
+  padding: 0.15rem 0.45rem;
+  font-size: 0.6875rem;
+  font-weight: 650;
+  color: var(--kuct-muted);
+  background: color-mix(in srgb, var(--kuct-bg) 80%, white);
+  border: 1px dashed var(--kuct-border);
+  border-radius: 999px;
+}
+
+.ops-soon__panel-note {
+  margin: 0 0 0.85rem;
+  padding: 0.65rem 0.75rem;
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: var(--kuct-muted);
+  background: var(--kuct-bg);
+  border: 1px solid var(--kuct-border);
+  border-radius: calc(var(--ops-radius) - 4px);
+}

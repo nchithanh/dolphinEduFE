@@ -1,0 +1,36 @@
+/* Synced from products/_shared/brand/tokens.css — do not edit by hand. */
+:root {
+  --kuct-bg: #fcfcfd;
+  --kuct-surface: #ffffff;
+  --kuct-accent: #6b56d6;
+  --kuct-accent-2: #5644b8;
+  --kuct-accent-3: #9b8ce8;
+  --kuct-accent-rgb: 107, 86, 214;
+  --kuct-text: #1a1625;
+  --kuct-muted: #5c5668;
+  --kuct-border: rgba(26, 22, 37, 0.08);
+  --kuct-on-accent: #ffffff;
+  --kuct-glass: #ffffff;
+  --kuct-shadow: 0 8px 24px rgb(26 22 37 / 0.05);
+  --kuct-glow-1: transparent;
+  --kuct-glow-2: transparent;
+  --kuct-glow-3: transparent;
+  --kuct-btn-from: #5644b8;
+  --kuct-btn-mid: #6b56d6;
+  --kuct-btn-to: #7d6ce0;
+  --kuct-serif-a: #5644b8;
+  --kuct-serif-b: #6b56d6;
+  --kuct-serif-c: #6366f1;
+  --kuct-menu-hover: #f4f3f8;
+  --kuct-ribbon-1: transparent;
+  --kuct-ribbon-2: transparent;
+  --kuct-ribbon-3: transparent;
+  --kuct-fab-from: #7d6ce0;
+  --kuct-fab-mid: #6b56d6;
+  --kuct-fab-to: #5644b8;
+  --kuct-card-from: #ffffff;
+  --kuct-card-mid: #ffffff;
+  --kuct-card-to: #ffffff;
+  --kuct-panel: #f5f4f8;
+  --kuct-panel-2: #ffffff;
+}
