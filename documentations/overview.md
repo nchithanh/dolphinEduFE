@@ -1,8 +1,8 @@
 # Overview — Dolphin Edu frontend
 
-Hardcoded Agent CRM for a dance studio. No GitHub remote yet. Host **TODO**.
+Hardcoded Agent CRM for a dance studio. Host: GitHub Pages + custom domain (Cloudflare). Repo `nchithanh/dolphinEduFE`.
 
-Next.js App Router. Local `:3011`. Not GitHub Pages `out/`.
+Next.js App Router. Local `:3011`. Production: static export `out/` — xem `documentations/deploy.md`.
 
 Agent SoT: `context/` + `documentations/` in this folder.
 

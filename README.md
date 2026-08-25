@@ -11,9 +11,12 @@ npm run dev
 ```
 
 - Dev: http://localhost:3011
-- Production build: `npm run build` then `npm start` (port 3011)
+- Production (Node): `npm run build` then `npm start` (port 3011)
+- GitHub Pages artifact: `npm run build:pages` → `out/`
 
-Typecheck: `npx tsc --noEmit`.
+Deploy: push `main` → GitHub Actions. Custom domain qua Cloudflare — **`documentations/deploy.md`**.
+
+Repo: https://github.com/nchithanh/dolphinEduFE
 
 ## Folder map
 

@@ -2,6 +2,7 @@
 
 ## 2026-08-25
 
+- **Deploy GitHub Pages:** workflow `deploy-pages.yml` · static export (`GITHUB_PAGES=true`) · custom domain Cloudflare (`basePath` rỗng) · `documentations/deploy.md`.
 - **Design system Phase 1:** tokens premium (`#F8F8FC` / `#8B5CF6` / radius 12 / type 28·16·24·14·12 / control 40px) · shell/nav/bar nhẹ · card/KPI/table/drawer/CTA đồng bộ qua `globals` + `chrome` + `EduTable` + `nexaflow` — không đổi logic.
 - Seed GV: **14 giáo viên** (+Nam/Vy/Quân/Nga/Phúc/Hân/Đức/Trâm/Sơn) · gán lớp hôm nay cho GV mới · timeline «Lịch dạy hôm nay» equal height (`min-height` + line-clamp).
 - Seed Phòng: **12 phòng** (+Studio B/C, TD-2, Open Floor TD bảo trì, TĐC-2) · +17 lớp filler `2026-08-24` lấp lịch/ca kế trên board Phòng.
