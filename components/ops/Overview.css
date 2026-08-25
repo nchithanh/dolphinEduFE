@@ -25,7 +25,6 @@
 .ops-over__kpi {
   display: flex;
   align-items: flex-start;
-  justify-content: space-between;
   gap: 0.65rem;
   padding: 1rem 1.05rem 1.05rem;
 }
@@ -46,42 +45,6 @@
   margin: 0.4rem 0 0.2rem;
   font-size: var(--ops-type-metric, 1.5rem);
   font-weight: 600;
-}
-
-.ops-over__kpi-ico {
-  display: grid;
-  flex-shrink: 0;
-  place-items: center;
-  width: 2.15rem;
-  height: 2.15rem;
-  font-size: 0.85rem;
-  font-weight: 700;
-  border-radius: 50%;
-}
-
-.ops-over__kpi--violet .ops-over__kpi-ico {
-  color: #6b4fc4;
-  background: color-mix(in srgb, #7a60ca 18%, white);
-}
-
-.ops-over__kpi--blue .ops-over__kpi-ico {
-  color: #1d4f91;
-  background: color-mix(in srgb, #3b82c4 16%, white);
-}
-
-.ops-over__kpi--green .ops-over__kpi-ico {
-  color: #1a6b48;
-  background: color-mix(in srgb, #2f9e6a 16%, white);
-}
-
-.ops-over__kpi--orange .ops-over__kpi-ico {
-  color: #9a4b2a;
-  background: color-mix(in srgb, var(--ops-peach) 55%, white);
-}
-
-.ops-over__kpi--red .ops-over__kpi-ico {
-  color: #9a2e2e;
-  background: color-mix(in srgb, #e85d5d 16%, white);
 }
 
 .ops-kpi-card__trend {

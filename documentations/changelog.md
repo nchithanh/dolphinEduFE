@@ -2,6 +2,8 @@
 
 ## 2026-08-25
 
+- **Tổng quan KPI:** bỏ icon tròn `ops-over__kpi-ico`.
+- **Type body:** `--ops-type-body` `0.9rem` → `0.8rem`.
 - **Bar Ask Dolphin:** cao `1.85rem` + canh giữa icon/chữ — thẳng hàng với lang / bell / avatar.
 - **Bar:** bỏ nút «+ Quick add» / «Thêm nhanh» (`CanvasBar` + prop `onQuickAdd`).
 - **HV xu hướng:** chart SVG cao cố định `3.25rem` (không phình theo width) · siết title/note — bỏ khoảng trống trong card.

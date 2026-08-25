@@ -180,9 +180,6 @@ export function Overview({ title, courses, classes, students: _students, teacher
                   {kpi.trend} <span>so với tháng trước</span>
                 </p>
               </span>
-              <span className="ops-over__kpi-ico" aria-hidden>
-                {kpi.ico}
-              </span>
             </button>
           </li>
         ))}
