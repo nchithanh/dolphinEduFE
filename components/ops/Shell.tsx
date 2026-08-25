@@ -30,7 +30,6 @@ type ShellProps = {
   onLocaleChange: (locale: OpsLocale) => void;
   branchId: string;
   onBranchChange: (branchId: string) => void;
-  onQuickAdd?: () => void;
 };
 
 type ChatSlotProps = {
@@ -52,7 +51,6 @@ export function Shell({
   onLocaleChange,
   branchId,
   onBranchChange,
-  onQuickAdd,
 }: ShellProps) {
   const [navOpen, setNavOpen] = useState(true);
   const [chatOpen, setChatOpen] = useState(false);
@@ -128,7 +126,6 @@ export function Shell({
           chatOpen={chatOpen}
           onToggleNav={() => setNavOpen((open) => !open)}
           onToggleChat={toggleChat}
-          onQuickAdd={onQuickAdd}
           locale={locale}
           onLocaleChange={onLocaleChange}
           branchId={branchId}

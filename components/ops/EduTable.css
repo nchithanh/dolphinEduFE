@@ -32,6 +32,13 @@
   margin: 0 0 var(--ops-space-section, 1.35rem);
   padding: 0;
   list-style: none;
+  align-items: stretch;
+}
+
+.ops-kpi-row > li {
+  display: flex;
+  min-width: 0;
+  min-height: 0;
 }
 
 @media (max-width: 48rem) {
@@ -149,11 +156,12 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.5rem;
   margin: 0 0 0.55rem;
+  align-items: start;
 }
 
 .ops-seg__card {
   box-sizing: border-box;
-  padding: 0.55rem 0.7rem 0.6rem;
+  padding: 0.5rem 0.7rem 0.5rem;
   background: var(--kuct-surface);
   border: 1px solid var(--kuct-border);
   border-radius: var(--ops-radius);
@@ -201,6 +209,12 @@
 
 .ops-kpi-card {
   box-sizing: border-box;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
   padding: 1rem 1.1rem 1.05rem;
   background: var(--kuct-surface);
   border: 1px solid var(--kuct-border);
@@ -244,7 +258,8 @@
 }
 
 .ops-kpi-card__trend {
-  margin: 0.1rem 0 0;
+  margin: auto 0 0;
+  padding-top: 0.1rem;
   font-size: 0.625rem;
   font-weight: 650;
 }

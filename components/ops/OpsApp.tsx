@@ -392,7 +392,6 @@ export function OpsApp() {
       onLocaleChange={setLocale}
       branchId={branchId}
       onBranchChange={setBranch}
-      onQuickAdd={() => openCourses({ form: true })}
       canvas={canvas}
       chat={
         <ChatPanel

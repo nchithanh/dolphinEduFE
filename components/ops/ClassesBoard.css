@@ -123,7 +123,18 @@
   flex: 1 1 auto;
   flex-direction: column;
   min-height: 0;
-  overflow: auto;
+  overflow: hidden;
+}
+
+.ops-classes__aside .ops-detail__pane > .ops-classes__block-title,
+.ops-classes__aside .ops-detail__pane > .ops-detail__meta,
+.ops-classes__aside .ops-detail__pane > .ops-classes__roster-head,
+.ops-classes__aside .ops-detail__pane > .ops-classes__actions {
+  flex-shrink: 0;
+}
+
+.ops-classes__aside .ops-detail__pane > .ops-classes__roster-wrap + .ops-classes__block-title {
+  margin-top: 0.85rem;
 }
 
 .ops-classes__range {
@@ -186,7 +197,8 @@
 }
 
 .ops-classes__roster-wrap {
-  max-height: 14rem;
+  flex: 1 1 auto;
+  min-height: 0;
   overflow: auto;
   border: 1px solid var(--kuct-border);
   border-radius: var(--ops-radius);
@@ -222,8 +234,11 @@
 }
 
 .ops-classes__stub-list {
+  flex: 1 1 auto;
+  min-height: 0;
   margin: 0.5rem 0 0;
   padding: 0 0 0 1.1rem;
+  overflow: auto;
   font-size: 0.8125rem;
   line-height: 1.55;
   color: var(--kuct-text);

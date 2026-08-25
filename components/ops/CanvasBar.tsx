@@ -9,7 +9,6 @@ type CanvasBarProps = {
   chatOpen?: boolean;
   onToggleNav?: () => void;
   onToggleChat?: () => void;
-  onQuickAdd?: () => void;
   locale: OpsLocale;
   onLocaleChange: (locale: OpsLocale) => void;
   branchId: string;
@@ -21,7 +20,6 @@ export function CanvasBar({
   chatOpen = false,
   onToggleNav,
   onToggleChat,
-  onQuickAdd,
   locale,
   onLocaleChange,
   branchId,
@@ -112,10 +110,6 @@ export function CanvasBar({
             <path d="M6 16h12l-1.2-2.2V10a4.8 4.8 0 10-9.6 0v3.8L6 16z" />
             <path d="M10 17.2a2 2 0 004 0" strokeLinecap="round" />
           </svg>
-        </button>
-        <button type="button" className="ops-bar__add" onClick={onQuickAdd}>
-          <span aria-hidden>+</span>
-          {copy.quickAdd}
         </button>
         <div className="ops-bar__user">
           <span className="ops-bar__avatar ops-bar__avatar--self" aria-hidden>

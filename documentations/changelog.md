@@ -2,6 +2,14 @@
 
 ## 2026-08-25
 
+- **Bar Ask Dolphin:** cao `1.85rem` + canh giữa icon/chữ — thẳng hàng với lang / bell / avatar.
+- **Bar:** bỏ nút «+ Quick add» / «Thêm nhanh» (`CanvasBar` + prop `onQuickAdd`).
+- **HV xu hướng:** chart SVG cao cố định `3.25rem` (không phình theo width) · siết title/note — bỏ khoảng trống trong card.
+- **HV phân khúc:** `.ops-seg` `align-items: start` — card «Phân khúc» không bị kéo cao theo «Xu hướng».
+- **Chi tiết Lớp:** roster học viên `flex: 1` (bỏ max-height 14rem) — list lấp khoảng trống tới khối thao tác.
+- **KPI equal height:** `.ops-kpi-row > li` stretch · card `height: 100%` · trend neo đáy — Lớp/Phòng/GV/Tổng quan đồng bộ.
+- **Tăng chữ:** `html` root `100%` · type body `0.9` / meta `0.78` / section `1.05` / metric `1.575` / title `1.85`.
+- **Ẩn scrollbar:** toàn app `scrollbar-width: none` + ẩn webkit — vẫn cuộn chuột/trackpad, không hiện thanh.
 - **Ask AI panel:** layout theo marketing mockup — nền caro violet · card gợi ý 1 cột · icon ký hiệu · composer chip Ask + send vuông bo góc · copy EN chrome (router demo vẫn gửi câu VI).
 - **Deploy GitHub Pages:** workflow `deploy-pages.yml` · static export (`GITHUB_PAGES=true`) · custom domain Cloudflare (`basePath` rỗng) · `documentations/deploy.md`.
 - **Design system Phase 1:** tokens premium (`#F8F8FC` / `#8B5CF6` / radius 12 / type 28·16·24·14·12 / control 40px) · shell/nav/bar nhẹ · card/KPI/table/drawer/CTA đồng bộ qua `globals` + `chrome` + `EduTable` + `nexaflow` — không đổi logic.

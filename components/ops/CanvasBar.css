@@ -74,13 +74,16 @@
   display: inline-flex;
   flex-shrink: 0;
   align-items: center;
+  justify-content: center;
   gap: 0.35rem;
-  min-height: var(--ops-control-h, 2.5rem);
-  height: var(--ops-control-h, 2.5rem);
-  padding: 0 0.85rem;
+  box-sizing: border-box;
+  height: 1.85rem;
+  min-height: 1.85rem;
+  padding: 0 0.75rem;
   font: inherit;
   font-size: var(--ops-type-meta, 0.75rem);
   font-weight: 600;
+  line-height: 1;
   color: var(--kuct-accent);
   background: var(--ops-lavender);
   border: 1px solid color-mix(in srgb, var(--kuct-accent) 22%, var(--kuct-border));
@@ -100,38 +103,14 @@
   outline-offset: 2px;
 }
 
-.ops-bar__add {
-  display: inline-flex;
-  flex-shrink: 0;
-  align-items: center;
-  gap: 0.25rem;
-  height: 1.85rem;
-  padding: 0 0.75rem;
-  font: inherit;
-  font-size: 0.75rem;
-  font-weight: 650;
-  color: var(--kuct-on-accent);
-  background: var(--kuct-accent);
-  border: 0;
-  border-radius: 0.5rem;
-  cursor: pointer;
-}
-
-.ops-bar__add:hover {
-  background: var(--kuct-accent-2);
-}
-
-.ops-bar__add:focus-visible {
-  outline: 2px solid var(--kuct-accent);
-  outline-offset: 2px;
-}
-
 .ops-bar__actions {
   display: flex;
   flex-shrink: 0;
   align-items: center;
+  justify-content: flex-end;
   gap: 0.4rem;
   margin-left: auto;
+  align-self: center;
 }
 
 .ops-bar__lang {
@@ -269,7 +248,6 @@
   }
 
   .ops-bar__role,
-  .ops-bar__add,
   .ops-bar__kbd {
     display: none;
   }
