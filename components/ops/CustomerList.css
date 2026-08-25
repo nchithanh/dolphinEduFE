@@ -163,8 +163,11 @@
 
 .ops-clist__seg-grid {
   display: grid;
+  flex: 1 1 auto;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 0.35rem 0.5rem;
+  gap: 0.4rem 0.75rem;
+  align-content: start;
+  width: 100%;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -173,9 +176,10 @@
 .ops-clist__seg-grid li {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 0.1rem;
+  align-items: center;
+  gap: 0.15rem;
   min-width: 0;
+  text-align: center;
 }
 
 .ops-clist__seg-mark {
@@ -183,6 +187,7 @@
   width: 0.45rem;
   height: 0.45rem;
   margin-bottom: 0.2rem;
+  margin-inline: auto;
   background: var(--seg);
   border-radius: 50%;
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--seg) 22%, transparent);
@@ -231,10 +236,15 @@
 .ops-clist__trend {
   display: block;
   box-sizing: border-box;
+  flex: 1 1 auto;
   width: 100%;
   height: 3.25rem;
   max-height: 3.25rem;
   margin: 0.1rem 0 0.15rem;
+}
+
+.ops-seg__card:not(.ops-clist__seg) {
+  justify-content: flex-start;
 }
 
 .ops-seg__card:not(.ops-clist__seg) .ops-seg__title {
@@ -313,7 +323,7 @@
   font-size: 0.6875rem;
   font-weight: 650;
   color: var(--kuct-accent);
-  background: color-mix(in srgb, var(--kuct-accent) 12%, white);
+  background: color-mix(in srgb, var(--kuct-accent) 12%, var(--kuct-surface));
   border-radius: 999px;
 }
 

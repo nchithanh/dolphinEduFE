@@ -5,7 +5,7 @@
 }
 
 .ops-shell__main {
-  background-color: #ffffff;
+  background-color: #070711;
   background-image:
     linear-gradient(rgba(var(--kuct-accent-rgb), 0.07) 1px, transparent 1px),
     linear-gradient(90deg, rgba(var(--kuct-accent-rgb), 0.07) 1px, transparent 1px);
@@ -16,19 +16,19 @@
   background: none;
 }
 
-.ops-nav,
+.ops-nav {
+  background: var(--kuct-sidebar, #0b0c1c);
+  border-right: 1px solid var(--kuct-border);
+  box-shadow: none;
+}
+
 .ops-chat,
 .ops-bar {
   background: var(--kuct-surface);
 }
 
-.ops-nav {
-  border-right: 1px solid var(--kuct-border);
-  box-shadow: none;
-}
-
 .ops-chat {
-  box-shadow: -12px 0 32px rgb(30 35 48 / 0.12);
+  box-shadow: -16px 0 40px rgb(0 0 0 / 0.45);
 }
 
 .ops-bar {
@@ -36,9 +36,9 @@
 }
 
 .ops-nav__item--current {
-  color: var(--kuct-accent);
-  background: color-mix(in srgb, var(--kuct-accent) 9%, white);
-  box-shadow: inset 2px 0 0 var(--kuct-accent);
+  color: var(--kuct-accent-3);
+  background: color-mix(in srgb, var(--kuct-accent) 18%, var(--kuct-sidebar, #0b0c1c));
+  box-shadow: inset 2px 0 0 var(--kuct-accent-2);
 }
 
 .ops-kpi__card,
@@ -57,7 +57,8 @@
 .ops-more__menu,
 .ops-over__board,
 .ops-wid,
-.ops-rooms__usage {
+.ops-rooms__usage,
+.ops-seg__card {
   background: var(--kuct-surface);
   border-color: var(--kuct-border);
   box-shadow: var(--kuct-shadow);
@@ -65,21 +66,19 @@
 
 .ops-chat__tile,
 .ops-chat__banner {
-  background: var(--kuct-bg);
-  border-color: rgb(0 0 0 / 0.06);
+  background: var(--kuct-elevated, var(--kuct-soft));
+  border-color: var(--kuct-border);
   box-shadow: none;
 }
 
 .ops-res--current {
-  background: color-mix(in srgb, var(--kuct-accent) 8%, white);
-  box-shadow:
-    var(--kuct-shadow),
-    0 0 0 1px rgb(var(--kuct-accent-rgb) / 0.2);
+  background: color-mix(in srgb, var(--kuct-accent) 16%, var(--kuct-surface));
+  box-shadow: inset 0 0 0 1px rgb(var(--kuct-accent-rgb) / 0.28);
 }
 
 .ops-page__cta {
   background: var(--kuct-accent);
-  box-shadow: 0 2px 8px rgb(var(--kuct-accent-rgb) / 0.22);
+  box-shadow: none;
 }
 
 .ops-page__cta:hover:not(:disabled) {
@@ -89,11 +88,12 @@
 
 .ops-chat__bubble--user {
   background: var(--kuct-accent);
-  box-shadow: 0 4px 12px rgb(var(--kuct-accent-rgb) / 0.2);
+  color: var(--kuct-on-accent);
+  box-shadow: none;
 }
 
 .ops-chat__bubble--agent {
-  background: var(--kuct-surface);
+  background: var(--kuct-elevated, var(--kuct-soft));
   border-color: var(--kuct-border);
 }
 
@@ -106,6 +106,13 @@
 .ops-bar__search input,
 .ops-table-search input,
 .ops-table-tools select {
-  background: var(--kuct-soft, var(--kuct-surface));
+  color: var(--kuct-text);
+  background: var(--kuct-elevated, var(--kuct-soft));
   border-color: var(--kuct-border);
+}
+
+.ops-nav__search input::placeholder,
+.ops-bar__search input::placeholder,
+.ops-table-search input::placeholder {
+  color: var(--kuct-muted-2, var(--kuct-muted));
 }

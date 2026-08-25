@@ -101,13 +101,13 @@
 }
 
 .ops-360__badge--ok {
-  color: #1f7a56;
-  background: color-mix(in srgb, #1f7a56 12%, white);
+  color: var(--ops-paid);
+  background: color-mix(in srgb, #1f7a56 12%, var(--kuct-surface));
 }
 
 .ops-360__badge--no {
   color: #a33b3b;
-  background: color-mix(in srgb, #a33b3b 12%, white);
+  background: color-mix(in srgb, #a33b3b 12%, var(--kuct-surface));
 }
 
 .ops-360__empty {

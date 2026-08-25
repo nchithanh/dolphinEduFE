@@ -36,7 +36,7 @@
   font: inherit;
   font-size: var(--ops-type-body, 0.875rem);
   color: var(--kuct-muted);
-  background: var(--kuct-soft, #fafafd);
+  background: var(--kuct-elevated, var(--kuct-soft));
   border: 1px solid var(--kuct-border);
   border-radius: var(--ops-radius-btn, 0.625rem);
   cursor: pointer;

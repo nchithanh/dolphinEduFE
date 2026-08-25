@@ -14,38 +14,43 @@
   --ops-type-metric: 1.575rem;
   --ops-type-body: 0.8rem;
   --ops-type-meta: 0.78rem;
-  --kuct-bg: #f8f8fc;
-  --kuct-surface: #ffffff;
-  --kuct-soft: #fafafd;
-  --kuct-accent: #8b5cf6;
-  --kuct-accent-2: #7c3aed;
-  --kuct-accent-3: #a78bfa;
-  --kuct-accent-rgb: 139, 92, 246;
-  --kuct-text: #1e2330;
-  --kuct-muted: #5f667a;
-  --kuct-border: rgb(30 35 48 / 0.08);
-  --kuct-on-accent: #ffffff;
-  --kuct-panel: #f3f0fb;
-  --kuct-panel-2: #ffffff;
-  --kuct-menu-hover: #f4f2fa;
-  --kuct-shadow: 0 1px 2px rgb(30 35 48 / 0.04), 0 6px 16px rgb(30 35 48 / 0.04);
-  --kuct-btn-from: #7c3aed;
-  --kuct-btn-mid: #8b5cf6;
-  --kuct-btn-to: #a78bfa;
-  --ops-lilac: #c4b5fd;
-  --ops-lavender: #f3f0fb;
-  --ops-peach: #fde68a;
-  --ops-peach-ink: #b45309;
-  --ops-paid: #16a34a;
-  --ops-unpaid: #dc2626;
-  --ops-pending: #5f667a;
-  --ops-warning: #d97706;
+  --kuct-bg: #090a16;
+  --kuct-sidebar: #0b0c1c;
+  --kuct-surface: #111225;
+  --kuct-elevated: #17182f;
+  --kuct-soft: #17182f;
+  --kuct-accent: #7c3aed;
+  --kuct-accent-2: #a855f7;
+  --kuct-accent-3: #c084fc;
+  --kuct-accent-rgb: 124, 58, 237;
+  --kuct-magenta: #e879f9;
+  --kuct-text: #f8f7ff;
+  --kuct-muted: #a7a6ba;
+  --kuct-muted-2: #707086;
+  --kuct-border: transparent;
+  --kuct-on-accent: #f8f7ff;
+  --kuct-panel: #17182f;
+  --kuct-panel-2: #111225;
+  --kuct-menu-hover: rgb(168 85 247 / 0.12);
+  --kuct-shadow: 0 1px 0 rgb(168 85 247 / 0.06), 0 8px 24px rgb(0 0 0 / 0.35);
+  --kuct-btn-from: #6d28d9;
+  --kuct-btn-mid: #7c3aed;
+  --kuct-btn-to: #a855f7;
+  --ops-lilac: #c084fc;
+  --ops-lavender: rgb(124 58 237 / 0.18);
+  --ops-peach: #fbbf24;
+  --ops-peach-ink: #fde68a;
+  --ops-paid: #4ade80;
+  --ops-unpaid: #f87171;
+  --ops-pending: #707086;
+  --ops-warning: #fbbf24;
   --ops-header-h: 3.5rem;
 }
 
 html {
   /* Keep rem = browser default so type tokens aren’t compressed. */
   font-size: 100%;
+  color-scheme: dark;
 }
 
 html,
@@ -61,6 +66,11 @@ body {
 
 body {
   font-size: var(--ops-type-body);
+}
+
+::selection {
+  color: var(--kuct-text);
+  background: rgb(var(--kuct-accent-rgb) / 0.35);
 }
 
 a {

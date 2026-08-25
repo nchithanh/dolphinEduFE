@@ -8,10 +8,10 @@ Agent SoT: `context/` + `documentations/` in this folder.
 
 ## Demo chrome
 
-Shell: **nav | canvas**. Chat **kéo ra từ phải** (Ask Dolphin / Escape / overlay). Design system Phase 1: bg `#F8F8FC` · accent `#8B5CF6` · radius `12px` · type title/section/metric/body/meta · control `40px` · soft shadow. CSS prefix `ops-*`. Nav `min(14.5rem,15.5svw)` · aside `min(22rem,28svw)` · section gap `~1.35rem`.
+Shell: **nav | canvas**. Chat **kéo ra từ phải** (Ask Dolphin / Escape / overlay). Design system: **premium dark** — canvas `#070711` · sidebar `#0B0C1C` · surface `#111225` · accent `#7C3AED` / `#A855F7` · text `#F8F7FF` · radius `12px` · type title/section/metric/body/meta · control `40px`. CSS prefix `ops-*`. Nav `min(14.5rem,15.5svw)` · aside `min(26.5rem,34svw)` · section gap `~1.35rem`.
 
 - Trái: wordmark **Dolphin Edu** · org **Pulse Studio**. Select chi nhánh (`edu-branch`). Menu `lib/api-menu.ts` — **không fetch API**. `live` = canvas; `stub` = Sắp có; `disabled` = ẩn.
-- Giữa: CanvasBar — search · Ask Dolphin · VI|EN · **+ Thêm nhanh** (mở form khóa) · user. Canvas + chat + seed **VI**.
+- Giữa: CanvasBar — search · Ask Dolphin · VI|EN · user. Canvas + chat + seed **VI**.
 - Domain: **Khóa → ghi danh học viên → sinh lớp**. Không matching spa 1:1.
 
 Nav nhóm: **Tổng quan** (Dashboard live; Lịch / Hoạt động stub) · **Quản lý** (Học viên, Khóa học, Lớp học, Giáo viên, Phòng) · **Tuyển sinh** / **Tài chính** / **Cài đặt** stub.

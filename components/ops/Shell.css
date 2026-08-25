@@ -19,7 +19,7 @@
   min-height: 0;
   font-size: var(--ops-type-body);
   color: var(--kuct-text);
-  background-color: #ffffff;
+  background-color: #070711;
   background-image:
     linear-gradient(rgba(var(--kuct-accent-rgb), 0.07) 1px, transparent 1px),
     linear-gradient(90deg, rgba(var(--kuct-accent-rgb), 0.07) 1px, transparent 1px);
@@ -88,7 +88,7 @@
   z-index: 40;
   margin: 0;
   padding: 0;
-  background: rgb(26 22 37 / 0.28);
+  background: rgb(7 7 17 / 0.62);
   border: 0;
   cursor: pointer;
   animation: ops-chat-backdrop-in var(--ops-pane-dur) var(--ops-ease);

@@ -50,7 +50,7 @@
 }
 
 .ops-chip--done {
-  color: #fff;
+  color: #f8f7ff;
   background: var(--kuct-accent);
 }
 
@@ -61,22 +61,22 @@
 
 .ops-chip--wait {
   color: var(--ops-peach-ink);
-  background: color-mix(in srgb, var(--ops-peach) 70%, white);
+  background: color-mix(in srgb, var(--ops-peach) 70%, var(--kuct-surface));
 }
 
 .ops-chip--delay {
-  color: #9a4b2a;
+  color: var(--ops-peach-ink);
   background: var(--ops-peach);
 }
 
 .ops-chip--pending {
   color: var(--ops-pending);
-  background: #ececee;
+  background: var(--kuct-elevated, var(--kuct-soft));
 }
 
 .ops-chip--paid {
-  color: #1f7a56;
-  background: color-mix(in srgb, var(--ops-paid) 16%, white);
+  color: var(--ops-paid);
+  background: color-mix(in srgb, var(--ops-paid) 16%, var(--kuct-surface));
 }
 
 .ops-stat-grid {
@@ -302,7 +302,7 @@
 
 .ops-res--current {
   border-color: color-mix(in srgb, var(--kuct-accent) 40%, var(--kuct-border));
-  background: color-mix(in srgb, var(--kuct-accent) 6%, white);
+  background: color-mix(in srgb, var(--kuct-accent) 6%, var(--kuct-surface));
 }
 
 .ops-res__head {
@@ -319,7 +319,7 @@
   width: 2rem;
   height: 2rem;
   color: var(--kuct-accent);
-  background: color-mix(in srgb, var(--kuct-accent) 8%, white);
+  background: color-mix(in srgb, var(--kuct-accent) 8%, var(--kuct-surface));
   border-radius: 0.5rem;
 }
 
@@ -550,7 +550,7 @@ span.ops-res__title:hover {
 }
 
 .ops-badge--ok {
-  color: #1f7a56;
+  color: var(--ops-paid);
 }
 
 .ops-badge--wait {
@@ -708,7 +708,7 @@ span.ops-res__title:hover {
   height: 0.45rem;
   overflow: hidden;
   margin: 0 0 0.55rem;
-  background: var(--kuct-bg);
+  background: var(--kuct-elevated, var(--kuct-soft));
   border-radius: 999px;
 }
 

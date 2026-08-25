@@ -6,7 +6,7 @@
   min-width: 0;
   min-height: 0;
   overflow: hidden;
-  background: var(--kuct-surface);
+  background: var(--kuct-sidebar, var(--kuct-surface));
   border-right: 1px solid var(--kuct-border);
 }
 
@@ -264,7 +264,7 @@
 .ops-nav__item--current {
   font-weight: 600;
   color: var(--kuct-accent);
-  background: color-mix(in srgb, var(--kuct-accent) 10%, white);
+  background: color-mix(in srgb, var(--kuct-accent) 16%, var(--kuct-sidebar, #0b0c1c));
 }
 
 .ops-nav__item--current svg:first-of-type {

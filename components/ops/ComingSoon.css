@@ -28,7 +28,7 @@
   font-size: 0.6875rem;
   font-weight: 650;
   color: var(--kuct-muted);
-  background: color-mix(in srgb, var(--kuct-bg) 80%, white);
+  background: color-mix(in srgb, var(--kuct-bg) 80%, var(--kuct-surface));
   border: 1px dashed var(--kuct-border);
   border-radius: 999px;
 }

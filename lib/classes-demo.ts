@@ -5,7 +5,7 @@ export const CLASSES_KPI = [
   { id: "soon", label: "Sắp bắt đầu", value: "1", trend: "-50%", up: false, ico: "◷" },
   { id: "avg", label: "Sĩ số trung bình", value: "17.6", sub: "/ 20", trend: "+5%", up: true, ico: "◫" },
   { id: "attend", label: "Tỷ lệ điểm danh", value: "91%", trend: "+3%", up: true, ico: "✓" },
-  { id: "rooms", label: "Phòng trống hôm nay", value: "3", trend: "-25%", up: false, ico: "⌂" },
+  { id: "rooms", label: "Phòng trống", value: "3", trend: "-25%", up: false, ico: "⌂" },
   { id: "warn", label: "Lớp cảnh báo", value: "4", trend: "+100%", up: false, ico: "!" },
 ];
 

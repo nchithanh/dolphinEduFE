@@ -194,7 +194,7 @@
   font-size: 0.8125rem;
   font-weight: 600;
   color: var(--kuct-accent);
-  background: color-mix(in srgb, var(--kuct-accent) 8%, white);
+  background: color-mix(in srgb, var(--kuct-accent) 8%, var(--kuct-surface));
   border-radius: var(--ops-radius);
 }
 

@@ -7,7 +7,7 @@
   height: 100%;
   overflow: hidden;
   background: var(--kuct-surface);
-  border-left: 1px solid rgb(0 0 0 / 0.08);
+  border-left: 1px solid var(--kuct-border);
 }
 
 .ops-chat__bar {
@@ -20,7 +20,7 @@
   min-height: var(--ops-header-h);
   padding: 0 0.75rem;
   background: var(--kuct-surface);
-  border-bottom: 1px solid rgb(0 0 0 / 0.06);
+  border-bottom: 1px solid var(--kuct-border);
 }
 
 .ops-chat__title-btn {
@@ -40,7 +40,7 @@
 }
 
 .ops-chat__title-btn:hover {
-  background: rgb(0 0 0 / 0.03);
+  background: var(--kuct-menu-hover);
 }
 
 .ops-chat__title {
@@ -73,7 +73,7 @@
 
 .ops-chat__icon-btn:hover {
   color: var(--kuct-text);
-  background: rgb(0 0 0 / 0.04);
+  background: var(--kuct-menu-hover);
 }
 
 .ops-chat__dots {
@@ -82,7 +82,7 @@
   flex-direction: column;
   min-height: 0;
   overflow: auto;
-  background-color: #ffffff;
+  background-color: #070711;
   background-image:
     linear-gradient(rgba(var(--kuct-accent-rgb), 0.07) 1px, transparent 1px),
     linear-gradient(90deg, rgba(var(--kuct-accent-rgb), 0.07) 1px, transparent 1px);
@@ -122,8 +122,8 @@
   font-size: 0.75rem;
   font-weight: 600;
   color: var(--kuct-text);
-  background: #fff;
-  border: 1px solid rgb(0 0 0 / 0.08);
+  background: var(--kuct-elevated, var(--kuct-soft));
+  border: 1px solid var(--kuct-border);
   border-radius: 0.625rem;
   cursor: pointer;
 }
@@ -192,8 +192,8 @@
   text-align: left;
   font: inherit;
   color: var(--kuct-text);
-  background: var(--kuct-bg);
-  border: 1px solid rgb(0 0 0 / 0.06);
+  background: var(--kuct-elevated, var(--kuct-soft));
+  border: 1px solid var(--kuct-border);
   border-radius: 0.75rem;
   cursor: pointer;
   transition:
@@ -203,7 +203,7 @@
 
 @media (hover: hover) and (pointer: fine) {
   .ops-chat__tile:hover {
-    background: #fff;
+    background: var(--kuct-surface);
     border-color: rgba(var(--kuct-accent-rgb), 0.28);
   }
 }
@@ -217,10 +217,10 @@
   margin-top: 0.125rem;
   font-size: 0.95rem;
   line-height: 1;
-  color: var(--kuct-accent);
-  background: #fff;
+  color: var(--kuct-accent-3);
+  background: var(--kuct-surface);
   border-radius: 0.625rem;
-  box-shadow: 0 1px 2px rgb(26 21 32 / 0.06);
+  box-shadow: none;
 }
 
 .ops-chat__tile-copy {
@@ -262,7 +262,7 @@
 .ops-chat__bubble--user {
   align-self: flex-end;
   margin-left: 2rem;
-  color: #fff;
+  color: var(--kuct-on-accent);
   background: var(--kuct-accent);
   border-radius: 0.75rem 0.75rem 0.375rem 0.75rem;
 }
@@ -272,10 +272,10 @@
   margin-right: 1rem;
   font-weight: 500;
   color: var(--kuct-text);
-  background: #fff;
-  border: 1px solid rgb(0 0 0 / 0.05);
+  background: var(--kuct-elevated, var(--kuct-soft));
+  border: 1px solid var(--kuct-border);
   border-radius: 0.75rem 0.75rem 0.75rem 0.375rem;
-  box-shadow: 0 1px 2px rgb(26 21 32 / 0.04);
+  box-shadow: none;
 }
 
 .ops-chat__type {
@@ -307,8 +307,8 @@
 .ops-chat__composer {
   flex-shrink: 0;
   padding: 0.5rem 0.75rem max(0.75rem, env(safe-area-inset-bottom));
-  background: #fff;
-  border-top: 1px solid rgb(0 0 0 / 0.05);
+  background: var(--kuct-surface);
+  border-top: 1px solid var(--kuct-border);
 }
 
 .ops-chat__sr {
@@ -324,8 +324,8 @@
   align-items: flex-end;
   gap: 0.5rem;
   padding: 0.375rem;
-  background: var(--kuct-bg);
-  border: 1px solid rgb(0 0 0 / 0.08);
+  background: var(--kuct-elevated, var(--kuct-soft));
+  border: 1px solid var(--kuct-border);
   border-radius: 0.625rem;
 }
 
@@ -344,8 +344,8 @@
   font-size: 0.75rem;
   font-weight: 600;
   color: var(--kuct-text);
-  background: #fff;
-  border: 1px solid rgb(0 0 0 / 0.08);
+  background: var(--kuct-surface);
+  border: 1px solid var(--kuct-border);
   border-radius: 0.625rem;
   cursor: pointer;
 }

@@ -120,7 +120,7 @@
 
 .ops-timeline__item--on {
   border-color: color-mix(in srgb, var(--kuct-accent) 55%, var(--kuct-border));
-  background: color-mix(in srgb, var(--kuct-accent) 8%, white);
+  background: color-mix(in srgb, var(--kuct-accent) 8%, var(--kuct-surface));
 }
 
 .ops-timeline__time {
@@ -154,14 +154,18 @@
 .ops-seg {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.5rem;
+  gap: 0.65rem;
   margin: 0 0 0.55rem;
-  align-items: start;
+  align-items: stretch;
 }
 
 .ops-seg__card {
   box-sizing: border-box;
-  padding: 0.5rem 0.7rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  padding: 0.65rem 0.85rem 0.7rem;
   background: var(--kuct-surface);
   border: 1px solid var(--kuct-border);
   border-radius: var(--ops-radius);
@@ -212,10 +216,13 @@
   display: flex;
   flex: 1 1 auto;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   height: 100%;
   min-height: 0;
   padding: 1rem 1.1rem 1.05rem;
+  text-align: center;
   background: var(--kuct-surface);
   border: 1px solid var(--kuct-border);
   border-radius: var(--ops-radius);
@@ -254,14 +261,18 @@
 .ops-kpi-card__top {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.45rem;
+  width: 100%;
 }
 
 .ops-kpi-card__trend {
-  margin: auto 0 0;
-  padding-top: 0.1rem;
+  margin: 0.35rem 0 0;
+  padding-top: 0;
+  width: 100%;
   font-size: 0.625rem;
   font-weight: 650;
+  text-align: center;
 }
 
 .ops-kpi-card__trend span {
@@ -270,11 +281,11 @@
 }
 
 .ops-kpi-card__trend--up {
-  color: #15803d;
+  color: var(--ops-paid);
 }
 
 .ops-kpi-card__trend--down {
-  color: #b91c1c;
+  color: var(--ops-unpaid);
 }
 
 .ops-kpi-card__ico {
@@ -340,7 +351,7 @@
   box-sizing: border-box;
   width: 100%;
   min-height: var(--ops-control-h, 2.5rem);
-  padding: 0.4rem 0.7rem;
+  padding: 0.45rem 0.85rem;
   font: inherit;
   font-size: var(--ops-type-body, 0.875rem);
   color: var(--kuct-text);
@@ -357,7 +368,8 @@
 
 .ops-table-tools select {
   width: auto;
-  min-width: 8rem;
+  min-width: 9rem;
+  padding: 0.45rem 2.1rem 0.45rem 0.85rem;
 }
 
 .ops-table-wrap {
@@ -384,7 +396,7 @@
   letter-spacing: 0.03em;
   text-transform: uppercase;
   color: var(--kuct-muted);
-  background: var(--kuct-soft, #fafafd);
+  background: var(--kuct-elevated, var(--kuct-soft));
 }
 
 .ops-table__row {
@@ -397,7 +409,7 @@
 }
 
 .ops-table__row--on {
-  background: color-mix(in srgb, var(--kuct-accent) 7%, white);
+  background: color-mix(in srgb, var(--kuct-accent) 7%, var(--kuct-surface));
 }
 
 .ops-table__course {
@@ -478,17 +490,17 @@
 
 .ops-lvl--open {
   color: var(--kuct-accent);
-  background: color-mix(in srgb, var(--kuct-accent) 12%, white);
+  background: color-mix(in srgb, var(--kuct-accent) 12%, var(--kuct-surface));
 }
 
 .ops-lvl--begin {
-  color: #1a6b48;
-  background: color-mix(in srgb, #2d9d6c 14%, white);
+  color: var(--ops-paid);
+  background: color-mix(in srgb, #2d9d6c 14%, var(--kuct-surface));
 }
 
 .ops-lvl--mid {
-  color: #1d4f91;
-  background: color-mix(in srgb, #3b82c4 16%, white);
+  color: var(--kuct-accent-3);
+  background: color-mix(in srgb, var(--kuct-accent) 16%, var(--kuct-surface));
 }
 
 .ops-table__acts {

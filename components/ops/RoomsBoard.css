@@ -108,7 +108,7 @@
   height: 0.85rem;
   overflow: hidden;
   border-radius: 999px;
-  background: color-mix(in srgb, var(--kuct-border) 55%, white);
+  background: color-mix(in srgb, var(--kuct-border) 55%, var(--kuct-surface));
 }
 
 .ops-rooms__usage-seg {
@@ -117,15 +117,15 @@
 }
 
 .ops-rooms__usage-seg--idle {
-  background: color-mix(in srgb, var(--kuct-muted) 18%, white);
+  background: color-mix(in srgb, var(--kuct-muted) 18%, var(--kuct-surface));
 }
 
 .ops-rooms__usage-seg--mid {
-  background: color-mix(in srgb, #e8a838 45%, white);
+  background: color-mix(in srgb, #e8a838 45%, var(--kuct-surface));
 }
 
 .ops-rooms__usage-seg--busy {
-  background: color-mix(in srgb, var(--kuct-accent) 55%, white);
+  background: color-mix(in srgb, var(--kuct-accent) 55%, var(--kuct-surface));
 }
 
 .ops-rooms__usage-seg--peak {
@@ -187,7 +187,7 @@
   width: 3.25rem;
   height: 0.35rem;
   overflow: hidden;
-  background: color-mix(in srgb, var(--kuct-border) 70%, white);
+  background: color-mix(in srgb, var(--kuct-border) 70%, var(--kuct-surface));
   border-radius: 99px;
 }
 
@@ -218,7 +218,7 @@
   font-size: 0.625rem;
   font-weight: 650;
   color: var(--kuct-accent);
-  background: color-mix(in srgb, var(--kuct-accent) 10%, white);
+  background: color-mix(in srgb, var(--kuct-accent) 10%, var(--kuct-surface));
   border-radius: 999px;
 }
 
@@ -284,14 +284,14 @@
   margin: 0 0 0.45rem;
   font-size: 0.8125rem;
   font-weight: 650;
-  color: #1a6b48;
+  color: var(--ops-paid);
 }
 
 .ops-rooms__maint-bad {
   margin: 0 0 0.45rem;
   font-size: 0.8125rem;
   font-weight: 650;
-  color: #9a2e2e;
+  color: var(--ops-unpaid);
 }
 
 .ops-rooms__cta {

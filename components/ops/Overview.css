@@ -4,10 +4,10 @@
 }
 
 .ops-kpi-card--btn {
-  display: block;
+  display: flex;
   width: 100%;
   margin: 0;
-  text-align: left;
+  text-align: center;
   font: inherit;
   color: inherit;
   cursor: pointer;
@@ -24,9 +24,12 @@
 
 .ops-over__kpi {
   display: flex;
-  align-items: flex-start;
-  gap: 0.65rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
   padding: 1rem 1.05rem 1.05rem;
+  text-align: center;
 }
 
 .ops-over__kpi-body {
@@ -34,7 +37,10 @@
   min-width: 0;
   flex: 1;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
 }
 
 .ops-over__kpi .ops-kpi-card__k {
@@ -47,10 +53,12 @@
   font-weight: 600;
 }
 
-.ops-kpi-card__trend {
+.ops-over__kpi .ops-kpi-card__trend {
   margin: 0.15rem 0 0;
+  width: 100%;
   font-size: 0.625rem;
   font-weight: 650;
+  text-align: center;
 }
 
 .ops-kpi-card__trend span {
@@ -59,11 +67,11 @@
 }
 
 .ops-kpi-card__trend--up {
-  color: #1a6b48;
+  color: var(--ops-paid);
 }
 
 .ops-kpi-card__trend--down {
-  color: #9a2e2e;
+  color: var(--ops-unpaid);
 }
 
 .ops-over__head-actions {
@@ -366,18 +374,18 @@
 }
 
 .ops-over__prio--high {
-  color: #9a2e2e;
-  background: color-mix(in srgb, #e85d5d 18%, white);
+  color: var(--ops-unpaid);
+  background: color-mix(in srgb, #e85d5d 18%, var(--kuct-surface));
 }
 
 .ops-over__prio--mid {
-  color: #9a4b2a;
-  background: color-mix(in srgb, var(--ops-peach) 70%, white);
+  color: var(--ops-peach-ink);
+  background: color-mix(in srgb, var(--ops-peach) 70%, var(--kuct-surface));
 }
 
 .ops-over__prio--low {
-  color: #1d4f91;
-  background: color-mix(in srgb, #3b82c4 16%, white);
+  color: var(--kuct-accent-3);
+  background: color-mix(in srgb, var(--kuct-accent) 16%, var(--kuct-surface));
 }
 
 .ops-over__task-copy,
@@ -415,13 +423,13 @@
   min-height: 0;
   height: auto;
   padding: 0.5rem 0.55rem 0.55rem;
-  border: 1px solid color-mix(in srgb, #3b82c4 18%, var(--kuct-border));
+  border: 1px solid color-mix(in srgb, var(--kuct-accent) 18%, var(--kuct-border));
   border-radius: calc(var(--ops-radius) - 2px);
-  background: color-mix(in srgb, #3b82c4 9%, white);
+  background: color-mix(in srgb, var(--kuct-accent) 9%, var(--kuct-surface));
 }
 
 .ops-over__ai-tile--card .ops-over__ai-title {
-  color: #1d4f91;
+  color: var(--kuct-accent-3);
   font-size: 0.75rem;
   line-height: 1.3;
   padding-right: 1rem;
@@ -536,27 +544,27 @@
 
 .ops-over__tag--class {
   color: #6b4fc4;
-  background: color-mix(in srgb, #7a60ca 16%, white);
+  background: color-mix(in srgb, #7a60ca 16%, var(--kuct-surface));
 }
 
 .ops-over__tag--enroll {
-  color: #1d4f91;
-  background: color-mix(in srgb, #3b82c4 14%, white);
+  color: var(--kuct-accent-3);
+  background: color-mix(in srgb, var(--kuct-accent) 14%, var(--kuct-surface));
 }
 
 .ops-over__tag--pay {
-  color: #1a6b48;
-  background: color-mix(in srgb, #2f9e6a 14%, white);
+  color: var(--ops-paid);
+  background: color-mix(in srgb, #2f9e6a 14%, var(--kuct-surface));
 }
 
 .ops-over__tag--rate {
-  color: #9a4b2a;
-  background: color-mix(in srgb, var(--ops-peach) 55%, white);
+  color: var(--ops-peach-ink);
+  background: color-mix(in srgb, var(--ops-peach) 55%, var(--kuct-surface));
 }
 
 .ops-over__tag--attend {
   color: #6450b0;
-  background: color-mix(in srgb, #9580d4 18%, white);
+  background: color-mix(in srgb, #9580d4 18%, var(--kuct-surface));
 }
 
 .ops-over__mini-table {
@@ -634,7 +642,7 @@
 }
 
 .ops-over__fill--full {
-  color: #9a2e2e;
+  color: var(--ops-unpaid);
 }
 
 .ops-over__slot-pill {
@@ -644,7 +652,7 @@
   font-size: 0.625rem;
   font-weight: 650;
   color: var(--kuct-accent);
-  background: color-mix(in srgb, var(--kuct-accent) 12%, white);
+  background: color-mix(in srgb, var(--kuct-accent) 12%, var(--kuct-surface));
   border-radius: 999px;
   white-space: nowrap;
 }
@@ -693,10 +701,10 @@
   padding: 0.08rem 0.35rem;
   font-size: 0.5625rem;
   font-weight: 650;
-  color: #1d4f91;
+  color: var(--kuct-accent-3);
   text-overflow: ellipsis;
   white-space: nowrap;
-  background: color-mix(in srgb, #3b82c4 12%, white);
+  background: color-mix(in srgb, var(--kuct-accent) 12%, var(--kuct-surface));
   border-radius: 999px;
 }
 
@@ -749,13 +757,13 @@
   flex-shrink: 0;
   font-size: 0.75rem;
   font-weight: 700;
-  color: #9a2e2e;
+  color: var(--ops-unpaid);
 }
 
 .ops-over__dot--busy {
-  color: #9a4b2a;
+  color: var(--ops-peach-ink);
 }
 
 .ops-over__dot--free {
-  color: #1a6b48;
+  color: var(--ops-paid);
 }
