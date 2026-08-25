@@ -5,8 +5,11 @@
 }
 
 .ops-shell__main {
-  background-color: var(--kuct-bg);
-  background-image: none;
+  background-color: #ffffff;
+  background-image:
+    linear-gradient(rgba(139, 92, 246, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139, 92, 246, 0.06) 1px, transparent 1px);
+  background-size: 1.75rem 1.75rem;
 }
 
 .ops-shell__canvas {
@@ -50,9 +53,7 @@
 .ops-approve__panel,
 .ops-soon__hero,
 .ops-inbox__thread,
-.ops-chat__tile,
 .ops-chat__box-wrap,
-.ops-chat__banner,
 .ops-more__menu,
 .ops-over__board,
 .ops-wid,
@@ -60,6 +61,13 @@
   background: var(--kuct-surface);
   border-color: var(--kuct-border);
   box-shadow: var(--kuct-shadow);
+}
+
+.ops-chat__tile,
+.ops-chat__banner {
+  background: var(--kuct-bg);
+  border-color: rgb(0 0 0 / 0.06);
+  box-shadow: none;
 }
 
 .ops-res--current {

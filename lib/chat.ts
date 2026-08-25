@@ -1,6 +1,6 @@
 import catalog from "../data/chat-actions.json";
 
-export const DOCK_PLACEHOLDER = "Nhập tin nhắn hoặc hỏi Dolphin…";
+export const DOCK_PLACEHOLDER = "Type a message or ask Dolphin…";
 
 export const CHIP = {
   overview: "Đã mở Tổng quan",
@@ -21,8 +21,8 @@ export const SUGGESTIONS: {
   hint: string;
   text: string;
 }[] = [
-  { icon: "calendar", title: "Lớp hôm nay", hint: "Mở danh sách lớp", text: "Danh sách lớp hôm nay" },
-  { icon: "plus", title: "Ghi danh Long", hint: "Thêm Long vào Hip-hop", text: "Thêm Long vào Hip-hop" },
-  { icon: "user", title: "Hồ sơ Hương", hint: "Mở hồ sơ học viên", text: "Hồ sơ học viên Hương" },
-  { icon: "check", title: "Sinh lớp", hint: "Sinh lớp từ khóa Waacking", text: "Sinh lớp Waacking" },
+  { icon: "calendar", title: "Today's classes", hint: "Open class list", text: "Danh sách lớp hôm nay" },
+  { icon: "plus", title: "Enroll student", hint: "Add Long to Hip-hop", text: "Thêm Long vào Hip-hop" },
+  { icon: "user", title: "Student profile", hint: "Open student record", text: "Hồ sơ học viên Hương" },
+  { icon: "check", title: "Generate class", hint: "Create class from course", text: "Sinh lớp Waacking" },
 ];

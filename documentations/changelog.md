@@ -2,6 +2,7 @@
 
 ## 2026-08-25
 
+- **Ask AI panel:** layout theo marketing mockup — nền caro violet · card gợi ý 1 cột · icon ký hiệu · composer chip Ask + send vuông bo góc · copy EN chrome (router demo vẫn gửi câu VI).
 - **Deploy GitHub Pages:** workflow `deploy-pages.yml` · static export (`GITHUB_PAGES=true`) · custom domain Cloudflare (`basePath` rỗng) · `documentations/deploy.md`.
 - **Design system Phase 1:** tokens premium (`#F8F8FC` / `#8B5CF6` / radius 12 / type 28·16·24·14·12 / control 40px) · shell/nav/bar nhẹ · card/KPI/table/drawer/CTA đồng bộ qua `globals` + `chrome` + `EduTable` + `nexaflow` — không đổi logic.
 - Seed GV: **14 giáo viên** (+Nam/Vy/Quân/Nga/Phúc/Hân/Đức/Trâm/Sơn) · gán lớp hôm nay cho GV mới · timeline «Lịch dạy hôm nay» equal height (`min-height` + line-clamp).

@@ -1,6 +1,6 @@
 .ops-shell {
   --ops-nav-open-w: min(14.5rem, 15.5svw);
-  --ops-aside-w: min(22rem, 28svw);
+  --ops-aside-w: min(26.5rem, 34svw);
   --ops-board-gap: var(--ops-space-section, 1.35rem);
   --ops-chat-open-w: min(26rem, 88vw);
   --ops-pane-dur: 280ms;
@@ -19,8 +19,11 @@
   min-height: 0;
   font-size: var(--ops-type-body);
   color: var(--kuct-text);
-  background-color: var(--kuct-bg);
-  background-image: none;
+  background-color: #ffffff;
+  background-image:
+    linear-gradient(rgba(139, 92, 246, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139, 92, 246, 0.06) 1px, transparent 1px);
+  background-size: 1.75rem 1.75rem;
 }
 
 .ops-shell__canvas {
@@ -139,7 +142,7 @@
 @media (max-width: 64rem) {
   .ops-shell {
     --ops-nav-open-w: min(13rem, 24svw);
-    --ops-aside-w: min(18.5rem, 34svw);
+    --ops-aside-w: min(22rem, 38svw);
   }
 
   .ops-shell__canvas {

@@ -286,7 +286,7 @@
 .ops-board__layout,
 .ops-courses__layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) var(--ops-aside-w, min(20rem, 26svw));
+  grid-template-columns: minmax(0, 1fr) var(--ops-aside-w, min(26.5rem, 34svw));
   gap: var(--ops-board-gap, 1rem);
   align-items: start;
 }

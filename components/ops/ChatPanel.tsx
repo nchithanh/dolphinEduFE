@@ -8,7 +8,7 @@ import {
   useState,
   type CSSProperties,
 } from "react";
-import { DOCK_PLACEHOLDER, SUGGESTIONS, type SuggestionIcon } from "../../lib/chat";
+import { DOCK_PLACEHOLDER, SUGGESTIONS } from "../../lib/chat";
 import { studioHour } from "../../lib/edu";
 import { CHAT_MASCOT } from "../../lib/mascot";
 import type { ChatMessage } from "../../lib/types";
@@ -26,10 +26,12 @@ type ChatPanelProps = {
 
 const TYPE_MS = 26;
 
+const SUGGESTION_MARKS = ["◎", "◈", "♡", "✦"] as const;
+
 function dayPartHello(hour = studioHour()): string {
-  if (hour < 12) return "Chào buổi sáng.";
-  if (hour < 18) return "Chào buổi chiều.";
-  return "Chào buổi tối.";
+  if (hour < 12) return "Good morning.";
+  if (hour < 18) return "Good afternoon.";
+  return "Good evening.";
 }
 
 function AgentReply({ id, text }: { id: string; text: string }) {
@@ -82,7 +84,7 @@ export function ChatPanel({
   const inputRef = useRef<HTMLInputElement>(null);
   const canSend = draft.trim().length > 0;
   const showWelcome = !messages.some((m) => m.role === "user");
-  const [hello, setHello] = useState("Xin chào.");
+  const [hello, setHello] = useState("Hello.");
 
   useEffect(() => {
     setHello(dayPartHello());
@@ -113,17 +115,17 @@ export function ChatPanel({
       <header className="ops-chat__bar">
         <button type="button" className="ops-chat__title-btn" onClick={onNew}>
           <span id="ops-chat-heading" className="ops-chat__title">
-            Hội thoại mới
+            New conversation
           </span>
           <span className="ops-chat__caret" aria-hidden>
             ▾
           </span>
         </button>
-        <button className="ops-chat__icon-btn" type="button" onClick={onNew} aria-label="Hội thoại mới">
+        <button className="ops-chat__icon-btn" type="button" onClick={onNew} aria-label="New conversation">
           <span aria-hidden>+</span>
         </button>
         {onClose ? (
-          <button className="ops-chat__icon-btn" type="button" onClick={onClose} aria-label="Đóng chat">
+          <button className="ops-chat__icon-btn" type="button" onClick={onClose} aria-label="Close">
             <svg viewBox="0 0 24 24" width="1rem" height="1rem" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden>
               <path d="M7 7l10 10M17 7 7 17" strokeLinecap="round" />
             </svg>
@@ -131,17 +133,17 @@ export function ChatPanel({
         ) : null}
       </header>
 
-      <div className="ops-chat__dots" role="log" aria-live="polite" aria-label="Hội thoại">
+      <div className="ops-chat__dots" role="log" aria-live="polite" aria-label="Conversation">
         {showWelcome ? (
           <div className="ops-chat__welcome">
             <div className="ops-chat__banner">
-              <p>Cần hỗ trợ thêm?</p>
+              <p>Need more help?</p>
               <button
                 type="button"
                 className="ops-chat__support"
                 onClick={() => inputRef.current?.focus()}
               >
-                Liên hệ
+                Contact
               </button>
             </div>
             <div className="ops-chat__hero">
@@ -154,18 +156,18 @@ export function ChatPanel({
                 aria-hidden
               />
               <h2 className="ops-chat__hello">{hello}</h2>
-              <p className="ops-chat__sub">Hôm nay anh/chị cần gì?</p>
+              <p className="ops-chat__sub">What are we doing today?</p>
             </div>
             <ul className="ops-chat__suggest">
               {SUGGESTIONS.map((item, index) => (
                 <li
                   key={item.text}
                   className="ops-chat__suggest-item"
-                  style={{ "--kuct-chat-delay": `${100 + index * 55}ms` } as CSSProperties}
+                  style={{ "--kuct-chat-delay": `${120 + index * 70}ms` } as CSSProperties}
                 >
                   <button type="button" className="ops-chat__tile" onClick={() => onSubmit(item.text)}>
                     <span className="ops-chat__tile-mark" aria-hidden>
-                      <TileIcon name={item.icon} />
+                      {SUGGESTION_MARKS[index] ?? "✦"}
                     </span>
                     <span className="ops-chat__tile-copy">
                       <span className="ops-chat__tile-title">{item.title}</span>
@@ -191,7 +193,9 @@ export function ChatPanel({
         )}
       </div>
 
-      <p className="ops-chat__legal">Bản demo — chưa ghi nhận lên server.</p>
+      <p className="ops-chat__legal">
+        Chats may be recorded to improve the service. Don&apos;t share sensitive data.
+      </p>
 
       <form className="ops-chat__composer" onSubmit={submit}>
         <label className="ops-chat__sr" htmlFor="ops-dock-intent">
@@ -219,54 +223,13 @@ export function ChatPanel({
             onKeyDown={onKeyDown}
             autoComplete="off"
           />
-          <button className="ops-chat__send" type="submit" aria-label="Gửi" disabled={!canSend}>
+          <button className="ops-chat__send" type="submit" aria-label="Send" disabled={!canSend}>
             <IconSend />
           </button>
         </div>
       </form>
       </div>
     </aside>
-  );
-}
-
-function TileIcon({ name }: { name: SuggestionIcon }) {
-  const stroke = {
-    viewBox: "0 0 24 24",
-    width: "1.05rem",
-    height: "1.05rem",
-    fill: "none",
-    stroke: "currentColor",
-    strokeWidth: 1.75,
-    "aria-hidden": true as const,
-  };
-  if (name === "calendar") {
-    return (
-      <svg {...stroke}>
-        <rect x="3.5" y="5.5" width="17" height="15" rx="2" />
-        <path d="M8 3.5v4M16 3.5v4M3.5 10h17" strokeLinecap="round" />
-      </svg>
-    );
-  }
-  if (name === "plus") {
-    return (
-      <svg {...stroke}>
-        <circle cx="12" cy="12" r="8" />
-        <path d="M12 8.5v7M8.5 12h7" strokeLinecap="round" />
-      </svg>
-    );
-  }
-  if (name === "user") {
-    return (
-      <svg {...stroke}>
-        <circle cx="12" cy="8" r="3.1" />
-        <path d="M5.5 19.2c.8-3.2 3.2-4.8 6.5-4.8s5.7 1.6 6.5 4.8" strokeLinecap="round" />
-      </svg>
-    );
-  }
-  return (
-    <svg {...stroke}>
-      <path d="M5 12.5l4 4 10-10" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
   );
 }
 

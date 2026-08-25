@@ -18,7 +18,7 @@
   align-items: stretch;
   min-height: 0;
   gap: var(--ops-board-gap, 1rem);
-  grid-template-columns: minmax(0, 1fr) var(--ops-aside-w, min(20rem, 26svw));
+  grid-template-columns: minmax(0, 1fr) var(--ops-aside-w, min(26.5rem, 34svw));
 }
 
 .ops-rooms .ops-board__layout.ops-rooms__layout {
