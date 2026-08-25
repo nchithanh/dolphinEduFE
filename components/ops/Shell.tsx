@@ -12,6 +12,7 @@ import {
 import type { Stage } from "../../lib/types";
 import type { NavGroup } from "../../lib/nav";
 import type { OpsLocale } from "../../lib/locale";
+import { CHROME } from "../../lib/locale";
 import { CanvasBar } from "./CanvasBar";
 import { ToolNav } from "./ToolNav";
 import "./Shell.css";
@@ -105,8 +106,20 @@ export function Shell({
     ? cloneElement(chat as ReactElement<ChatSlotProps>, { open: chatOpen, onClose: closeChat })
     : chat;
 
+  const copy = CHROME[locale];
+
   return (
-    <div className={shellClass}>
+    <>
+      <section className="ops-mobile-gate" aria-labelledby="ops-mobile-gate-title" role="region">
+        <div className="ops-mobile-gate__card">
+          <p className="ops-mobile-gate__brand">Dolphin Edu</p>
+          <h1 id="ops-mobile-gate-title" className="ops-mobile-gate__title">
+            {copy.mobileGateTitle}
+          </h1>
+          <p className="ops-mobile-gate__body">{copy.mobileGateBody}</p>
+        </div>
+      </section>
+      <div className={shellClass}>
       <ToolNav
         active={active}
         onSelect={onSelect}
@@ -140,5 +153,6 @@ export function Shell({
       ) : null}
       {chatSlot}
     </div>
+    </>
   );
 }

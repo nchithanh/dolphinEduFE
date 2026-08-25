@@ -191,3 +191,60 @@
     animation: none;
   }
 }
+
+/* Phone-only gate — tablet (≥48rem) and desktop keep the CRM shell. */
+.ops-mobile-gate {
+  display: none;
+}
+
+@media (max-width: 47.99rem) {
+  .ops-mobile-gate {
+    box-sizing: border-box;
+    display: grid;
+    place-items: center;
+    min-height: 100svh;
+    padding: 1.5rem 1.25rem;
+    background: #070711;
+    color: var(--kuct-text);
+  }
+
+  .ops-mobile-gate__card {
+    box-sizing: border-box;
+    width: min(100%, 22rem);
+    padding: 1.5rem 1.25rem;
+    text-align: center;
+    background: var(--kuct-surface);
+    border: 1px solid transparent;
+    border-radius: var(--ops-radius);
+    box-shadow: var(--kuct-shadow);
+  }
+
+  .ops-mobile-gate__brand {
+    margin: 0 0 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--kuct-accent-3);
+  }
+
+  .ops-mobile-gate__title {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 650;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+    color: var(--kuct-text);
+  }
+
+  .ops-mobile-gate__body {
+    margin: 0.75rem 0 0;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: var(--kuct-muted);
+  }
+
+  .ops-shell {
+    display: none !important;
+  }
+}

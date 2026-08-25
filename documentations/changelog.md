@@ -2,6 +2,7 @@
 
 ## 2026-08-25
 
+- **Mobile gate:** `< 48rem` hiện trang thông báo (VI/EN) — CRM chỉ dùng tablet/desktop; ẩn shell.
 - **Premium dark AI CRM:** tokens bg `#090A16` / canvas `#070711` / sidebar `#0B0C1C` / surface `#111225` / elevated `#17182F` · accent `#7C3AED`–`#A855F7` · text `#F8F7FF` / `#A7A6BA` · border violet 18% · `color-scheme: dark` · chrome/table/chat/nav đồng bộ · success/warn/error chỉ cho trạng thái · không đổi logic/seed.
 - **Tổng quan KPI:** bỏ icon tròn `ops-over__kpi-ico`.
 - **Type body:** `--ops-type-body` `0.9rem` → `0.8rem`.

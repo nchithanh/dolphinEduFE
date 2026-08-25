@@ -64,6 +64,9 @@ export const CHROME = {
     langGroup: "Ngôn ngữ",
     branchSelect: "Chi nhánh",
     allBranches: "Tất cả chi nhánh",
+    mobileGateTitle: "Dolphin Edu dành cho tablet & desktop",
+    mobileGateBody:
+      "Giao diện vận hành chưa hỗ trợ điện thoại. Vui lòng mở lại trên máy tính bảng hoặc máy tính để bàn.",
     opening: (label: string) => `Đang mở ${label}…`,
     reveal: {
       overview: "Đang mở tổng quan…",
@@ -102,6 +105,9 @@ export const CHROME = {
     langGroup: "Language",
     branchSelect: "Branch",
     allBranches: "All branches",
+    mobileGateTitle: "Dolphin Edu is for tablet & desktop",
+    mobileGateBody:
+      "The ops workspace isn’t available on phones yet. Please open it again on a tablet or desktop.",
     opening: (label: string) => `Opening ${label}…`,
     reveal: {
       overview: "Opening overview…",
