@@ -45,7 +45,7 @@ export const CHROME = {
   vi: {
     searchNav: "Tìm nhanh…",
     searchNavSr: "Tìm tool",
-    searchBar: "Tìm khóa, lớp, học viên…",
+    searchBar: "Tìm khóa, lớp, học viên, tác vụ…",
     searchBarSr: "Tìm trên canvas",
     toolsNav: "Công cụ",
     collapseNav: "Thu gọn menu",
@@ -86,7 +86,7 @@ export const CHROME = {
   en: {
     searchNav: "Quick search…",
     searchNavSr: "Search tools",
-    searchBar: "Search courses, classes, students…",
+    searchBar: "Search courses, classes, students, tasks…",
     searchBarSr: "Search on canvas",
     toolsNav: "Tools",
     collapseNav: "Collapse menu",

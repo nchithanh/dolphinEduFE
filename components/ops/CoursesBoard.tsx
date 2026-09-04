@@ -15,6 +15,7 @@ import { COURSES_DATE_RANGE, COURSES_KPI, demoCourseCode, demoStudentPay } from 
 import type { CourseStatus, DemoClass, DemoCourse, DemoRoom, DemoStudent, DemoTeacher, Weekday } from "../../lib/types";
 import { MoreMenu, copyId } from "./MoreMenu";
 import { StatusChip, courseChip } from "./StatusChip";
+import { UserAvatar } from "./UserAvatar";
 import "./chrome.css";
 import "./EduTable.css";
 import "./CoursesBoard.css";
@@ -359,12 +360,13 @@ export function CoursesBoard({
               <fieldset className="ops-courses__set">
                 <legend>Giáo viên</legend>
                 {teachers.map((teacher) => (
-                  <label key={teacher.id}>
+                  <label key={teacher.id} className="ops-courses__teacher">
                     <input
                       type="checkbox"
                       checked={draft.teacherIds.includes(teacher.id)}
                       onChange={() => toggleTeacher(teacher.id)}
                     />
+                    <UserAvatar id={teacher.id} name={teacher.name} size="xs" />
                     {teacher.name}
                   </label>
                 ))}
@@ -519,9 +521,7 @@ export function CoursesBoard({
                         </td>
                         <td>
                           <span className="ops-table__who">
-                            <span className="ops-mini-av" aria-hidden>
-                              {initials(lead?.name ?? "?")}
-                            </span>
+                            <UserAvatar id={lead?.id} name={lead?.name ?? "GV"} />
                             {teacherNames(teachers, course.teacherIds)}
                           </span>
                         </td>
@@ -702,9 +702,7 @@ export function CoursesBoard({
                             <dt>Giáo viên</dt>
                             <dd>
                               <span className="ops-table__who">
-                                <span className="ops-mini-av" aria-hidden>
-                                  {initials(leadTeacher?.name ?? "GV")}
-                                </span>
+                                <UserAvatar id={leadTeacher?.id} name={leadTeacher?.name ?? "GV"} />
                                 {teacherNames(teachers, selected.teacherIds)}
                               </span>
                             </dd>

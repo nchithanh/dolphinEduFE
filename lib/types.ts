@@ -66,6 +66,26 @@ export type ChatMessage = {
 export type Weekday = 0 | 1 | 2 | 3 | 4 | 5 | 6;
 export type CourseStatus = "draft" | "recruiting" | "closed";
 export type ClassStatus = "upcoming" | "ongoing" | "completed" | "cancelled";
+export type StudioTaskStatus = "todo" | "doing" | "done" | "cancelled";
+export type StudioTaskPriority = "high" | "mid" | "low";
+
+export type DemoStudioChecklistItem = {
+  id: string;
+  text: string;
+  done: boolean;
+};
+
+export type DemoStudioTaskEvent = {
+  at: string;
+  text: string;
+};
+
+export type DemoStudioTaskComment = {
+  id: string;
+  authorId: string;
+  at: string;
+  text: string;
+};
 
 export type CourseSchedule = {
   weekdays: Weekday[];
@@ -107,6 +127,28 @@ export type DemoCourse = {
   studentIds: string[];
   schedule: CourseSchedule;
   note?: string;
+};
+
+export type DemoStudioTask = {
+  id: string;
+  code: string;
+  title: string;
+  detail: string;
+  note?: string;
+  assigneeId: string;
+  reporterId: string;
+  status: StudioTaskStatus;
+  priority: StudioTaskPriority;
+  due: string;
+  dueTime?: string;
+  created: string;
+  courseName?: string;
+  studentName?: string;
+  branchId?: string;
+  roomLabel?: string;
+  checklist: DemoStudioChecklistItem[];
+  history: DemoStudioTaskEvent[];
+  comments: DemoStudioTaskComment[];
 };
 
 export type DemoClass = {

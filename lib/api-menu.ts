@@ -98,7 +98,7 @@ export const HARDCODED_MENU: MenuResponse = {
         item("teachers", "teacher", "Giáo viên gán vào khóa", 3, "live", "Giáo viên", "Teachers"),
         item("classrooms", "classroom", "Studio, sàn tập", 4, "live", "Phòng", "Rooms"),
         item("inbox", "inbox", "Hội thoại + AI", 5, "disabled", "Inbox", "Inbox"),
-        item("tasks", "task", "Cần xử lý", 6, "disabled", "Tác vụ", "Tasks"),
+        item("tasks", "task", "Giao việc, lọc trạng thái, người nhận", 6, "live", "Tác vụ", "Tasks"),
       ],
     },
     {

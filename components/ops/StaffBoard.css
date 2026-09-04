@@ -124,10 +124,19 @@
   overflow: auto;
 }
 
-.ops-staff__av {
-  width: 2.15rem;
-  height: 2.15rem;
-  font-size: 0.6875rem;
+.ops-staff__today .ops-timeline__name {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.35rem;
+  -webkit-line-clamp: unset;
+}
+
+.ops-staff__today .ops-timeline__name > span:last-child {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
 }
 
 .ops-staff__sort {

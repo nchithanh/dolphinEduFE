@@ -148,6 +148,7 @@ export const DASH_ACTIVITY = [
   {
     id: "e2",
     who: "Mai Trần",
+    whoId: "mai",
     verb: "đã tạo lớp",
     focus: "Waacking – K8",
     tag: "Lớp học",
@@ -157,6 +158,7 @@ export const DASH_ACTIVITY = [
   {
     id: "e3",
     who: "Hà Nguyễn",
+    whoId: "ha",
     verb: "đã điểm danh",
     focus: "Heels · 6/6",
     tag: "Điểm danh",
@@ -175,6 +177,7 @@ export const DASH_ACTIVITY = [
   {
     id: "e5",
     who: "Linh Phạm",
+    whoId: "linh",
     verb: "đã đánh giá",
     focus: "Kids 5–8",
     tag: "Đánh giá",
@@ -184,6 +187,7 @@ export const DASH_ACTIVITY = [
   {
     id: "e6",
     who: "Khoa Võ",
+    whoId: "khoa",
     verb: "đã mở",
     focus: "Open Practice TD",
     tag: "Lớp học",

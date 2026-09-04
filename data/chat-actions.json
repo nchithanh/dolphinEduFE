@@ -2,7 +2,7 @@
   "meta": {
     "id": "dolphin-edu-chat-actions",
     "locale": "vi",
-    "note": "Demo keyword router — không phải NLU. Khớp substring, action đầu tiên thắng. Chat không mở tool stub / inbox / tác vụ spa."
+    "note": "Demo keyword router — không phải NLU. Khớp substring, action đầu tiên thắng. Chat không mở tool stub / inbox."
   },
   "none": {
     "chip": "Chưa khớp tool — chọn bên trái"
@@ -37,6 +37,22 @@
       "view": "generate",
       "chip": "Đã sinh lớp từ khóa",
       "extract": ["course"]
+    },
+    {
+      "id": "open-tasks-list",
+      "phrases": [
+        "quản lý tác vụ",
+        "danh sách tác vụ",
+        "công việc nội bộ",
+        "việc cần làm",
+        "tác vụ",
+        "task board",
+        "tasks"
+      ],
+      "stage": "tasks",
+      "view": "list",
+      "chip": "Đã mở Tác vụ",
+      "extract": []
     },
     {
       "id": "open-course-form",

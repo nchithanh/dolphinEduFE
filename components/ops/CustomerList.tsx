@@ -14,6 +14,7 @@ import type { DemoCourse, DemoStudent, DemoTeacher } from "../../lib/types";
 import { DEMO_TEACHERS } from "../../lib/seed";
 import { MoreMenu, copyId } from "./MoreMenu";
 import { StatusChip, courseChip } from "./StatusChip";
+import { UserAvatar } from "./UserAvatar";
 import "./chrome.css";
 import "./EduTable.css";
 import "./CustomerList.css";
@@ -258,7 +259,8 @@ export function CustomerList({
                     const enrolled = coursesForStudent(courses, student.id);
                     const stats = demoStudentStats(student.id);
                     const course = enrolled[0];
-                    const teacher = course ? teacherName(teachers, course.teacherIds[0] ?? "") : "—";
+                    const teacherId = course?.teacherIds[0];
+                    const teacher = teacherId ? teacherName(teachers, teacherId) : "—";
                     const current = student.id === selectedId;
                     return (
                       <tr
@@ -287,9 +289,7 @@ export function CustomerList({
                         <td>
                           {course ? (
                             <span className="ops-table__who">
-                              <span className="ops-mini-av" aria-hidden>
-                                {initials(teacher)}
-                              </span>
+                              <UserAvatar id={teacherId} name={teacher} />
                               {teacher}
                             </span>
                           ) : (
@@ -404,7 +404,16 @@ export function CustomerList({
                 </li>
                 <li>
                   <span>Giáo viên</span>
-                  <strong>{primaryTeacher}</strong>
+                  <strong>
+                    {primaryCourse ? (
+                      <span className="ops-table__who">
+                        <UserAvatar id={primaryCourse.teacherIds[0]} name={primaryTeacher} size="xs" />
+                        {primaryTeacher}
+                      </span>
+                    ) : (
+                      "—"
+                    )}
+                  </strong>
                 </li>
                 <li>
                   <span>Chuyên cần</span>
@@ -549,7 +558,11 @@ export function CustomerList({
                                 <div>
                                   <span className="ops-roster__name">{course.name}</span>
                                   <span className="ops-roster__phone">
-                                    {teacherName(teachers, course.teacherIds[0] ?? "")} ·{" "}
+                                    <span className="ops-table__who">
+                                      <UserAvatar id={course.teacherIds[0]} name={teacherName(teachers, course.teacherIds[0] ?? "")} size="xs" />
+                                      {teacherName(teachers, course.teacherIds[0] ?? "")}
+                                    </span>
+                                    {" · "}
                                     <StatusChip tone={courseChip(status).tone}>{COURSE_STATUS_LABEL[status]}</StatusChip>
                                   </span>
                                 </div>

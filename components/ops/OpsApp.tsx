@@ -19,7 +19,8 @@ import { HARDCODED_MENU, mapMenuGroups } from "../../lib/api-menu";
 import { ALL_BRANCH_ID, readStoredBranch, writeStoredBranch } from "../../lib/branch";
 import { CHROME, readStoredLocale, writeStoredLocale, type OpsLocale } from "../../lib/locale";
 import { isLiveStage, navItemFromGroups, type NavGroup } from "../../lib/nav";
-import type { ChatMessage, ClassFilter, DemoClass, DemoCourse, DemoRoom, DemoStudent, Stage } from "../../lib/types";
+import { cloneSeedStudioTasks } from "../../lib/tasks-demo";
+import type { ChatMessage, ClassFilter, DemoClass, DemoCourse, DemoRoom, DemoStudent, DemoStudioTask, Stage } from "../../lib/types";
 import { AiReveal } from "./AiReveal";
 import { ChatPanel } from "./ChatPanel";
 import { ClassesBoard } from "./ClassesBoard";
@@ -31,6 +32,7 @@ import { Overview } from "./Overview";
 import { Shell } from "./Shell";
 import { RoomsBoard } from "./RoomsBoard";
 import { StaffBoard } from "./StaffBoard";
+import { TasksBoard } from "./TasksBoard";
 import "./nexaflow.css";
 
 const FOCUS: Record<string, string> = {
@@ -43,6 +45,7 @@ const FOCUS: Record<string, string> = {
   courses: "ops-courses-heading",
   "course-form": "ops-courses-heading",
   "course-detail": "ops-courses-heading",
+  tasks: "ops-tasks-heading",
 };
 
 function focusId(key: string): string {
@@ -51,7 +54,7 @@ function focusId(key: string): string {
 
 const REVEAL_MS = 1100;
 const REVEAL_MS_REDUCED = 280;
-const HIDDEN: Stage[] = ["inbox", "tasks"];
+const HIDDEN: Stage[] = ["inbox"];
 
 function canvasKey(stage: Stage, studentView: "list" | "360", courseForm: boolean): string {
   if (stage === "students" && studentView === "360") return "student-360";
@@ -78,6 +81,7 @@ export function OpsApp() {
   const [courses, setCourses] = useState<DemoCourse[]>(() => cloneSeedCourses());
   const [classes, setClasses] = useState<DemoClass[]>(() => cloneSeedClasses());
   const [rooms, setRooms] = useState<DemoRoom[]>(() => cloneSeedRooms());
+  const [studioTasks, setStudioTasks] = useState<DemoStudioTask[]>(() => cloneSeedStudioTasks());
   const [student, setStudent] = useState<DemoStudent>(DEFAULT_STUDENT);
   const [notice, setNotice] = useState<string | null>(null);
   const [reveal, setReveal] = useState<string | null>(null);
@@ -227,7 +231,7 @@ export function OpsApp() {
     const thread: ChatMessage[] = [...messages, { id: `u-${messages.length}`, role: "user", text }];
     const match = resolveChat(text);
 
-    if (match.stage === "none" || match.stage === "inbox" || match.stage === "tasks") {
+    if (match.stage === "none" || match.stage === "inbox") {
       setMessages(withChip(thread, match.stage === "none" ? match.chip : CHIP.none));
     } else if (match.view === "form") {
       setCourseForm(true);
@@ -313,6 +317,8 @@ export function OpsApp() {
         onPromo={goCourses}
       />
     );
+  } else if (stage === "tasks") {
+    canvas = <TasksBoard title={stageTitle(menuGroups, "tasks")} tasks={studioTasks} onChange={setStudioTasks} />;
   } else if (stage === "courses") {
     canvas = (
       <CoursesBoard

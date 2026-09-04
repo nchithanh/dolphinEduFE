@@ -1,0 +1,95 @@
+.ops-avatar {
+  display: block;
+  flex-shrink: 0;
+  object-fit: cover;
+  object-position: center 18%;
+  background: var(--kuct-elevated, #17182f);
+  border-radius: 50%;
+}
+
+.ops-avatar--xs {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+.ops-avatar--sm {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.ops-avatar--md {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+.ops-avatar--lg {
+  width: 2.75rem;
+  height: 2.75rem;
+}
+
+.ops-avatar--initials {
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--kuct-accent);
+  background: var(--ops-lavender, color-mix(in srgb, var(--kuct-accent) 18%, #17182f));
+}
+
+.ops-avatar--xs.ops-avatar--initials {
+  font-size: 0.5rem;
+}
+
+.ops-avatar--sm.ops-avatar--initials {
+  font-size: 0.55rem;
+}
+
+.ops-avatar--md.ops-avatar--initials {
+  font-size: 0.62rem;
+}
+
+.ops-avatar--lg.ops-avatar--initials {
+  font-size: 0.85rem;
+}
+
+.ops-who {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-width: 0;
+}
+
+.ops-who--stack {
+  display: flex;
+}
+
+.ops-who__txt {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+}
+
+.ops-who__name {
+  overflow: hidden;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--kuct-text);
+}
+
+.ops-who__role {
+  font-size: 0.68rem;
+  font-weight: 500;
+  color: var(--kuct-muted);
+}
+
+.ops-who-field {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.ops-who-field select {
+  flex: 1 1 auto;
+  min-width: 0;
+}

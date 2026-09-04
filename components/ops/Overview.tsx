@@ -13,6 +13,7 @@ import {
 } from "../../lib/dashboard-demo";
 import { formatViDate, localIsoDate } from "../../lib/edu";
 import type { DemoClass, DemoCourse, DemoRoom, DemoStudent, DemoTeacher, Stage } from "../../lib/types";
+import { UserAvatar } from "./UserAvatar";
 import "./chrome.css";
 import "./EduTable.css";
 import "./Overview.css";
@@ -26,15 +27,6 @@ type OverviewProps = {
   rooms: DemoRoom[];
   onOpen: (id: Stage) => void;
 };
-
-function initials(name: string): string {
-  const parts = name.trim().split(/\s+/);
-  return parts
-    .slice(-2)
-    .map((part) => part[0] ?? "")
-    .join("")
-    .toUpperCase();
-}
 
 function roomLabel(rooms: DemoRoom[], id: string): string {
   return rooms.find((r) => r.id === id)?.label ?? id;
@@ -220,6 +212,9 @@ export function Overview({ title, courses, classes, students: _students, teacher
             <h2 id="ops-over-tasks" className="ops-over__table-title">
               Việc cần xử lý hôm nay
             </h2>
+            <button type="button" className="ops-table__detail" onClick={() => onOpen("tasks")}>
+              Xem tất cả
+            </button>
           </div>
           <ul className="ops-over__tasks">
             {DASH_TASKS.map((task) => (
@@ -330,9 +325,7 @@ export function Overview({ title, courses, classes, students: _students, teacher
               return (
                 <li key={teacher.id}>
                   <button type="button" className="ops-over__row ops-over__row--teacher" onClick={() => onOpen("teachers")}>
-                    <span className="ops-mini-av" aria-hidden>
-                      {initials(teacher.name)}
-                    </span>
+                    <UserAvatar id={teacher.id} name={teacher.name} />
                     <span className="ops-over__row-main">
                       <span className="ops-table__name">{teacher.name}</span>
                       <span className="ops-table__id">{sessions} lớp</span>
@@ -387,7 +380,10 @@ export function Overview({ title, courses, classes, students: _students, teacher
                   {ev.time}
                 </time>
                 <p className="ops-over__tl-text">
-                  <strong>{ev.who}</strong> {ev.verb} <strong>{ev.focus}</strong>
+                  <UserAvatar id={ev.whoId} name={ev.who} size="xs" />
+                  <span>
+                    <strong>{ev.who}</strong> {ev.verb} <strong>{ev.focus}</strong>
+                  </span>
                 </p>
                 <span className={`ops-over__tag ops-over__tag--${ev.tone}`}>{ev.tag}</span>
               </li>

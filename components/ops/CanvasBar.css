@@ -193,24 +193,6 @@
   cursor: default;
 }
 
-.ops-bar__avatar {
-  display: grid;
-  place-items: center;
-  width: 1.65rem;
-  height: 1.65rem;
-  font-size: 0.5625rem;
-  font-weight: 700;
-  color: var(--kuct-accent);
-  background: var(--ops-lavender);
-  border: 2px solid var(--kuct-surface);
-  border-radius: 50%;
-}
-
-.ops-bar__avatar--self {
-  color: var(--kuct-on-accent);
-  background: var(--kuct-accent);
-}
-
 .ops-bar__user {
   display: flex;
   align-items: center;
@@ -219,6 +201,10 @@
   border: 1px solid var(--kuct-border);
   border-radius: 999px;
   background: var(--kuct-bg);
+}
+
+.ops-bar__user .ops-avatar {
+  border: 2px solid var(--kuct-surface);
 }
 
 .ops-bar__who {

@@ -5,8 +5,8 @@ Hardcoded FE only. No Go API.
 ## In
 
 - One industry: **studio nhảy** (demo org Pulse Studio)
-- Live canvas: **Dashboard · Khóa học · Lớp học · Học viên · Giáo viên · Phòng**
-- Hidden (`disabled`, không *Sắp có*): Inbox, Tác vụ spa
+- Live canvas: **Dashboard · Khóa học · Lớp học · Học viên · Giáo viên · Phòng · Tác vụ**
+- Hidden (`disabled`, không *Sắp có*): Inbox
 - Nav nhóm: **Tổng quan · Quản lý · Tuyển sinh · Tài chính · Cài đặt** — `lib/api-menu.ts`. Stub *Sắp có*. Chat không mở stub.
 - Chrome locale **VI | EN** (persist `edu-locale`). Canvas + chat + seed vẫn VI.
 - Select chi nhánh (persist `edu-branch`). Phòng lọc theo branch.
@@ -14,7 +14,7 @@ Hardcoded FE only. No Go API.
 - Course: cửa sổ tuyển sinh, GV, sĩ số, lịch tuần, roster
 - Actions: **thêm học viên vào khóa**, **sinh lớp** (idempotent), **hủy lớp**
 - Class status: upcoming / ongoing / completed / cancelled
-- Tools: Course / Class / Student / Teacher / Room **tables** + detail panels, Dashboard tables, Student 360
+- Tools: Course / Class / Student / Teacher / Room / Task **tables** + detail panels, Dashboard tables, Student 360
 - Stub canvas: cùng language bảng CRM; KPI placeholder `—`; không action / không số tài chính giả
 - Chat keywords: `data/chat-actions.json`
 - Visual: **nav | canvas**; chat **kéo ra từ phải** (overlay, mặc định đóng). Copy edu, không slogan spa.

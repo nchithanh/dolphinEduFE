@@ -15,6 +15,7 @@ import { TEACHERS_KPI, demoTeacherCode, demoTeacherStats } from "../../lib/teach
 import type { DemoClass, DemoCourse, DemoRoom, DemoTeacher } from "../../lib/types";
 import { MoreMenu, copyId } from "./MoreMenu";
 import { StatusChip, classChip, courseChip } from "./StatusChip";
+import { UserAvatar } from "./UserAvatar";
 import "./chrome.css";
 import "./EduTable.css";
 import "./StaffBoard.css";
@@ -31,15 +32,6 @@ type StaffBoardProps = {
 type DetailTab = "overview" | "schedule" | "history" | "perf";
 
 const PAGE_SIZE = 12;
-
-function initials(name: string): string {
-  const parts = name.trim().split(/\s+/);
-  return parts
-    .slice(-2)
-    .map((part) => part[0] ?? "")
-    .join("")
-    .toUpperCase();
-}
 
 function roomLabel(rooms: DemoRoom[], id: string): string {
   return rooms.find((r) => r.id === id)?.label ?? id;
@@ -182,7 +174,10 @@ export function StaffBoard({
                           {row.startTime}–{row.endTime}
                         </span>
                         <span className="ops-timeline__name">
-                          {teacher?.name ?? "GV"} · {course?.name ?? row.courseId}
+                          <UserAvatar id={row.teacherId} name={teacher?.name} size="xs" />
+                          <span>
+                            {teacher?.name ?? "GV"} · {course?.name ?? row.courseId}
+                          </span>
                         </span>
                         <span className="ops-timeline__meta">{roomLabel(rooms, row.roomId)}</span>
                       </button>
@@ -256,9 +251,7 @@ export function StaffBoard({
                       >
                         <th scope="row">
                           <div className="ops-table__course">
-                            <span className="ops-mini-av ops-staff__av" aria-hidden>
-                              {initials(item.name)}
-                            </span>
+                            <UserAvatar id={item.id} name={item.name} />
                             <span>
                               <span className="ops-table__name">{item.name}</span>
                               <span className="ops-table__id">{demoTeacherCode(item.id)}</span>
@@ -348,9 +341,7 @@ export function StaffBoard({
               </div>
 
               <div className="ops-staff__profile">
-                <span className="ops-thumb ops-thumb--lg" aria-hidden>
-                  {initials(selected.name)}
-                </span>
+                <UserAvatar id={selected.id} name={selected.name} size="lg" decorative={false} />
                 <div>
                   <p className="ops-detail__name">{selected.specialty}</p>
                   <p className="ops-staff__meta-line">

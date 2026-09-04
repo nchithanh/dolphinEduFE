@@ -1,5 +1,22 @@
 # Changelog — Dolphin Edu frontend
 
+## 2026-09-04
+
+- **Tác vụ — tab Comment:** thread gọn (tên + giờ, không card cao) · composer avatar | ô nhập | Gửi nhỏ trong một khung. Tổng quan vẫn preview 1 comment + Xem thêm. Chọn việc khác reset về Tổng quan.
+- **Avatar staff toàn CRM:** Hà / Mai / Khoa / Linh / An (`public/avatars/*.webp`) trên Dashboard, Giáo viên, Lớp, Khóa, Học viên (cột GV), Tác vụ, CanvasBar. GV khác: chữ cái tròn. SoT `lib/people-demo.ts`. CanvasBar user Hà.
+- **Tác vụ — thanh lọc kiểu Jira:** chip nhanh (Việc của tôi / Đang mở / Hôm nay / Quá hạn) · pill dropdown Trạng thái · Người nhận · Ưu tiên · Hạn · chip đang lọc + Xóa lọc. KPI không đổi. Không sprint/epic.
+
+## 2026-09-03
+
+- **Tác vụ chi tiết đầy panel:** bỏ tab Cập nhật — gộp mô tả, thông tin (ưu tiên, người giao, phòng), checklist, form cập nhật và comment vào một cột cuộn.
+- **Tác vụ live (demo FE):** nav Quản lý · seed 12 việc Pulse Studio (`lib/tasks-demo.ts`) · `TasksBoard` lọc trạng thái/người/hạn · thêm việc + đổi status local · chat «tác vụ» / «quản lý tác vụ». Inbox vẫn ẩn. Không Jira sprint/epic.
+- Báo giá deal **Ma Dance**: gói A CRM 5tr + website 4,5tr = **9,5tr**. Tác vụ 2tr và cổng login GV/HV 3tr = checklist mục B. SoT `context/quotes/ma-dance.md`. Phiếu `/demo/bao-gia-crm-nhay/`.
+
+## 2026-08-30
+
+- Marketing `eco` `tsconfig.json` excludes `products/saas/dolphin_edu/frontend` so GitHub Pages `next build` does not type-check this app (broken `_quarantine_spa` imports vs marketing `@/`).
+- SoT + docs stay in `products/saas/dolphin_edu/` (`context/` + this folder). Code/requirement changes update these docs in the same task. FE lives in `eco` until a separate GitHub repo exists.
+
 ## 2026-08-25
 
 - **Mobile gate:** `< 48rem` hiện trang thông báo (VI/EN) — CRM chỉ dùng tablet/desktop; ẩn shell.

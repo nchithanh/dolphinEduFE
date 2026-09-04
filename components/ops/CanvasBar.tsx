@@ -2,6 +2,7 @@
 
 import { BranchSelect } from "./BranchSelect";
 import { CHROME, type OpsLocale } from "../../lib/locale";
+import { UserAvatar } from "./UserAvatar";
 import "./CanvasBar.css";
 
 type CanvasBarProps = {
@@ -112,11 +113,9 @@ export function CanvasBar({
           </svg>
         </button>
         <div className="ops-bar__user">
-          <span className="ops-bar__avatar ops-bar__avatar--self" aria-hidden>
-            L
-          </span>
+          <UserAvatar id="ha" size="md" name="Hà Nguyễn" decorative={false} />
           <span className="ops-bar__who">
-            <span className="ops-bar__name">Lan</span>
+            <span className="ops-bar__name">Hà</span>
             <span className="ops-bar__role">{copy.role} · Pulse</span>
           </span>
         </div>

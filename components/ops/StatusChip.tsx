@@ -1,5 +1,13 @@
 import type { ReactNode } from "react";
-import type { BookingStatus, ClassStatus, CourseStatus, InboxAiStatus, VisitStatus } from "../../lib/types";
+import type {
+  BookingStatus,
+  ClassStatus,
+  CourseStatus,
+  InboxAiStatus,
+  StudioTaskPriority,
+  StudioTaskStatus,
+  VisitStatus,
+} from "../../lib/types";
 import "./chrome.css";
 
 export type ChipTone = "done" | "track" | "delay" | "pending" | "paid" | "wait";
@@ -41,4 +49,17 @@ export function inboxChip(status: InboxAiStatus): { tone: ChipTone; label: strin
 export function visitChip(status: VisitStatus): { tone: ChipTone; label: string } {
   if (status === "done") return { tone: "paid", label: "Đã hoàn thành" };
   return { tone: "delay", label: "Đã hủy" };
+}
+
+export function workTaskChip(status: StudioTaskStatus): { tone: ChipTone; label: string } {
+  if (status === "doing") return { tone: "paid", label: "Đang làm" };
+  if (status === "done") return { tone: "done", label: "Xong" };
+  if (status === "cancelled") return { tone: "delay", label: "Hủy" };
+  return { tone: "wait", label: "Chờ" };
+}
+
+export function workPriorityChip(priority: StudioTaskPriority): { tone: ChipTone; label: string } {
+  if (priority === "high") return { tone: "delay", label: "Cao" };
+  if (priority === "mid") return { tone: "pending", label: "Trung bình" };
+  return { tone: "wait", label: "Thấp" };
 }

@@ -19,6 +19,7 @@ import {
 import type { ClassFilter, DemoClass, DemoCourse, DemoRoom, DemoStudent, DemoTeacher } from "../../lib/types";
 import { MoreMenu, copyId } from "./MoreMenu";
 import { StatusChip, classChip } from "./StatusChip";
+import { UserAvatar } from "./UserAvatar";
 import "./chrome.css";
 import "./EduTable.css";
 import "./ClassesBoard.css";
@@ -369,9 +370,7 @@ export function ClassesBoard({
                         </td>
                         <td>
                           <span className="ops-table__who">
-                            <span className="ops-mini-av" aria-hidden>
-                              {initials(teacher)}
-                            </span>
+                            <UserAvatar id={row.teacherId} name={teacher} />
                             {teacher}
                           </span>
                         </td>
@@ -540,9 +539,7 @@ export function ClassesBoard({
                       <dt>Giáo viên</dt>
                       <dd>
                         <span className="ops-table__who">
-                          <span className="ops-mini-av" aria-hidden>
-                            {initials(teacherName(teachers, selected.teacherId))}
-                          </span>
+                          <UserAvatar id={selected.teacherId} name={teacherName(teachers, selected.teacherId)} />
                           {teacherName(teachers, selected.teacherId)}
                         </span>
                       </dd>

@@ -522,10 +522,17 @@
 }
 
 .ops-over__tl-text {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.4rem;
   margin: 0;
   font-size: 0.75rem;
   line-height: 1.4;
   color: var(--kuct-text);
+}
+
+.ops-over__tl-text .ops-avatar {
+  margin-top: 0.1rem;
 }
 
 .ops-over__tl-text strong {

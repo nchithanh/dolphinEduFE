@@ -10,6 +10,7 @@ export const CHIP = {
   "course-form": "Đã mở form Khóa học",
   enroll: "Đã ghi danh vào khóa",
   generate: "Đã sinh lớp từ khóa",
+  tasks: "Đã mở Tác vụ",
   none: catalog.none.chip,
 } as const;
 
