@@ -36,12 +36,12 @@ export const MATCH_STAFF: StaffMember[] = [
 ];
 
 export const MATCH_ROOMS: RoomResource[] = [
-  { id: "p1", label: "Studio 1", kind: "room", branchId: "br-q1", active: true },
-  { id: "p2", label: "Studio 2", kind: "room", branchId: "br-q1", active: true },
-  { id: "ga", label: "Floor A", kind: "bed", branchId: "br-q1", active: true, note: "Sàn gỗ" },
-  { id: "p3", label: "Studio 3", kind: "room", branchId: "br-td", active: true, note: "Ưu tiên Contemporary" },
-  { id: "gb", label: "Kids Room", kind: "bed", branchId: "br-td", active: true },
-  { id: "p4", label: "Studio 1", kind: "room", branchId: "br-tdc", active: true },
+  { id: "p1", label: "MI1", kind: "room", branchId: "br-q1", active: true },
+  { id: "p2", label: "MI2", kind: "room", branchId: "br-q1", active: true },
+  { id: "ga", label: "MON3", kind: "bed", branchId: "br-q1", active: true, note: "Phòng nhỏ Q10" },
+  { id: "p3", label: "MON4", kind: "room", branchId: "br-q1", active: true, note: "Phòng nhỏ Q10" },
+  { id: "gb", label: "Room A", kind: "bed", branchId: "br-td", active: true, note: "Quận 3" },
+  { id: "p4", label: "MI3", kind: "room", branchId: "br-tdc", active: true },
 ];
 
 export function cloneSeedRooms(): RoomResource[] {

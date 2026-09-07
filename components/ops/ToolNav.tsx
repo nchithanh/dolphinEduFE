@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { BranchSelect } from "./BranchSelect";
+import { MA_DANCE_LOGO, MA_DANCE_LOGO_ALT, PRODUCT_NAME } from "../../lib/brand";
 import { CHROME, type OpsLocale } from "../../lib/locale";
 import { groupIdForStage, type NavGroup } from "../../lib/nav";
 import type { Stage } from "../../lib/types";
@@ -103,12 +104,16 @@ export function ToolNav({
     >
       <div className="ops-nav__pane">
       <div className="ops-nav__brand">
-        <span className="ops-nav__mark" aria-hidden>
-          D
-        </span>
+        <img
+          className="ops-nav__logo"
+          src={MA_DANCE_LOGO}
+          alt={MA_DANCE_LOGO_ALT}
+          width={40}
+          height={40}
+        />
         <span className="ops-nav__brand-text">
-          <span className="ops-nav__org">Dolphin Edu</span>
-          <span className="ops-nav__who">{orgName}</span>
+          <span className="ops-nav__org">{orgName}</span>
+          <span className="ops-nav__who">{PRODUCT_NAME}</span>
         </span>
         <button
           type="button"

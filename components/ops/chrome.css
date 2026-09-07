@@ -50,7 +50,7 @@
 }
 
 .ops-chip--done {
-  color: #f8f7ff;
+  color: var(--kuct-on-accent);
   background: var(--kuct-accent);
 }
 
@@ -678,6 +678,11 @@ span.ops-res__title:hover {
 }
 
 @media (max-width: 40rem) {
+  .ops-page__head {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
   .ops-kpi {
     grid-template-columns: 1fr;
   }

@@ -12,7 +12,7 @@ Local: frontend `:3011`. Menu is `HARDCODED_MENU` in `lib/api-menu.ts` — **doe
 
 Canvas seed: `lib/seed.ts`. Domain helpers: `lib/edu.ts` (course/class status, generate classes, enroll).
 
-Shell: 2 cột **nav | canvas**. Chat là drawer phải (`translateX`), overlay, không đẩy layout bảng.
+Shell: 2 cột **nav | canvas**. Chat là drawer phải (`translateX`), overlay, không đẩy layout bảng. Phone (`< 48rem`): nav overlay + chat full màn.
 
 Auth **TODO**. No JWT. No fake admin login.
 

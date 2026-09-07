@@ -6,16 +6,31 @@ import {
   useEffect,
   useRef,
   useState,
+  useSyncExternalStore,
   type ReactElement,
   type ReactNode,
 } from "react";
 import type { Stage } from "../../lib/types";
 import type { NavGroup } from "../../lib/nav";
 import type { OpsLocale } from "../../lib/locale";
+import type { DemoRole } from "../../lib/role";
+import type { EduTheme } from "../../lib/theme";
 import { CHROME } from "../../lib/locale";
 import { CanvasBar } from "./CanvasBar";
 import { ToolNav } from "./ToolNav";
 import "./Shell.css";
+
+const PHONE_MQ = "(max-width: 47.99rem)";
+
+function subscribePhone(onChange: () => void) {
+  const mq = window.matchMedia(PHONE_MQ);
+  mq.addEventListener("change", onChange);
+  return () => mq.removeEventListener("change", onChange);
+}
+
+function getPhoneSnapshot() {
+  return window.matchMedia(PHONE_MQ).matches;
+}
 
 type ShellProps = {
   active: Stage;
@@ -29,8 +44,12 @@ type ShellProps = {
   onRetryMenu?: () => void;
   locale: OpsLocale;
   onLocaleChange: (locale: OpsLocale) => void;
+  theme: EduTheme;
+  onThemeChange: (theme: EduTheme) => void;
   branchId: string;
   onBranchChange: (branchId: string) => void;
+  role: DemoRole;
+  onRoleChange: (role: DemoRole) => void;
 };
 
 type ChatSlotProps = {
@@ -50,12 +69,21 @@ export function Shell({
   onRetryMenu,
   locale,
   onLocaleChange,
+  theme,
+  onThemeChange,
   branchId,
   onBranchChange,
+  role,
+  onRoleChange,
 }: ShellProps) {
-  const [navOpen, setNavOpen] = useState(true);
+  const phone = useSyncExternalStore(subscribePhone, getPhoneSnapshot, () => false);
+  const [navOpen, setNavOpen] = useState(false);
   const [chatOpen, setChatOpen] = useState(false);
   const focusChatAfterOpen = useRef(false);
+
+  useEffect(() => {
+    setNavOpen(!phone);
+  }, [phone]);
 
   useEffect(() => {
     if (!chatOpen || !focusChatAfterOpen.current) return;
@@ -67,17 +95,20 @@ export function Shell({
   }, [chatOpen]);
 
   useEffect(() => {
-    if (!chatOpen) return;
     function onKey(event: KeyboardEvent) {
       if (event.key !== "Escape") return;
-      setChatOpen(false);
-      window.requestAnimationFrame(() => {
-        document.getElementById("ops-bar-chat")?.focus();
-      });
+      if (chatOpen) {
+        setChatOpen(false);
+        window.requestAnimationFrame(() => {
+          document.getElementById("ops-bar-chat")?.focus();
+        });
+        return;
+      }
+      if (phone && navOpen) setNavOpen(false);
     }
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [chatOpen]);
+  }, [chatOpen, navOpen, phone]);
 
   function toggleChat() {
     setChatOpen((open) => {
@@ -85,6 +116,7 @@ export function Shell({
       focusChatAfterOpen.current = true;
       return true;
     });
+    if (phone) setNavOpen(false);
   }
 
   function closeChat() {
@@ -94,8 +126,14 @@ export function Shell({
     });
   }
 
+  function onNavSelect(id: Stage) {
+    onSelect(id);
+    if (phone) setNavOpen(false);
+  }
+
   const shellClass = [
     "ops-shell",
+    phone ? "ops-shell--phone" : null,
     navOpen ? null : "ops-shell--nav-collapsed",
     chatOpen ? null : "ops-shell--chat-collapsed",
   ]
@@ -109,20 +147,13 @@ export function Shell({
   const copy = CHROME[locale];
 
   return (
-    <>
-      <section className="ops-mobile-gate" aria-labelledby="ops-mobile-gate-title" role="region">
-        <div className="ops-mobile-gate__card">
-          <p className="ops-mobile-gate__brand">Dolphin Edu</p>
-          <h1 id="ops-mobile-gate-title" className="ops-mobile-gate__title">
-            {copy.mobileGateTitle}
-          </h1>
-          <p className="ops-mobile-gate__body">{copy.mobileGateBody}</p>
-        </div>
-      </section>
-      <div className={shellClass}>
+    <div className={shellClass}>
+      {phone && navOpen ? (
+        <button type="button" className="ops-nav-backdrop" aria-label={copy.collapseNav} onClick={() => setNavOpen(false)} />
+      ) : null}
       <ToolNav
         active={active}
-        onSelect={onSelect}
+        onSelect={onNavSelect}
         collapsed={!navOpen}
         onCollapse={() => setNavOpen(false)}
         groups={groups}
@@ -135,14 +166,19 @@ export function Shell({
       />
       <div className="ops-shell__main">
         <CanvasBar
+          orgName={orgName}
           navOpen={navOpen}
           chatOpen={chatOpen}
           onToggleNav={() => setNavOpen((open) => !open)}
           onToggleChat={toggleChat}
           locale={locale}
           onLocaleChange={onLocaleChange}
+          theme={theme}
+          onThemeChange={onThemeChange}
           branchId={branchId}
           onBranchChange={onBranchChange}
+          role={role}
+          onRoleChange={onRoleChange}
         />
         <main key={canvasKey} className="ops-shell__canvas ops-canvas-enter">
           {canvas}
@@ -153,6 +189,5 @@ export function Shell({
       ) : null}
       {chatSlot}
     </div>
-    </>
   );
 }

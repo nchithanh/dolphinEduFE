@@ -1,8 +1,8 @@
 /** Giáo viên — số demo hardcode (FE only). */
 
 export const TEACHERS_KPI = [
-  { id: "total", label: "Tổng giáo viên", value: "28", trend: "+12%", up: true, ico: "◉" },
-  { id: "active", label: "Đang dạy", value: "24", trend: "+8%", up: true, ico: "◎" },
+  { id: "total", label: "Tổng giáo viên", value: "14", trend: "3 CN", up: true, ico: "◉" },
+  { id: "active", label: "Đang dạy", value: "12", trend: "+1", up: true, ico: "◎" },
   { id: "free", label: "Ca rảnh hôm nay", value: "6", trend: "0%", up: true, ico: "◷" },
   { id: "classes", label: "Lớp phụ trách", value: "68", trend: "+15%", up: true, ico: "▣" },
   { id: "attend", label: "Tỉ lệ điểm danh", value: "92%", trend: "+3%", up: true, ico: "✓" },
@@ -53,7 +53,7 @@ export function demoTeacherStats(teacherId: string): {
     rating,
     freeSlots,
     phone: `090${String(2000000 + hash * 137).slice(0, 7)}`,
-    email: `${teacherId}@pulse.studio`,
+    email: `${teacherId}@ma-dance.local`,
     active,
     tags,
     joinDate: "2024-03-01",

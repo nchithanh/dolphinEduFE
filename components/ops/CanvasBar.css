@@ -123,7 +123,7 @@
 }
 
 .ops-bar__lang-btn {
-  min-width: 1.55rem;
+  min-width: 2.45rem;
   margin: 0;
   padding: 0.2rem 0.35rem;
   font: inherit;
@@ -166,6 +166,18 @@
 
 .ops-bar__menu {
   display: none;
+}
+
+.ops-bar__brand {
+  display: none;
+}
+
+.ops-bar__branch {
+  display: none;
+}
+
+.ops-shell--nav-collapsed .ops-bar__branch {
+  display: block;
 }
 
 .ops-shell--nav-collapsed .ops-bar__menu {
@@ -236,5 +248,75 @@
   .ops-bar__role,
   .ops-bar__kbd {
     display: none;
+  }
+}
+
+@media (max-width: 47.99rem) {
+  .ops-bar {
+    gap: 0.45rem;
+    padding: 0 0.7rem;
+    padding-left: max(0.7rem, env(safe-area-inset-left));
+    padding-right: max(0.7rem, env(safe-area-inset-right));
+  }
+
+  .ops-bar__menu {
+    display: grid;
+  }
+
+  .ops-bar__brand {
+    display: flex;
+    min-width: 0;
+    flex: 1;
+    align-items: center;
+    gap: 0.45rem;
+  }
+
+  .ops-bar__logo {
+    flex: none;
+    box-sizing: border-box;
+    width: 1.85rem;
+    height: 1.85rem;
+    padding: 0.1rem;
+    object-fit: contain;
+    background: #ffffff;
+    border: 1px solid var(--kuct-border);
+    border-radius: 10px;
+  }
+
+  .ops-bar__org {
+    overflow: hidden;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .ops-bar__search,
+  .ops-bar__branch,
+  .ops-shell--nav-collapsed .ops-bar__branch,
+  .ops-bar__lang,
+  .ops-bar__who,
+  .ops-bar__kbd,
+  .ops-bar__ask-text {
+    display: none;
+  }
+
+  .ops-bar__icon:not(.ops-bar__menu) {
+    display: none;
+  }
+
+  .ops-bar__ask {
+    width: 1.85rem;
+    min-width: 1.85rem;
+    padding: 0;
+  }
+
+  .ops-bar__user {
+    padding: 0.1rem;
+  }
+
+  .ops-bar__actions {
+    gap: 0.3rem;
   }
 }

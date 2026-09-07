@@ -6,26 +6,36 @@ export type LiveStage =
   | "tasks"
   | "teachers"
   | "classrooms"
-  | "courses";
+  | "courses"
+  | "packages"
+  | "attendance"
+  | "qr"
+  | "schedule"
+  | "campaigns"
+  | "promotions"
+  | "payment"
+  | "holds"
+  | "reports"
+  | "access"
+  | "leads"
+  | "rentals"
+  | "website"
+  | "portal"
+  | "store"
+  | "care-ai"
+  | "ai-ops"
+  | "intelligent";
 export type StubStage =
   | "notifications"
-  | "campaigns"
   | "followup"
-  | "packages"
-  | "reports"
   | "shifts"
-  | "attendance"
   | "inventory"
   | "suppliers"
-  | "payment"
   | "refunds"
   | "settings"
-  | "access"
   | "integrations"
   | "audit"
-  | "schedule"
   | "activity"
-  | "leads"
   | "consult"
   | "invoices";
 export type Stage = LiveStage | StubStage;
@@ -99,6 +109,9 @@ export type DemoTeacher = {
   id: string;
   name: string;
   specialty: string;
+  phone?: string;
+  email?: string;
+  branchIds?: string[];
 };
 
 export type DemoRoom = {
@@ -109,10 +122,116 @@ export type DemoRoom = {
   note?: string;
 };
 
+export type DemoGuardian = {
+  name: string;
+  phone: string;
+  email: string;
+  relation: string;
+};
+
 export type DemoStudent = {
   id: string;
   name: string;
   phone: string;
+  email?: string;
+  dob?: string;
+  kind?: "adult" | "child";
+  guardian?: DemoGuardian;
+};
+
+export type AttendMark = "present" | "absent";
+export type AttendanceMap = Record<string, Record<string, AttendMark>>;
+
+export type SessionPack = {
+  id: string;
+  studentId: string;
+  catalog: "1m" | "3m" | "6m" | "12m";
+  label: string;
+  total: number;
+  remaining: number;
+  branchId: string;
+  status: "active" | "hold" | "expired";
+  deposit: boolean;
+};
+
+export type FeeReceipt = {
+  id: string;
+  studentId: string;
+  amount: number;
+  method: "cash" | "transfer" | "online";
+  hasBill: boolean;
+  date: string;
+  branchId: string;
+  note: string;
+  debt: boolean;
+  installment: boolean;
+};
+
+export type HoldRequest = {
+  id: string;
+  studentId: string;
+  courseName: string;
+  reason: string;
+  status: "pending" | "approved" | "rejected";
+  sessionsKept: number;
+  until: string;
+  gifted: boolean;
+};
+
+export type PromoCode = {
+  id: string;
+  code: string;
+  title: string;
+  discount: string;
+  active: boolean;
+  until: string;
+  used: number;
+};
+
+export type CareBlast = {
+  id: string;
+  kind: "birthday" | "zalo" | "email";
+  title: string;
+  audience: string;
+  status: "draft" | "sent" | "scheduled";
+  when: string;
+};
+
+export type StudioRental = {
+  id: string;
+  roomId: string;
+  customer: string;
+  date: string;
+  startTime: string;
+  endTime: string;
+  status: "confirmed" | "pending";
+  note: string;
+};
+
+export type CalendarLink = {
+  id: string;
+  person: string;
+  kind: "center" | "staff";
+  calendar: string;
+  synced: boolean;
+};
+
+export type MidEnrollRule = {
+  id: string;
+  level: string;
+  window: string;
+  note: string;
+};
+
+export type QuoteDemoState = {
+  attendance: AttendanceMap;
+  packages: SessionPack[];
+  receipts: FeeReceipt[];
+  holds: HoldRequest[];
+  promos: PromoCode[];
+  blasts: CareBlast[];
+  rentals: StudioRental[];
+  calendars: CalendarLink[];
 };
 
 export type DemoCourse = {

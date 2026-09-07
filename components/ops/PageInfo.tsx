@@ -5,7 +5,7 @@ import "./chrome.css";
 export type InfoRow = { label: string; value: string };
 
 const EDU_ROWS: InfoRow[] = [
-  { label: "Studio", value: "Pulse Studio" },
+  { label: "Studio", value: "MA Dance" },
   { label: "Mô hình", value: "Khóa → ghi danh → lớp" },
   { label: "Dữ liệu", value: "Seed demo, chưa nối server" },
 ];

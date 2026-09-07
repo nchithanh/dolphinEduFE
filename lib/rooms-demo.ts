@@ -1,12 +1,12 @@
 /** Phòng tập — số demo hardcode (FE only). */
 
 export const ROOMS_KPI = [
-  { id: "total", label: "Tổng phòng", value: "12", trend: "+2", up: true, ico: "▣" },
-  { id: "free", label: "Phòng đang trống", value: "4", trend: "+33%", up: true, ico: "◯" },
-  { id: "busy", label: "Phòng đang sử dụng", value: "6", trend: "50%", up: true, ico: "◉" },
-  { id: "soon", label: "Phòng sắp có lịch", value: "1", trend: "8%", up: true, ico: "◷" },
-  { id: "fill", label: "Tỉ lệ lấp đầy (hôm nay)", value: "72%", trend: "+5%", up: true, ico: "◎" },
-  { id: "maint", label: "Phòng bảo trì", value: "1", trend: "8%", up: false, ico: "⚒" },
+  { id: "total", label: "Tổng phòng", value: "7", trend: "3 CN", up: true, ico: "▣" },
+  { id: "free", label: "Phòng đang trống", value: "2", trend: "+1", up: true, ico: "◯" },
+  { id: "busy", label: "Phòng đang sử dụng", value: "4", trend: "57%", up: true, ico: "◉" },
+  { id: "soon", label: "Phòng sắp có lịch", value: "1", trend: "14%", up: true, ico: "◷" },
+  { id: "fill", label: "Tỉ lệ lấp đầy (hôm nay)", value: "74%", trend: "+5%", up: true, ico: "◎" },
+  { id: "maint", label: "Phòng bảo trì", value: "0", trend: "0", up: true, ico: "⚒" },
 ];
 
 /** Timeline sử dụng 06:00–22:00 (tỉ lệ % trên thanh). */
@@ -29,20 +29,15 @@ export type RoomUiStatus = "busy" | "free" | "maint" | "soon";
 
 export function demoRoomCode(roomId: string): string {
   const map: Record<string, string> = {
-    p1: "A01",
-    p2: "A02",
-    ga: "A03",
-    p6: "A04",
-    p7: "A05",
-    p3: "B01",
-    gb: "B02",
-    p8: "B03",
-    p9: "B04",
-    p4: "C01",
-    p5: "C02",
-    p10: "C03",
+    p1: "MI1",
+    p2: "MI2",
+    ga: "MON3",
+    p3: "MON4",
+    gb: "RA",
+    p4: "MI3",
+    p5: "MI4",
   };
-  return `P-${map[roomId] ?? roomId.slice(0, 3).toUpperCase()}`;
+  return map[roomId] ?? roomId.slice(0, 3).toUpperCase();
 }
 
 export function demoRoomStats(roomId: string): {
@@ -68,7 +63,7 @@ export function demoRoomStats(roomId: string): {
     ["Gương", "Loa", "Quạt"],
   ];
   const fillPct = 55 + (hash % 40);
-  const maintenance = roomId === "p9";
+  const maintenance = false;
   const tags =
     hash % 3 === 0
       ? ["Cách âm tốt", "Ưu tiên nhóm"]

@@ -14,6 +14,7 @@ import {
 import { formatViDate, localIsoDate } from "../../lib/edu";
 import type { DemoClass, DemoCourse, DemoRoom, DemoStudent, DemoTeacher, Stage } from "../../lib/types";
 import { UserAvatar } from "./UserAvatar";
+import { QuoteHub } from "./QuoteHub";
 import "./chrome.css";
 import "./EduTable.css";
 import "./Overview.css";
@@ -123,11 +124,11 @@ export function Overview({ title, courses, classes, students: _students, teacher
       });
     }
     return [
-      { id: "d1", time: "08:30", name: "Kids Stretch", room: "P.Kids", fill: "8/10", full: false },
-      { id: "d2", time: "10:00", name: "Ballet Beginner", room: "P.A", fill: "9/12", full: false },
-      { id: "d3", time: "17:00", name: "Heels", room: "P.102", fill: "10/12", full: false },
-      { id: "d4", time: "19:00", name: "Hip-hop Open", room: "P.101", fill: "16/16", full: true },
-      { id: "d5", time: "20:30", name: "Open Practice TD", room: "P.Open", fill: "7/20", full: false },
+      { id: "d1", time: "08:30", name: "Kids Stretch", room: "Room A", fill: "8/10", full: false },
+      { id: "d2", time: "10:00", name: "Ballet Beginner", room: "MON3", fill: "9/12", full: false },
+      { id: "d3", time: "17:00", name: "Heels", room: "MI2", fill: "10/12", full: false },
+      { id: "d4", time: "19:00", name: "Hip-hop Open", room: "MI1", fill: "16/16", full: true },
+      { id: "d5", time: "20:30", name: "Open Practice PN", room: "MI4", fill: "7/20", full: false },
     ];
   }, [todayClasses, courses, rooms]);
 
@@ -147,7 +148,7 @@ export function Overview({ title, courses, classes, students: _students, teacher
             {title}
           </h1>
           <p className="ops-page__lede">
-            Tổng quan hoạt động vận hành trung tâm ngày{" "}
+            Tổng quan hoạt động vận hành trung tâm MA Dance ngày{" "}
             <time dateTime={today}>{formatViDate(today)}</time>.
           </p>
         </div>
@@ -160,6 +161,8 @@ export function Overview({ title, courses, classes, students: _students, teacher
           </button>
         </div>
       </div>
+
+      <QuoteHub onOpen={onOpen} />
 
       <ul className="ops-kpi-row ops-kpi-row--6">
         {DASH_KPI.map((kpi) => (

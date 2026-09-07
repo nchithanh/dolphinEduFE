@@ -27,7 +27,7 @@ export const DASH_KPI = [
     value: "1.285.000.000",
     trend: "+12,4%",
     up: true,
-    go: "invoices" as const,
+    go: "reports" as const,
     ico: "₫",
     tone: "green" as const,
   },
@@ -86,7 +86,7 @@ export const DASH_TASKS = [
   {
     id: "t2",
     time: "10:30",
-    title: "Xác nhận sĩ số Heels · Studio 2",
+    title: "Xác nhận sĩ số Heels · MI2",
     hint: "Lớp học",
     tone: "high" as const,
     go: "classes" as const,
@@ -110,7 +110,7 @@ export const DASH_TASKS = [
   {
     id: "t5",
     time: "15:30",
-    title: "Rà phòng trống chi nhánh Thảo Điền",
+    title: "Rà phòng trống chi nhánh Quận 3",
     hint: "Phòng",
     tone: "low" as const,
     go: "classrooms" as const,
@@ -132,7 +132,7 @@ export const DASH_LOW_ATTEND = [
   { id: "a2", name: "Kids 5–8", pct: 68 },
   { id: "a3", name: "Jazz Open", pct: 72 },
   { id: "a4", name: "Waacking", pct: 74 },
-  { id: "a5", name: "Open Practice TD", pct: 70 },
+  { id: "a5", name: "Open Practice PN", pct: 70 },
 ];
 
 export const DASH_ACTIVITY = [
@@ -189,7 +189,7 @@ export const DASH_ACTIVITY = [
     who: "Khoa Võ",
     whoId: "khoa",
     verb: "đã mở",
-    focus: "Open Practice TD",
+    focus: "Open Practice PN",
     tag: "Lớp học",
     tone: "class" as const,
     time: "11:45",

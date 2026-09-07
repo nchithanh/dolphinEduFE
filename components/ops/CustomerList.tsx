@@ -6,12 +6,12 @@ import {
   STUDENTS_KPI,
   STUDENTS_SEGMENTS,
   STUDENTS_TREND,
-  demoParentPhone,
   demoStudentCode,
   demoStudentStats,
 } from "../../lib/students-demo";
 import type { DemoCourse, DemoStudent, DemoTeacher } from "../../lib/types";
 import { DEMO_TEACHERS } from "../../lib/seed";
+import { canSeeFees, displayPhone, type DemoRole } from "../../lib/role";
 import { MoreMenu, copyId } from "./MoreMenu";
 import { StatusChip, courseChip } from "./StatusChip";
 import { UserAvatar } from "./UserAvatar";
@@ -26,6 +26,7 @@ type CustomerListProps = {
   teachers?: DemoTeacher[];
   onOpen: (name: string) => void;
   onPromo: () => void;
+  role?: DemoRole;
 };
 
 const PAGE_SIZE = 12;
@@ -70,6 +71,7 @@ export function CustomerList({
   teachers = DEMO_TEACHERS,
   onOpen,
   onPromo,
+  role = "manager",
 }: CustomerListProps) {
   const [search, setSearch] = useState("");
   const [enrollFilter, setEnrollFilter] = useState<"all" | "enrolled" | "none">("all");
@@ -246,7 +248,7 @@ export function CustomerList({
                     <th scope="col">Khóa học</th>
                     <th scope="col">Giáo viên</th>
                     <th scope="col">Chuyên cần</th>
-                    <th scope="col">Thanh toán</th>
+                    {canSeeFees(role) ? <th scope="col">Thanh toán</th> : null}
                     <th scope="col">Liên hệ</th>
                     <th scope="col">Trạng thái</th>
                     <th scope="col">
@@ -297,12 +299,18 @@ export function CustomerList({
                           )}
                         </td>
                         <td className="ops-table__fill">{stats.attend}%</td>
+                        {canSeeFees(role) ? (
                         <td>
                           <StatusChip tone={stats.paid ? "paid" : "wait"}>
                             {stats.paid ? "Đã thanh toán" : "Còn nợ"}
                           </StatusChip>
                         </td>
-                        <td>{student.phone || "—"}</td>
+                        ) : null}
+                        <td>
+                          {student.kind === "child"
+                            ? displayPhone(student.guardian?.phone, role)
+                            : displayPhone(student.phone, role)}
+                        </td>
                         <td>
                           <StatusChip tone={enrolled.length ? "track" : "wait"}>
                             {enrolled.length ? "Đang học" : "Chưa ghi danh"}
@@ -427,7 +435,7 @@ export function CustomerList({
                 </li>
                 <li>
                   <span>Thanh toán</span>
-                  <strong>{selectedStats.paid ? "Đã TT" : "Còn nợ"}</strong>
+                  <strong>{canSeeFees(role) ? (selectedStats.paid ? "Đã TT" : "Còn nợ") : "Ẩn với GV"}</strong>
                 </li>
               </ul>
 
@@ -502,24 +510,28 @@ export function CustomerList({
                         <div>
                           <dt>SĐT</dt>
                           <dd>
-                            {selected.phone ? (
-                              <a href={`tel:${selected.phone.replace(/\s/g, "")}`}>{selected.phone}</a>
-                            ) : (
-                              "—"
-                            )}
+                            {displayPhone(selected.kind === "child" ? selected.guardian?.phone : selected.phone, role)}
                           </dd>
                         </div>
                         <div>
                           <dt>Email</dt>
-                          <dd>demo@{selected.id.replace(/[^a-z0-9]/gi, "")}.vn</dd>
+                          <dd>
+                            {selected.kind === "child"
+                              ? selected.guardian?.email ?? "—"
+                              : selected.email ?? `demo@${selected.id.replace(/[^a-z0-9]/gi, "")}.vn`}
+                          </dd>
                         </div>
                         <div>
                           <dt>Phụ huynh</dt>
-                          <dd>{demoParentPhone(selected.id)}</dd>
+                          <dd>
+                            {selected.guardian
+                              ? `${selected.guardian.relation} ${selected.guardian.name}`
+                              : "Người lớn — tự liên hệ"}
+                          </dd>
                         </div>
                         <div>
-                          <dt>Địa chỉ</dt>
-                          <dd>Quận 1 · TP.HCM (demo)</dd>
+                          <dt>Ngày sinh</dt>
+                          <dd>{selected.dob ?? "—"}</dd>
                         </div>
                       </dl>
 

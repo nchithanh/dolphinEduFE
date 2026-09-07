@@ -16,13 +16,14 @@ import {
   demoClassAttend,
   demoClassStudentPay,
 } from "../../lib/classes-demo";
-import type { ClassFilter, DemoClass, DemoCourse, DemoRoom, DemoStudent, DemoTeacher } from "../../lib/types";
+import type { AttendanceMap, ClassFilter, DemoClass, DemoCourse, DemoRoom, DemoStudent, DemoTeacher } from "../../lib/types";
 import { MoreMenu, copyId } from "./MoreMenu";
 import { StatusChip, classChip } from "./StatusChip";
 import { UserAvatar } from "./UserAvatar";
 import "./chrome.css";
 import "./EduTable.css";
 import "./ClassesBoard.css";
+import "./QuoteBoards.css";
 
 type ClassesBoardProps = {
   title: string;
@@ -35,6 +36,11 @@ type ClassesBoardProps = {
   onFilter: (next: ClassFilter) => void;
   onCancel: (classId: string) => void;
   onOpenCourse: (courseId: string) => void;
+  attendance?: AttendanceMap;
+  onMark?: (classId: string, studentId: string, mark: "present" | "absent") => void;
+  onReschedule?: (classId: string, patch: Partial<Pick<DemoClass, "startTime" | "endTime" | "teacherId" | "roomId">>) => void;
+  hideFees?: boolean;
+  hidePhone?: boolean;
 };
 
 const PAGE_SIZE = 12;
@@ -77,6 +83,11 @@ export function ClassesBoard({
   onFilter,
   onCancel,
   onOpenCourse,
+  attendance = {},
+  onMark,
+  onReschedule,
+  hideFees = false,
+  hidePhone = false,
 }: ClassesBoardProps) {
   const today = localIsoDate();
   const [selectedId, setSelectedId] = useState<string | null>(null);
@@ -497,6 +508,7 @@ export function ClassesBoard({
 
               <div className="ops-detail__pane">
               {detailTab === "schedule" ? (
+                <div>
                 <ul className="ops-classes__stub-list">
                   <li>
                     Buổi này — {formatViDate(selected.date)} · {selected.startTime}–{selected.endTime}
@@ -507,15 +519,94 @@ export function ClassesBoard({
                       {selectedCourse.schedule.startTime}–{selectedCourse.schedule.endTime}
                     </li>
                   ) : null}
-                  <li>Buổi kế (demo) — theo lịch khóa</li>
+                  <li>1 GV / buổi · không trùng phòng–giờ (A2)</li>
                 </ul>
+                {onReschedule ? (
+                  <div className="ops-detail__actions" style={{ marginTop: "0.75rem", flexWrap: "wrap" }}>
+                    <label className="ops-board__note">
+                      Đổi giờ{" "}
+                      <select
+                        defaultValue={selected.startTime}
+                        onChange={(e) => {
+                          const startTime = e.target.value;
+                          const [h, m] = startTime.split(":").map(Number);
+                          const end = `${String(h + 1).padStart(2, "0")}:${String(m).padStart(2, "0")}`;
+                          onReschedule(selected.id, { startTime, endTime: end });
+                        }}
+                      >
+                        {["16:00", "17:00", "18:00", "19:00", "20:00"].map((t) => (
+                          <option key={t} value={t}>
+                            {t}
+                          </option>
+                        ))}
+                      </select>
+                    </label>
+                    <label className="ops-board__note">
+                      Phòng{" "}
+                      <select
+                        defaultValue={selected.roomId}
+                        onChange={(e) => onReschedule(selected.id, { roomId: e.target.value })}
+                      >
+                        {rooms.filter((r) => r.active).map((r) => (
+                          <option key={r.id} value={r.id}>
+                            {r.label}
+                          </option>
+                        ))}
+                      </select>
+                    </label>
+                    <label className="ops-board__note">
+                      GV{" "}
+                      <select
+                        defaultValue={selected.teacherId}
+                        onChange={(e) => onReschedule(selected.id, { teacherId: e.target.value })}
+                      >
+                        {teachers.map((t) => (
+                          <option key={t.id} value={t.id}>
+                            {t.name}
+                          </option>
+                        ))}
+                      </select>
+                    </label>
+                  </div>
+                ) : null}
+                </div>
               ) : null}
 
               {detailTab === "attendance" ? (
-                <ul className="ops-classes__stub-list">
-                  <li>Có mặt demo — {Math.round((selectedAttend / 100) * selected.studentIds.length)} HV</li>
-                  <li>Vắng / muộn — seed minh họa</li>
-                  <li>Xuất điểm danh — Sắp có</li>
+                <ul className="ops-quote-roster">
+                  {roster.map((student) => {
+                    const mark = attendance[selected.id]?.[student.id];
+                    return (
+                      <li key={student.id}>
+                        <span>
+                          {student.name}
+                          {hidePhone ? null : (
+                            <span className="ops-roster__phone"> · {student.phone || student.guardian?.phone || "—"}</span>
+                          )}
+                        </span>
+                        {onMark ? (
+                          <span className="ops-quote-roster__acts">
+                            <button
+                              type="button"
+                              className={mark === "present" ? "ops-page__cta" : "ops-page__ghost"}
+                              onClick={() => onMark(selected.id, student.id, "present")}
+                            >
+                              Có mặt
+                            </button>
+                            <button
+                              type="button"
+                              className={mark === "absent" ? "ops-page__cta" : "ops-page__ghost"}
+                              onClick={() => onMark(selected.id, student.id, "absent")}
+                            >
+                              Vắng
+                            </button>
+                          </span>
+                        ) : (
+                          <span>{mark ?? "—"}</span>
+                        )}
+                      </li>
+                    );
+                  })}
                 </ul>
               ) : null}
 
@@ -601,7 +692,7 @@ export function ClassesBoard({
                         <tr>
                           <th scope="col">Học viên</th>
                           <th scope="col">Điểm danh</th>
-                          <th scope="col">Thanh toán</th>
+                          {hideFees ? null : <th scope="col">Thanh toán</th>}
                         </tr>
                       </thead>
                       <tbody>
@@ -616,16 +707,18 @@ export function ClassesBoard({
                                   </span>
                                   <span>
                                     <span className="ops-roster__name">{student.name}</span>
-                                    <span className="ops-roster__phone">{student.phone || "—"}</span>
+                                    <span className="ops-roster__phone">{hidePhone ? "••••" : student.phone || student.guardian?.phone || "—"}</span>
                                   </span>
                                 </span>
                               </th>
                               <td className="ops-table__fill">{demo.attend}%</td>
+                              {hideFees ? null : (
                               <td>
                                 <StatusChip tone={demo.paid ? "paid" : "wait"}>
                                   {demo.paid ? "Đã thanh toán" : "Còn nợ"}
                                 </StatusChip>
                               </td>
+                              )}
                             </tr>
                           );
                         })}

@@ -8,11 +8,11 @@ export type Branch = {
   name: string;
 };
 
-/** Demo FE only — chưa API. */
+/** Demo FE only — MA Dance discovery: Q10 · Q3 · Phú Nhuận. Giữ id cũ (edu-branch). */
 export const DEMO_BRANCHES: Branch[] = [
-  { id: "br-q1", name: "Quận 1" },
-  { id: "br-td", name: "Thảo Điền" },
-  { id: "br-tdc", name: "Thủ Đức" },
+  { id: "br-q1", name: "Quận 10" },
+  { id: "br-td", name: "Quận 3" },
+  { id: "br-tdc", name: "Phú Nhuận" },
 ];
 
 export function isBranchId(value: string): boolean {

@@ -1,8 +1,10 @@
 # Product
 
-**Dolphin Edu** is an **Agent CRM** (SaaS) for owners and staff of a dance studio. Internal operations — not a public student portal.
+**Dolphin Edu** is an **Agent CRM** (SaaS) for owners and staff of a dance studio. Internal operations — not a public student portal. First demo org: **MA Dance** (logo + black/ivory chrome in the FE demo).
 
 Hardcoded FE demo. Domain is **course enrollment + class sessions**, not spa 1:1 booking.
+
+B1 website / portal / store / AI Care on the quote are **preview canvases** in this app — not production public sites.
 
 ## Model
 
@@ -23,6 +25,8 @@ Signature: **AI does not replace the UI. It chooses the right UI.**
 | Classroom | Studio / floor assigned to course and class |
 
 Class status: **chưa diễn ra · đang diễn ra · hoàn thành · hủy**.
+
+Staff demo (A1): **Chủ / Quản lý / Lễ tân / Giáo viên** — 24 quyền + 12 tài khoản (`lib/acl-demo.ts`). GV không xem học phí & SĐT học viên.
 
 ## Contrast with Ops
 

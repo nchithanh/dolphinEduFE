@@ -187,7 +187,7 @@
 
 .ops-work__check-item input {
   margin-top: 0.15rem;
-  accent-color: var(--kuct-accent, #7c3aed);
+  accent-color: var(--kuct-accent, #171717);
 }
 
 .ops-work__form--inline {
@@ -306,13 +306,13 @@
   gap: 0.4rem;
   min-width: 0;
   padding: 0.3rem 0.35rem 0.3rem 0.55rem;
-  background: var(--ops-elevated, #17182f);
-  border: 1px solid color-mix(in srgb, var(--kuct-accent, #7c3aed) 16%, var(--kuct-border));
+  background: var(--ops-elevated, #f3f3f1);
+  border: 1px solid color-mix(in srgb, var(--kuct-accent, #171717) 16%, var(--kuct-border));
   border-radius: 0.625rem;
 }
 
 .ops-work__comment-box:focus-within {
-  border-color: color-mix(in srgb, var(--kuct-accent, #7c3aed) 48%, var(--kuct-border));
+  border-color: color-mix(in srgb, var(--kuct-accent, #171717) 48%, var(--kuct-border));
 }
 
 .ops-work__comment-form textarea {
@@ -406,8 +406,8 @@
   text-transform: none;
   letter-spacing: 0;
   color: var(--ops-text, var(--kuct-text));
-  background: var(--ops-elevated, #17182f);
-  border: 1px solid color-mix(in srgb, var(--kuct-accent, #7c3aed) 18%, transparent);
+  background: var(--ops-elevated, #f3f3f1);
+  border: 1px solid color-mix(in srgb, var(--kuct-accent, #171717) 18%, transparent);
   border-radius: 0.5rem;
   padding: 0.45rem 0.6rem;
 }
@@ -597,7 +597,7 @@
   font-size: 0.7rem;
   font-weight: 600;
   color: var(--kuct-text);
-  background: var(--kuct-elevated, #17182f);
+  background: var(--kuct-elevated, #f3f3f1);
   border: 1px solid var(--kuct-border);
   border-radius: 999px;
 }

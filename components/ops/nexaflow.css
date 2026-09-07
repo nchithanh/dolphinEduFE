@@ -5,10 +5,10 @@
 }
 
 .ops-shell__main {
-  background-color: #070711;
+  background-color: var(--kuct-bg);
   background-image:
-    linear-gradient(rgba(var(--kuct-accent-rgb), 0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(var(--kuct-accent-rgb), 0.07) 1px, transparent 1px);
+    linear-gradient(rgba(var(--kuct-accent-rgb), 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--kuct-accent-rgb), 0.06) 1px, transparent 1px);
   background-size: 1.75rem 1.75rem;
 }
 
@@ -17,7 +17,7 @@
 }
 
 .ops-nav {
-  background: var(--kuct-sidebar, #0b0c1c);
+  background: var(--kuct-sidebar, #ffffff);
   border-right: 1px solid var(--kuct-border);
   box-shadow: none;
 }
@@ -28,7 +28,7 @@
 }
 
 .ops-chat {
-  box-shadow: -16px 0 40px rgb(0 0 0 / 0.45);
+  box-shadow: -16px 0 40px rgb(23 23 23 / 0.12);
 }
 
 .ops-bar {
@@ -36,9 +36,9 @@
 }
 
 .ops-nav__item--current {
-  color: var(--kuct-accent-3);
-  background: color-mix(in srgb, var(--kuct-accent) 18%, var(--kuct-sidebar, #0b0c1c));
-  box-shadow: inset 2px 0 0 var(--kuct-accent-2);
+  color: var(--kuct-text);
+  background: color-mix(in srgb, var(--kuct-accent) 8%, var(--kuct-sidebar, #ffffff));
+  box-shadow: inset 2px 0 0 var(--kuct-accent);
 }
 
 .ops-kpi__card,

@@ -20,7 +20,7 @@ export const WEEKDAY_LABEL: Record<Weekday, string> = {
 
 export const WEEKDAY_ORDER: Weekday[] = [1, 2, 3, 4, 5, 6, 0];
 
-/** Pulse Studio — cố định, không DST. SSR (UTC) và browser (VN) cùng lịch. */
+/** MA Dance — cố định, không DST. SSR (UTC) và browser (VN) cùng lịch. */
 export const STUDIO_TZ = "Asia/Ho_Chi_Minh";
 const STUDIO_UTC_OFFSET_HOURS = 7;
 
@@ -197,4 +197,39 @@ export function enrollStudent(
 
 export function cancelClass(classes: DemoClass[], classId: string): DemoClass[] {
   return classes.map((row) => (row.id === classId ? { ...row, cancelled: true } : row));
+}
+
+function minutes(time: string): number {
+  const [h, m] = time.split(":").map(Number);
+  return (h || 0) * 60 + (m || 0);
+}
+
+export function timesOverlap(aStart: string, aEnd: string, bStart: string, bEnd: string): boolean {
+  return minutes(aStart) < minutes(bEnd) && minutes(bStart) < minutes(aEnd);
+}
+
+/** Trùng phòng–giờ hoặc 1 GV hai buổi cùng lúc (A2). */
+export function findSessionConflict(
+  classes: DemoClass[],
+  candidate: Pick<DemoClass, "id" | "date" | "startTime" | "endTime" | "teacherId" | "roomId">,
+): DemoClass | undefined {
+  return classes.find((row) => {
+    if (row.id === candidate.id || row.cancelled) return false;
+    if (row.date !== candidate.date) return false;
+    if (!timesOverlap(row.startTime, row.endTime, candidate.startTime, candidate.endTime)) return false;
+    return row.roomId === candidate.roomId || row.teacherId === candidate.teacherId;
+  });
+}
+
+export function patchClass(
+  classes: DemoClass[],
+  classId: string,
+  patch: Partial<Pick<DemoClass, "startTime" | "endTime" | "teacherId" | "roomId">>,
+): { classes: DemoClass[]; conflict?: DemoClass } {
+  const current = classes.find((row) => row.id === classId);
+  if (!current) return { classes };
+  const next = { ...current, ...patch };
+  const conflict = findSessionConflict(classes, next);
+  if (conflict) return { classes, conflict };
+  return { classes: classes.map((row) => (row.id === classId ? next : row)) };
 }

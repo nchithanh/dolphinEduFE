@@ -5,9 +5,9 @@ import type { Stage } from "./types";
 
 /** Hardcoded FE — no backend. */
 export const DEMO_ORG = {
-  id: "pulse-studio",
-  name: "Pulse Studio",
-  slug: "pulse-studio",
+  id: "ma-dance",
+  name: "MA Dance",
+  slug: "ma-dance",
   status: "active",
 } as const;
 
@@ -73,7 +73,7 @@ function item(
 export const HARDCODED_MENU: MenuResponse = {
   ok: true,
   organization: { ...DEMO_ORG },
-  user: { id: "user_ha", email: "ha@pulse.local", name: "Hà" },
+  user: { id: "user_ha", email: "ha@ma-dance.local", name: "Hà" },
   groups: [
     {
       id: "overview",
@@ -82,8 +82,7 @@ export const HARDCODED_MENU: MenuResponse = {
       icon: null,
       items: [
         item("overview", "overview", "Khóa đang tuyển, lớp hôm nay", 0, "live", "Tổng quan", "Dashboard"),
-        item("schedule", "schedule", "Lịch tuần studio", 1, "stub", "Lịch", "Schedule"),
-        item("activity", "activity", "Nhật ký vận hành", 2, "stub", "Hoạt động", "Activity"),
+        item("schedule", "schedule", "1 lịch Google trung tâm — nội bộ (A11)", 1, "live", "Lịch", "Schedule"),
       ],
     },
     {
@@ -92,13 +91,13 @@ export const HARDCODED_MENU: MenuResponse = {
       sort_order: 1,
       icon: null,
       items: [
-        item("students", "student", "Hồ sơ và ghi danh khóa", 0, "live", "Học viên", "Students"),
-        item("courses", "course", "Tạo khóa, tuyển sinh, sinh lớp", 1, "live", "Khóa học", "Courses"),
-        item("classes", "class", "Buổi học theo khóa — start/end", 2, "live", "Lớp học", "Classes"),
-        item("teachers", "teacher", "Giáo viên gán vào khóa", 3, "live", "Giáo viên", "Teachers"),
-        item("classrooms", "classroom", "Studio, sàn tập", 4, "live", "Phòng", "Rooms"),
-        item("inbox", "inbox", "Hội thoại + AI", 5, "disabled", "Inbox", "Inbox"),
-        item("tasks", "task", "Giao việc, lọc trạng thái, người nhận", 6, "live", "Tác vụ", "Tasks"),
+        item("students", "student", "Hồ sơ HV / phụ huynh (A4)", 0, "live", "Học viên", "Students"),
+        item("courses", "course", "Tạo khóa, tuyển sinh, sinh lớp (A2)", 1, "live", "Khóa học", "Courses"),
+        item("classes", "class", "Buổi học — đổi giờ/phòng/GV (A2)", 2, "live", "Lớp học", "Classes"),
+        item("teachers", "teacher", "Giáo viên + dự phòng (A5)", 3, "live", "Giáo viên", "Teachers"),
+        item("classrooms", "classroom", "7 phòng · Q10 / Q3 / PN (A1)", 4, "live", "Phòng", "Rooms"),
+        item("packages", "package", "Gói buổi · trừ khi điểm danh (A6)", 5, "live", "Gói buổi", "Session packs"),
+        item("inbox", "inbox", "Hội thoại + AI", 6, "disabled", "Inbox", "Inbox"),
       ],
     },
     {
@@ -107,9 +106,9 @@ export const HARDCODED_MENU: MenuResponse = {
       sort_order: 2,
       icon: null,
       items: [
-        item("campaigns", "campaign", "Tin hàng loạt — cần duyệt", 0, "stub", "Chiến dịch", "Campaigns", "human"),
-        item("leads", "lead", "Nguồn đăng ký khóa", 1, "stub", "Nguồn đăng ký", "Lead sources"),
-        item("consult", "consult", "Tư vấn ghi danh", 2, "stub", "Tư vấn", "Consulting"),
+        item("leads", "lead", "Giữa khóa theo level · sĩ số 10–15 (A3)", 0, "live", "Ghi danh giữa khóa", "Mid-course enroll"),
+        item("promotions", "promo", "Mã giảm / voucher (A12)", 1, "live", "Promotion", "Promotions"),
+        item("campaigns", "campaign", "Sinh nhật · Zalo / email hàng loạt (A13)", 2, "live", "Chăm sóc", "Care"),
       ],
     },
     {
@@ -118,20 +117,45 @@ export const HARDCODED_MENU: MenuResponse = {
       sort_order: 3,
       icon: null,
       items: [
-        item("invoices", "invoice", "Hóa đơn học phí", 0, "stub", "Hóa đơn", "Invoices"),
-        item("payment", "payment", "Thu học phí — cần duyệt", 1, "stub", "Thanh toán", "Payments", "human"),
-        item("reports", "report", "Doanh thu demo — TODO số liệu thật", 2, "stub", "Báo cáo doanh thu", "Revenue"),
+        item("payment", "payment", "Thu học phí · công nợ · CK+bill (A7)", 0, "live", "Thu học phí", "Fee collection", "human"),
+        item("holds", "hold", "Bảo lưu — QL duyệt (A8)", 1, "live", "Bảo lưu", "Holds"),
+        item("reports", "report", "Doanh thu theo chi nhánh (A14)", 2, "live", "Doanh thu", "Revenue"),
+      ],
+    },
+    {
+      id: "ops",
+      label: "Vận hành",
+      sort_order: 4,
+      icon: null,
+      items: [
+        item("attendance", "attendance", "Có mặt / vắng trên CRM (A9)", 0, "live", "Điểm danh tay", "Manual attendance"),
+        item("qr", "qr", "Điểm danh bằng mã QR (A10)", 1, "live", "Điểm danh QR", "QR attendance"),
+        item("tasks", "task", "Giao việc, hạn, trạng thái (B2)", 2, "live", "Tác vụ", "Tasks"),
+        item("rentals", "rental", "Thuê studio — khác gán phòng lớp (B2)", 3, "live", "Đặt phòng thuê", "Studio rental"),
+        item("ai-ops", "ai-ops", "Câu lệnh → form; cảnh báo hết buổi / nợ (B2)", 4, "live", "AI vận hành", "AI ops"),
+        item("intelligent", "intelligent", "Cảnh báo cuối ngày + duyệt giải pháp (B2)", 5, "live", "Intelligent", "Intelligent"),
+      ],
+    },
+    {
+      id: "surface",
+      label: "Mặt ngoài",
+      sort_order: 5,
+      icon: null,
+      items: [
+        item("website", "website", "Site giới thiệu — không login HV/GV (B1)", 0, "live", "Website công khai", "Public site"),
+        item("portal", "portal", "HV / GV xem lịch · lớp · KM (B1)", 1, "live", "Portal HV & GV", "Student portal"),
+        item("store", "store", "Catalog / giỏ — ngoài lớp (B1)", 2, "live", "Bán hàng", "Store"),
+        item("care-ai", "care-ai", "Dolphin Care đa kênh 24/7 (B1)", 3, "live", "AI tuyển sinh", "AI enrollment"),
       ],
     },
     {
       id: "sys",
       label: "Cài đặt",
-      sort_order: 4,
+      sort_order: 6,
       icon: null,
       items: [
-        item("settings", "settings", "Studio, chi nhánh", 0, "stub", "Cài đặt chung", "General"),
-        item("access", "access", "Ai được làm gì", 1, "stub", "Phân quyền", "Roles"),
-        item("audit", "audit", "Ai đã duyệt, đã đổi", 2, "stub", "Nhật ký hệ thống", "System log"),
+        item("access", "access", "Chủ / QL / lễ tân / GV (A1)", 0, "live", "Phân quyền", "Roles"),
+        item("settings", "settings", "Studio, chi nhánh", 1, "stub", "Cài đặt chung", "General"),
       ],
     },
   ],

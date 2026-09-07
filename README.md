@@ -31,10 +31,10 @@ Repo: https://github.com/nchithanh/dolphinEduFE
 
 ## Product slice (demo FE)
 
-Hardcoded **Pulse Studio** canvas. Menu **hardcode** (`lib/api-menu.ts`), không fetch backend.
+Hardcoded **MA Dance** canvas (3 CN · 7 phòng). Menu **hardcode** (`lib/api-menu.ts`), không fetch backend.
 
-- Live: Tổng quan · Khóa học · Lớp học · Học viên · Giáo viên · Phòng tập
+- Live: hạng mục báo giá A1–A14 + B2; B1 là preview
 - Domain: khóa → ghi danh → sinh lớp (status start/end)
-- Persist: `edu-locale`, `edu-branch` (không đụng key Ops)
+- Persist: `edu-locale`, `edu-theme`, `edu-branch`, `edu-role` (không đụng key Ops)
 
 Details: `documentations/overview.md`, `context/scope.md`.

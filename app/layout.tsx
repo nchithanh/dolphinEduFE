@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
@@ -10,8 +10,14 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Dolphin Edu",
+  title: "MA Dance · CRM",
   description: "CRM booking học — Agent chọn UI. Chat là cửa vào.",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
 };
 
 export default function RootLayout({
@@ -20,8 +26,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="vi" className={inter.variable}>
-      <body className={inter.className}>{children}</body>
+    <html lang="vi" className={inter.variable} data-theme="light" suppressHydrationWarning>
+      <body className={inter.className}>
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              '(function(){try{var t=localStorage.getItem("edu-theme");if(t==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}})();',
+          }}
+        />
+        {children}
+      </body>
     </html>
   );
 }

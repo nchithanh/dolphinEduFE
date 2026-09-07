@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { branchName } from "../../lib/branch";
 import {
   CLASS_STATUS_LABEL,
   COURSE_STATUS_LABEL,
@@ -27,6 +28,7 @@ type StaffBoardProps = {
   classes: DemoClass[];
   rooms?: DemoRoom[];
   onPromo: () => void;
+  onCover?: (classId: string, teacherId: string) => void;
 };
 
 type DetailTab = "overview" | "schedule" | "history" | "perf";
@@ -44,6 +46,7 @@ export function StaffBoard({
   classes,
   rooms = DEMO_ROOMS,
   onPromo,
+  onCover,
 }: StaffBoardProps) {
   const today = localIsoDate();
   const [selectedId, setSelectedId] = useState<string | null>(null);
@@ -345,7 +348,7 @@ export function StaffBoard({
                 <div>
                   <p className="ops-detail__name">{selected.specialty}</p>
                   <p className="ops-staff__meta-line">
-                    {demoTeacherCode(selected.id)} · ★ {selectedStats.rating.toFixed(1)} · Pulse Studio
+                    {demoTeacherCode(selected.id)} · ★ {selectedStats.rating.toFixed(1)} · MA Dance
                   </p>
                 </div>
               </div>
@@ -429,7 +432,7 @@ export function StaffBoard({
                         </div>
                         <div>
                           <dt>Studio</dt>
-                          <dd>Pulse Studio · Q1</dd>
+                          <dd>MA Dance · {selected.branchIds?.map((id) => branchName(id)).join(" · ") ?? branchName("br-q1")}</dd>
                         </div>
                         <div>
                           <dt>Rating</dt>
@@ -442,12 +445,14 @@ export function StaffBoard({
                         <div>
                           <dt>SĐT</dt>
                           <dd>
-                            <a href={`tel:${selectedStats.phone}`}>{selectedStats.phone}</a>
+                            <a href={`tel:${(selected.phone ?? selectedStats.phone).replace(/\s/g, "")}`}>
+                              {selected.phone ?? selectedStats.phone}
+                            </a>
                           </dd>
                         </div>
                         <div>
                           <dt>Email</dt>
-                          <dd>{selectedStats.email}</dd>
+                          <dd>{selected.email ?? selectedStats.email}</dd>
                         </div>
                       </dl>
 
@@ -491,6 +496,18 @@ export function StaffBoard({
                         <button className="ops-page__cta" type="button" onClick={onPromo}>
                           Gán khóa
                         </button>
+                        {onCover && selectedToday[0] ? (
+                          <button
+                            type="button"
+                            className="ops-page__ghost"
+                            onClick={() => {
+                              const cover = teachers.find((t) => t.id !== selected.id);
+                              if (cover) onCover(selectedToday[0].id, cover.id);
+                            }}
+                          >
+                            Gán dự phòng buổi hôm nay
+                          </button>
+                        ) : null}
                         <button className="ops-page__ghost" type="button" disabled title="Demo">
                           Gửi thông báo
                         </button>

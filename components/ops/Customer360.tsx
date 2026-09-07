@@ -10,6 +10,7 @@ import {
   formatViDate,
 } from "../../lib/edu";
 import type { DemoClass, DemoCourse, DemoStudent } from "../../lib/types";
+import { displayPhone, type DemoRole } from "../../lib/role";
 import { PageInfo } from "./PageInfo";
 import { StatusChip, classChip, courseChip } from "./StatusChip";
 import "./chrome.css";
@@ -23,9 +24,10 @@ type Customer360Props = {
   onEnroll: () => void;
   onBack: () => void;
   onPromo: () => void;
+  role?: DemoRole;
 };
 
-export function Customer360({ student, courses, classes, onEnroll, onBack, onPromo }: Customer360Props) {
+export function Customer360({ student, courses, classes, onEnroll, onBack, onPromo, role = "manager" }: Customer360Props) {
   const enrolled = coursesForStudent(courses, student.id);
   const sessions = classesForStudent(classes, student.id).sort((a, b) =>
     `${a.date}${a.startTime}`.localeCompare(`${b.date}${b.startTime}`),
@@ -65,17 +67,17 @@ export function Customer360({ student, courses, classes, onEnroll, onBack, onPro
             </div>
             <div>
               <dt>Số điện thoại</dt>
+              <dd>{displayPhone(student.kind === "child" ? student.guardian?.phone : student.phone, role)}</dd>
+            </div>
+            <div>
+              <dt>Phụ huynh</dt>
               <dd>
-                {student.phone ? (
-                  <a href={`tel:${student.phone.replace(/\s/g, "")}`}>{student.phone}</a>
-                ) : (
-                  "—"
-                )}
+                {student.guardian ? `${student.guardian.relation} ${student.guardian.name}` : "Người lớn"}
               </dd>
             </div>
             <div>
-              <dt>Khóa</dt>
-              <dd>{enrolled.length}</dd>
+              <dt>Ngày sinh</dt>
+              <dd>{student.dob ?? "—"}</dd>
             </div>
           </dl>
           <h3 className="ops-360__sub">Khóa đã ghi danh</h3>

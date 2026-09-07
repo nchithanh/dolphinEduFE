@@ -3,7 +3,7 @@
   flex-shrink: 0;
   object-fit: cover;
   object-position: center 18%;
-  background: var(--kuct-elevated, #17182f);
+  background: var(--kuct-elevated, #f3f3f1);
   border-radius: 50%;
 }
 
@@ -33,7 +33,7 @@
   font-weight: 700;
   letter-spacing: 0.02em;
   color: var(--kuct-accent);
-  background: var(--ops-lavender, color-mix(in srgb, var(--kuct-accent) 18%, #17182f));
+  background: var(--ops-lavender, color-mix(in srgb, var(--kuct-accent) 18%, #f3f3f1));
 }
 
 .ops-avatar--xs.ops-avatar--initials {
