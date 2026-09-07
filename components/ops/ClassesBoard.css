@@ -248,4 +248,17 @@
   .ops-classes .ops-classes__layout {
     grid-template-columns: 1fr;
   }
+
+  .ops-classes__aside,
+  .ops-classes__aside > .ops-detail,
+  .ops-classes__aside > .ops-aside-hint {
+    height: auto;
+    min-height: 0;
+  }
+}
+
+@media (max-width: 47.99rem) {
+  .ops-classes__actions {
+    grid-template-columns: 1fr;
+  }
 }

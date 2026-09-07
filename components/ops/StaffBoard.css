@@ -260,3 +260,9 @@
     min-height: 22rem;
   }
 }
+
+@media (max-width: 47.99rem) {
+  .ops-staff__quick {
+    grid-template-columns: 1fr;
+  }
+}

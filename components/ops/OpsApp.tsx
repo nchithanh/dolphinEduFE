@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import { CHIP } from "../../lib/chat";
 import { cancelClass, enrollStudent, generateClasses, patchClass } from "../../lib/edu";
 import { resolveChat } from "../../lib/intent";
@@ -17,7 +17,9 @@ import {
 } from "../../lib/seed";
 import { HARDCODED_MENU, mapMenuGroups } from "../../lib/api-menu";
 import { ALL_BRANCH_ID, readStoredBranch, writeStoredBranch } from "../../lib/branch";
+import { BOOT_SPLASH_FADE_MS, BOOT_SPLASH_MS } from "../../lib/brand";
 import { CHROME, readStoredLocale, writeStoredLocale, type OpsLocale } from "../../lib/locale";
+import { getPhoneSnapshot, subscribePhone } from "../../lib/phone";
 import { applyDocumentTheme, readStoredTheme, writeStoredTheme, type EduTheme } from "../../lib/theme";
 import { isLiveStage, navItemFromGroups, type NavGroup } from "../../lib/nav";
 import { quoteScopeForStage } from "../../lib/quote-scope";
@@ -41,6 +43,8 @@ import type {
   Stage,
 } from "../../lib/types";
 import { AiReveal } from "./AiReveal";
+import { BootSplash } from "./BootSplash";
+import { MobileGate } from "./MobileGate";
 import { ChatPanel } from "./ChatPanel";
 import { ClassesBoard } from "./ClassesBoard";
 import { ComingSoon } from "./ComingSoon";
@@ -151,6 +155,9 @@ export function OpsApp() {
   const [theme, setThemeState] = useState<EduTheme>("light");
   const [branchId, setBranchIdState] = useState(ALL_BRANCH_ID);
   const [role, setRoleState] = useState<DemoRole>("manager");
+  const [bootLeaving, setBootLeaving] = useState(false);
+  const [bootVisible, setBootVisible] = useState(true);
+  const phone = useSyncExternalStore(subscribePhone, getPhoneSnapshot, () => false);
 
   const menuGroups = useMemo(() => mapMenuGroups(HARDCODED_MENU, locale), [locale]);
   const orgName = HARDCODED_MENU.organization.name;
@@ -191,6 +198,17 @@ export function OpsApp() {
     setBranchIdState(readStoredBranch());
     setRoleState(readStoredRole());
   }, []);
+
+  useEffect(() => {
+    const hold = window.setTimeout(() => setBootLeaving(true), BOOT_SPLASH_MS);
+    return () => window.clearTimeout(hold);
+  }, []);
+
+  useEffect(() => {
+    if (!bootLeaving) return;
+    const gone = window.setTimeout(() => setBootVisible(false), BOOT_SPLASH_FADE_MS);
+    return () => window.clearTimeout(gone);
+  }, [bootLeaving]);
 
   useEffect(() => {
     if (reveal) return;
@@ -654,36 +672,43 @@ export function OpsApp() {
     );
 
   return (
-    <Shell
-      active={stage}
-      canvasKey={focusKey}
-      onSelect={selectNav}
-      groups={menuGroups}
-      orgName={orgName}
-      menuState={menuState}
-      onRetryMenu={loadMenu}
-      locale={locale}
-      onLocaleChange={setLocale}
-      theme={theme}
-      onThemeChange={setTheme}
-      branchId={branchId}
-      onBranchChange={setBranch}
-      role={role}
-      onRoleChange={setRole}
-      canvas={canvasWithScope}
-      chat={
-        <ChatPanel
-          draft={draft}
-          onDraftChange={setDraft}
-          onSubmit={onSubmit}
-          onNew={() => {
-            setDraft("");
-            setMessages([]);
-          }}
-          messages={messages}
+    <>
+      {phone ? (
+        <MobileGate locale={locale} onLocaleChange={setLocale} />
+      ) : (
+        <Shell
+          active={stage}
+          canvasKey={focusKey}
+          onSelect={selectNav}
+          groups={menuGroups}
+          orgName={orgName}
+          menuState={menuState}
+          onRetryMenu={loadMenu}
+          locale={locale}
+          onLocaleChange={setLocale}
+          theme={theme}
+          onThemeChange={setTheme}
+          branchId={branchId}
+          onBranchChange={setBranch}
+          role={role}
+          onRoleChange={setRole}
+          canvas={canvasWithScope}
+          chat={
+            <ChatPanel
+              draft={draft}
+              onDraftChange={setDraft}
+              onSubmit={onSubmit}
+              onNew={() => {
+                setDraft("");
+                setMessages([]);
+              }}
+              messages={messages}
+            />
+          }
         />
-      }
-    />
+      )}
+      {bootVisible ? <BootSplash leaving={bootLeaving} /> : null}
+    </>
   );
 }
 

@@ -149,3 +149,18 @@
   color: var(--kuct-muted);
   font-size: 0.85rem;
 }
+
+@media (max-width: 47.99rem) {
+  .ops-quote-roster li {
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+
+  .ops-quote-roster__acts {
+    width: 100%;
+  }
+
+  .ops-preview-site {
+    padding: 0.85rem 0.9rem;
+  }
+}

@@ -16,21 +16,10 @@ import type { OpsLocale } from "../../lib/locale";
 import type { DemoRole } from "../../lib/role";
 import type { EduTheme } from "../../lib/theme";
 import { CHROME } from "../../lib/locale";
+import { getPhoneSnapshot, subscribePhone } from "../../lib/phone";
 import { CanvasBar } from "./CanvasBar";
 import { ToolNav } from "./ToolNav";
 import "./Shell.css";
-
-const PHONE_MQ = "(max-width: 47.99rem)";
-
-function subscribePhone(onChange: () => void) {
-  const mq = window.matchMedia(PHONE_MQ);
-  mq.addEventListener("change", onChange);
-  return () => mq.removeEventListener("change", onChange);
-}
-
-function getPhoneSnapshot() {
-  return window.matchMedia(PHONE_MQ).matches;
-}
 
 type ShellProps = {
   active: Stage;

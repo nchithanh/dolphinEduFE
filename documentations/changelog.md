@@ -2,6 +2,10 @@
 
 ## 2026-09-07
 
+- **Boot splash:** overlay sân khấu MA Dance (đen/ivory, logo jpeg trên ô trắng 10px, wordmark DANCE STUDIO, beat 2s) rồi fade vào CRM. Hardcode `BOOT_SPLASH_MS = 2000` — tạm, không fetch.
+- **Mobile gate:** `< 48rem` hiện lại trang thông báo tablet/desktop (`MobileGate`, logo MA, VI/EN) — ẩn shell CRM. Splash 2s rồi gate.
+- Loading đổi tab (`AiReveal`): logo MA Dance thay mascot Dolphin. Chat Ask Dolphin vẫn mascot cũ.
+- **Mobile all canvas:** Khóa học + Tác vụ xếp 1 cột như Lớp/HV (sửa CSS specificity). Phone `< 48rem`: toolbar full width, KPI/nút 1 cột, bảng `min-width` + cuộn ngang, canvas `overflow-x: hidden`. Tổng quan / 360 / quote roster / banner scope cùng breakpoint.
 - **Mobile** (`< 48rem`): bỏ gate tablet-only. Drawer nav (hamburger) · CanvasBar logo MA Dance + Ask icon · chat overlay full màn. Hub 1 cột. Bảng cuộn ngang / panel chi tiết xếp dưới (đã có từ `64rem`).
 - Hub **Chức năng CRM · MA Dance**: card hạng mục cùng chiều cao trong lưới (`grid-auto-rows: 1fr` + stretch).
 - Chat **Ask Dolphin**: drawer overlay như trước — mặc định đóng, click mới mở (hoàn tác dock luôn mở).

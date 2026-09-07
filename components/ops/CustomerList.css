@@ -384,4 +384,17 @@
   .ops-clist .ops-clist__layout {
     grid-template-columns: 1fr;
   }
+
+  .ops-clist__aside,
+  .ops-clist__aside > .ops-detail,
+  .ops-clist__aside > .ops-aside-hint {
+    height: auto;
+    min-height: 0;
+  }
+}
+
+@media (max-width: 47.99rem) {
+  .ops-clist__quick {
+    grid-template-columns: 1fr;
+  }
 }

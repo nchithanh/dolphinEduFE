@@ -758,6 +758,38 @@
   }
 }
 
+@media (max-width: 47.99rem) {
+  .ops-soon,
+  .ops-board__layout,
+  .ops-board__main,
+  .ops-detail {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .ops-table-tools {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .ops-table-tools select {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .ops-table-wrap {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .ops-table {
+    min-width: 28rem;
+  }
+
+  .ops-detail__actions {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 36rem) {
   .ops-kpi-row,
   .ops-detail__actions {

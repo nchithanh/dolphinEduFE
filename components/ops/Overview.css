@@ -774,3 +774,17 @@
 .ops-over__dot--free {
   color: var(--ops-paid);
 }
+
+@media (max-width: 47.99rem) {
+  .ops-over__timeline li {
+    grid-template-columns: 2.6rem minmax(0, 1fr);
+  }
+
+  .ops-over__row--class {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .ops-over__row--pay {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+}

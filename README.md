@@ -36,5 +36,6 @@ Hardcoded **MA Dance** canvas (3 CN · 7 phòng). Menu **hardcode** (`lib/api-me
 - Live: hạng mục báo giá A1–A14 + B2; B1 là preview
 - Domain: khóa → ghi danh → sinh lớp (status start/end)
 - Persist: `edu-locale`, `edu-theme`, `edu-branch`, `edu-role` (không đụng key Ops)
+- Boot splash sân khấu MA Dance: **2s hardcode** rồi vào CRM (`BOOT_SPLASH_MS`)
 
 Details: `documentations/overview.md`, `context/scope.md`.

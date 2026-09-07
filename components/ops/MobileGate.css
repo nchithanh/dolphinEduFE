@@ -1,0 +1,115 @@
+.ops-gate {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 100svh;
+  overflow: hidden;
+  padding: 1.5rem 1.15rem calc(1.5rem + env(safe-area-inset-bottom));
+  color: #f3eee6;
+  background: #0a0a0a;
+}
+
+.ops-gate__stage {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.ops-gate__spot--top {
+  position: absolute;
+  top: -18%;
+  left: 50%;
+  width: min(52rem, 140vw);
+  height: 52%;
+  background: radial-gradient(ellipse at center, rgb(243 238 230 / 0.14) 0%, transparent 68%);
+  transform: translateX(-50%);
+}
+
+.ops-gate__spot--floor {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  width: min(26rem, 78vw);
+  height: 16%;
+  background: radial-gradient(ellipse at center, rgb(243 238 230 / 0.08) 0%, transparent 72%);
+  transform: translateX(-50%);
+}
+
+.ops-gate__card {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  justify-items: center;
+  gap: 0.85rem;
+  width: min(22rem, 100%);
+  text-align: center;
+}
+
+.ops-gate__plate {
+  box-sizing: border-box;
+  width: 7.5rem;
+  height: 7.5rem;
+  padding: 0.4rem;
+  background: #ffffff;
+  border: 1px solid rgb(243 238 230 / 0.22);
+  border-radius: 10px;
+  box-shadow: 0 18px 48px rgb(0 0 0 / 0.45);
+}
+
+.ops-gate__logo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.ops-gate__title {
+  margin: 0.35rem 0 0;
+  font-size: 1.15rem;
+  font-weight: 650;
+  letter-spacing: -0.03em;
+  line-height: 1.3;
+  color: #f3eee6;
+}
+
+.ops-gate__body {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: #d4cdc0;
+}
+
+.ops-gate__hint {
+  margin: 0;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgb(243 238 230 / 0.55);
+}
+
+.ops-gate__lang {
+  display: flex;
+  gap: 0.35rem;
+  margin-top: 0.35rem;
+}
+
+.ops-gate__lang-btn {
+  min-width: 2.75rem;
+  min-height: 2.5rem;
+  padding: 0.35rem 0.7rem;
+  font: inherit;
+  font-size: 0.75rem;
+  font-weight: 650;
+  color: #d4cdc0;
+  background: transparent;
+  border: 1px solid rgb(243 238 230 / 0.22);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.ops-gate__lang-btn--on {
+  color: #0a0a0a;
+  background: #f3eee6;
+  border-color: #f3eee6;
+}

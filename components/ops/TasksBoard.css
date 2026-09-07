@@ -620,3 +620,23 @@
   color: var(--kuct-text);
   background: var(--kuct-menu-hover);
 }
+
+@media (max-width: 64rem) {
+  .ops-work .ops-work__layout {
+    grid-template-columns: 1fr;
+  }
+
+  .ops-work__aside,
+  .ops-work__aside > .ops-detail,
+  .ops-work__detail {
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+  }
+}
+
+@media (max-width: 47.99rem) {
+  .ops-work__form--inline {
+    grid-template-columns: 1fr;
+  }
+}

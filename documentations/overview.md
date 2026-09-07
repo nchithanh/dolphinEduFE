@@ -8,8 +8,10 @@ Agent SoT: `context/` + `documentations/` in this folder.
 
 ## Demo chrome
 
-Shell: **nav | canvas**. Chat **kéo ra từ phải** (Ask Dolphin / Escape / overlay). Design system: **MA Dance Light | Dark** (CanvasBar, persist `edu-theme`, mặc định Light). Light: canvas/bg `#F6F6F4` · sidebar/surface `#FFFFFF` · accent `#171717` (nút đen chữ trắng). Dark: canvas `#0A0A0A` · sidebar `#111111` · accent ivory `#F3EEE6` (nút chữ đen). Radius `10px`/`12px` · type title/section/metric/body/meta · control `40px`. CSS prefix `ops-*`. Nav `min(14.5rem,15.5svw)` · aside `min(26.5rem,34svw)` · section gap `~1.35rem`. **Mobile** (`< 48rem`): hamburger drawer · bar logo + Ask icon · chat full màn; không gate.
+Shell: **nav | canvas**. Chat **kéo ra từ phải** (Ask Dolphin / Escape / overlay). Design system: **MA Dance Light | Dark** (CanvasBar, persist `edu-theme`, mặc định Light). Light: canvas/bg `#F6F6F4` · sidebar/surface `#FFFFFF` · accent `#171717` (nút đen chữ trắng). Dark: canvas `#0A0A0A` · sidebar `#111111` · accent ivory `#F3EEE6` (nút chữ đen). Radius `10px`/`12px` · type title/section/metric/body/meta · control `40px`. CSS prefix `ops-*`. Nav `min(14.5rem,15.5svw)` · aside `min(26.5rem,34svw)` · section gap `~1.35rem`. **Mobile** (`< 48rem`): **gate** `MobileGate` — trang thông báo tablet/desktop, ẩn shell (VI/EN). Tablet+ : hamburger không dùng; canvas xếp 1 cột từ `64rem`.
 
+- **Boot splash** (mỗi lần vào app): overlay sân khấu đen `#0A0A0A` + logo MA trên ô trắng 10px + wordmark DANCE STUDIO + beat 5-6-7-8. Hardcode **2s** rồi fade ~480ms vào CRM (desktop/tablet) hoặc **MobileGate** (phone). Không fetch / không skip. `BootSplash`.
+- Đổi tab canvas: `AiReveal` hiện logo **MA Dance** (không mascot Dolphin) + nhãn “Đang mở…”. Chat Ask Dolphin vẫn mascot Dolphin.
 - Trái: logo **MA Dance** (`public/brand/ma-dance-logo.jpeg`) · org **MA Dance** · dòng phụ **Dolphin Edu**. Select chi nhánh (`edu-branch`: Q10 / Q3 / Phú Nhuận). Vai trò demo (`edu-role`). Menu `lib/api-menu.ts` — **không fetch API**. `live` = canvas; `stub` = Sắp có; `disabled` = ẩn.
 - Giữa: CanvasBar — search · Ask Dolphin · **Light|Dark** · VI|EN · user theo vai trò. Canvas + chat + seed **VI**.
 - Domain: **Khóa → ghi danh học viên → sinh lớp**. Không matching spa 1:1.

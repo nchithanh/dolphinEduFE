@@ -1,0 +1,245 @@
+.ops-boot {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  color: #f3eee6;
+  background: #0a0a0a;
+  animation: ops-boot-in 0.48s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.ops-boot--out {
+  pointer-events: none;
+  animation: ops-boot-out 0.48s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.ops-boot__stage {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.ops-boot__spot--top {
+  position: absolute;
+  top: -18%;
+  left: 50%;
+  width: min(52rem, 140vw);
+  height: 58%;
+  background: radial-gradient(ellipse at center, rgb(243 238 230 / 0.16) 0%, transparent 68%);
+  transform: translateX(-50%);
+}
+
+.ops-boot__spot--floor {
+  position: absolute;
+  bottom: 8%;
+  left: 50%;
+  width: min(28rem, 78vw);
+  height: 18%;
+  background: radial-gradient(ellipse at center, rgb(243 238 230 / 0.1) 0%, transparent 72%);
+  transform: translateX(-50%);
+}
+
+.ops-boot__ring,
+.ops-boot__ring--mid,
+.ops-boot__ring--wide {
+  position: absolute;
+  left: 50%;
+  top: 52%;
+  border: 1px solid rgb(243 238 230 / 0.1);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: ops-boot-ring 2s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.ops-boot__ring {
+  width: min(22rem, 68vw);
+  height: min(10.5rem, 28vw);
+}
+
+.ops-boot__ring--mid {
+  width: min(30rem, 86vw);
+  height: min(14rem, 36vw);
+  animation-delay: 0.12s;
+}
+
+.ops-boot__ring--wide {
+  width: min(38rem, 104vw);
+  height: min(17.5rem, 44vw);
+  opacity: 0.55;
+  animation-delay: 0.24s;
+}
+
+.ops-boot__mark {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  justify-items: center;
+  gap: 1.15rem;
+  padding: 1.5rem;
+}
+
+.ops-boot__plate {
+  box-sizing: border-box;
+  width: 10.5rem;
+  height: 10.5rem;
+  padding: 0.55rem;
+  background: #ffffff;
+  border: 1px solid rgb(243 238 230 / 0.22);
+  border-radius: 10px;
+  box-shadow:
+    0 0 0 1px rgb(10 10 10 / 0.35),
+    0 18px 48px rgb(0 0 0 / 0.45);
+  animation: ops-boot-lift 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.ops-boot__logo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.ops-boot__studio {
+  margin: 0;
+  padding-left: 0.42em;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.42em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: #f3eee6;
+  animation: ops-boot-lift 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both;
+}
+
+.ops-boot__beats {
+  display: flex;
+  gap: 0.45rem;
+}
+
+.ops-boot__beats span {
+  width: 0.38rem;
+  height: 0.38rem;
+  background: rgb(243 238 230 / 0.22);
+  border-radius: 10px;
+  transform: rotate(45deg);
+  animation: ops-boot-beat 2s linear both;
+}
+
+.ops-boot__beats span:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.ops-boot__beats span:nth-child(3) {
+  animation-delay: 1s;
+}
+
+.ops-boot__beats span:nth-child(4) {
+  animation-delay: 1.5s;
+}
+
+.ops-boot__bar {
+  display: block;
+  width: 8.75rem;
+  height: 1px;
+  overflow: hidden;
+  background: rgb(243 238 230 / 0.16);
+  border-radius: 10px;
+}
+
+.ops-boot__bar::after {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #f3eee6;
+  transform-origin: left center;
+  animation: ops-boot-bar 2s linear both;
+  content: "";
+}
+
+@keyframes ops-boot-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes ops-boot-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes ops-boot-lift {
+  from {
+    opacity: 0;
+    transform: translateY(0.7rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ops-boot-ring {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.88);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes ops-boot-beat {
+  0%,
+  8% {
+    background: rgb(243 238 230 / 0.22);
+  }
+  12%,
+  38% {
+    background: #f3eee6;
+  }
+  48%,
+  100% {
+    background: rgb(243 238 230 / 0.28);
+  }
+}
+
+@keyframes ops-boot-bar {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ops-boot,
+  .ops-boot--out,
+  .ops-boot__ring,
+  .ops-boot__ring--mid,
+  .ops-boot__ring--wide,
+  .ops-boot__plate,
+  .ops-boot__studio,
+  .ops-boot__beats span,
+  .ops-boot__bar::after {
+    animation: none;
+  }
+
+  .ops-boot--out {
+    opacity: 0;
+  }
+
+  .ops-boot__bar::after {
+    transform: scaleX(1);
+  }
+}

@@ -386,7 +386,20 @@
   border-radius: var(--ops-radius);
 }
 
-@media (max-width: 36rem) {
+@media (max-width: 64rem) {
+  .ops-courses .ops-courses__layout {
+    grid-template-columns: 1fr;
+  }
+
+  .ops-courses__aside,
+  .ops-courses__aside > .ops-detail,
+  .ops-courses__aside > .ops-courses__aside-hint {
+    height: auto;
+    min-height: 0;
+  }
+}
+
+@media (max-width: 47.99rem) {
   .ops-courses__form-grid {
     grid-template-columns: 1fr;
   }
