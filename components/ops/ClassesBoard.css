@@ -16,18 +16,6 @@
   color: var(--kuct-muted);
 }
 
-.ops-classes__today {
-  flex-shrink: 0;
-  margin: 0;
-}
-
-.ops-classes__today-title {
-  margin: 0 0 0.5rem;
-  font-size: 0.8125rem;
-  font-weight: 650;
-  color: var(--kuct-text);
-}
-
 /* Cột trái: crumb + head + KPI + bảng | cột phải: detail full height từ đỉnh */
 .ops-classes .ops-classes__layout {
   flex: 1 1 auto;
@@ -53,8 +41,7 @@
 
 .ops-classes__main > .ops-crumb,
 .ops-classes__main > .ops-page__head,
-.ops-classes__main > .ops-kpi-row,
-.ops-classes__main > .ops-classes__today {
+.ops-classes__main > .ops-kpi-row {
   flex-shrink: 0;
 }
 

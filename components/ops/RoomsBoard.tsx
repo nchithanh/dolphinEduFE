@@ -5,7 +5,6 @@ import { CLASS_STATUS_LABEL, classStatus, formatViDate, localIsoDate } from "../
 import { ALL_BRANCH_ID, DEMO_BRANCHES, branchName } from "../../lib/branch";
 import {
   ROOMS_KPI,
-  ROOMS_USAGE,
   demoRoomCode,
   demoRoomStats,
   roomStatusLabel,
@@ -13,6 +12,8 @@ import {
   type RoomUiStatus,
 } from "../../lib/rooms-demo";
 import type { DemoClass, DemoCourse, DemoRoom } from "../../lib/types";
+import { shouldRevealDetail, useDetailReveal } from "../../lib/detail-reveal";
+import { AiReveal } from "./AiReveal";
 import { MoreMenu, copyId } from "./MoreMenu";
 import { StatusChip, classChip } from "./StatusChip";
 import "./chrome.css";
@@ -65,6 +66,7 @@ export function RoomsBoard({ title, rooms, classes, courses, branchId, onChange,
   const [showForm, setShowForm] = useState(false);
   const [page, setPage] = useState(0);
   const [detailTab, setDetailTab] = useState<DetailTab>("overview");
+  const { busy: detailBusy, start: startDetail } = useDetailReveal();
 
   const scoped = useMemo(
     () => rooms.filter((r) => (branchId === ALL_BRANCH_ID ? true : r.branchId === branchId)),
@@ -112,17 +114,12 @@ export function RoomsBoard({ title, rooms, classes, courses, branchId, onChange,
     return [...set];
   }, [scoped]);
 
-  const spanHours = ROOMS_USAGE.endHour - ROOMS_USAGE.startHour;
-  const nowPct = Math.min(
-    100,
-    Math.max(0, ((ROOMS_USAGE.nowHour - ROOMS_USAGE.startHour) / spanHours) * 100),
-  );
-
   function resetPage() {
     setPage(0);
   }
 
   function pickRoom(id: string) {
+    if (shouldRevealDetail(id, selectedId, panelDismissed)) startDetail();
     setSelectedId(id);
     setPanelDismissed(false);
     setDetailTab("overview");
@@ -223,36 +220,6 @@ export function RoomsBoard({ title, rooms, classes, courses, branchId, onChange,
               </li>
             ))}
           </ul>
-
-          <section className="ops-rooms__usage" aria-labelledby="ops-rooms-usage-title">
-            <h2 id="ops-rooms-usage-title" className="ops-rooms__usage-title">
-              Tổng quan sử dụng hôm nay
-            </h2>
-            <div className="ops-rooms__usage-bar" role="img" aria-label="Mật độ sử dụng phòng từ 06:00 đến 22:00">
-              {ROOMS_USAGE.segments.map((seg) => {
-                const width = ((seg.to - seg.from) / spanHours) * 100;
-                return (
-                  <span
-                    key={seg.id}
-                    className={`ops-rooms__usage-seg ops-rooms__usage-seg--${seg.tone}`}
-                    style={{ width: `${width}%` }}
-                    title={`${seg.label}: ${String(seg.from).padStart(2, "0")}:00–${String(seg.to).padStart(2, "0")}:00`}
-                  />
-                );
-              })}
-              <span className="ops-rooms__usage-now" style={{ left: `${nowPct}%` }} title="17:15">
-                <i />
-                <em>17:15</em>
-              </span>
-            </div>
-            <div className="ops-rooms__usage-scale" aria-hidden>
-              <span>06:00</span>
-              <span>10:00</span>
-              <span>14:00</span>
-              <span>18:00</span>
-              <span>22:00</span>
-            </div>
-          </section>
 
           {showForm ? (
             <form className="ops-rooms__form" onSubmit={submit}>
@@ -494,7 +461,9 @@ export function RoomsBoard({ title, rooms, classes, courses, branchId, onChange,
         </div>
 
         <aside className="ops-board__aside ops-rooms__aside">
-          {selected && selectedStats && selectedStatus ? (
+          {detailBusy ? (
+            <AiReveal compact label="Đang mở phòng…" />
+          ) : selected && selectedStats && selectedStatus ? (
             <section className="ops-detail ops-rooms__detail" aria-labelledby="edu-room-detail">
               <div className="ops-detail__head">
                 <div className="ops-detail__head-title">

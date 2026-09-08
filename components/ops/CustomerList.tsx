@@ -1,17 +1,17 @@
 "use client";
 
-import { useEffect, useMemo, useState, type CSSProperties } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { COURSE_STATUS_LABEL, courseStatus, coursesForStudent, teacherName } from "../../lib/edu";
 import {
   STUDENTS_KPI,
-  STUDENTS_SEGMENTS,
-  STUDENTS_TREND,
   demoStudentCode,
   demoStudentStats,
 } from "../../lib/students-demo";
 import type { DemoCourse, DemoStudent, DemoTeacher } from "../../lib/types";
 import { DEMO_TEACHERS } from "../../lib/seed";
 import { canSeeFees, displayPhone, type DemoRole } from "../../lib/role";
+import { shouldRevealDetail, useDetailReveal } from "../../lib/detail-reveal";
+import { AiReveal } from "./AiReveal";
 import { MoreMenu, copyId } from "./MoreMenu";
 import { StatusChip, courseChip } from "./StatusChip";
 import { UserAvatar } from "./UserAvatar";
@@ -42,28 +42,6 @@ function initials(name: string): string {
     .toUpperCase();
 }
 
-function TrendChart() {
-  const max = Math.max(...STUDENTS_TREND.map((p) => p.v), 1);
-  const w = 280;
-  const h = 52;
-  const pad = 6;
-  const pts = STUDENTS_TREND.map((p, i) => {
-    const x = pad + (i * (w - pad * 2)) / Math.max(1, STUDENTS_TREND.length - 1);
-    const y = h - pad - (p.v / max) * (h - pad * 2);
-    return `${x},${y}`;
-  }).join(" ");
-  return (
-    <svg className="ops-clist__trend" viewBox={`0 0 ${w} ${h}`} role="img" aria-label="Xu hướng tuyển sinh 6 tháng">
-      <polyline fill="none" stroke="var(--kuct-accent)" strokeWidth="2" points={pts} />
-      {STUDENTS_TREND.map((p, i) => {
-        const x = pad + (i * (w - pad * 2)) / Math.max(1, STUDENTS_TREND.length - 1);
-        const y = h - pad - (p.v / max) * (h - pad * 2);
-        return <circle key={p.m} cx={x} cy={y} r="2.25" fill="var(--kuct-accent)" />;
-      })}
-    </svg>
-  );
-}
-
 export function CustomerList({
   title,
   students,
@@ -80,6 +58,7 @@ export function CustomerList({
   const [panelDismissed, setPanelDismissed] = useState(false);
   const [page, setPage] = useState(0);
   const [detailTab, setDetailTab] = useState<DetailTab>("overview");
+  const { busy: detailBusy, start: startDetail } = useDetailReveal();
 
   const filtered = useMemo(() => {
     const q = search.trim().toLowerCase();
@@ -113,6 +92,7 @@ export function CustomerList({
     : "—";
 
   function pickStudent(id: string) {
+    if (shouldRevealDetail(id, selectedId, panelDismissed)) startDetail();
     setPanelDismissed(false);
     setSelectedId(id);
     setDetailTab("overview");
@@ -176,27 +156,6 @@ export function CustomerList({
               </li>
             ))}
           </ul>
-
-          <div className="ops-seg">
-            <article className="ops-seg__card ops-clist__seg">
-              <h2 className="ops-seg__title">Phân khúc học viên</h2>
-              <ul className="ops-clist__seg-grid">
-                {STUDENTS_SEGMENTS.map((seg) => (
-                  <li key={seg.id}>
-                    <span className="ops-clist__seg-mark" style={{ "--seg": seg.color } as CSSProperties} aria-hidden />
-                    <span className="ops-clist__seg-label">{seg.label}</span>
-                    <strong className="ops-clist__seg-count">{seg.count}</strong>
-                    <span className="ops-clist__seg-pct">{seg.pct}</span>
-                  </li>
-                ))}
-              </ul>
-            </article>
-            <article className="ops-seg__card">
-              <h2 className="ops-seg__title">Xu hướng tuyển sinh</h2>
-              <TrendChart />
-              <p className="ops-wid__note">6 tháng gần nhất · demo hardcode</p>
-            </article>
-          </div>
 
           <div className="ops-table-card">
             <div className="ops-table-tools">
@@ -375,7 +334,9 @@ export function CustomerList({
         </div>
 
         <aside className="ops-clist__aside">
-          {selected && selectedStats ? (
+          {detailBusy ? (
+            <AiReveal compact label="Đang mở hồ sơ…" />
+          ) : selected && selectedStats ? (
             <section className="ops-detail ops-clist__detail" aria-labelledby="edu-student-detail">
               <div className="ops-detail__head">
                 <div className="ops-detail__head-title">

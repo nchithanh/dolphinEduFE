@@ -1,5 +1,19 @@
 # Changelog — Dolphin Edu frontend
 
+## 2026-09-08
+
+- Gỡ banner xanh **Mô tả chức năng** (as-is → to-be) khỏi mọi tab vận hành.
+- Tab **Hướng dẫn sử dụng** (nhóm Tổng quan): playbook MA — luồng khóa→ghi danh→sinh lớp→điểm danh→thu phí→bảo lưu, 4 vai trò, A1–A14 + B, ngoài phạm vi.
+- Bỏ hub **Chức năng CRM · MA Dance** trên Tổng quan (lưới A1–A14 + B). Dashboard còn KPI / chart / list.
+- Light: bỏ nền caro trên canvas (và chat); `--kuct-bg` `#ffffff`. Dark vẫn caro.
+- Loading (`BootSplash` + `AiReveal`): nền trắng, logo không border / box-shadow; bỏ vòng sân khấu.
+- Học viên: bỏ hàng **Phân khúc** + **Xu hướng tuyển sinh** (`.ops-seg`). KPI + bảng giữ nguyên.
+- Lớp học: bỏ timeline **Lớp hôm nay** (`.ops-timeline`). KPI + bảng giữ nguyên.
+- Giáo viên: bỏ timeline **Lịch dạy hôm nay** (`.ops-timeline`). KPI + bảng giữ nguyên.
+- Phòng: bỏ thanh **Tổng quan sử dụng hôm nay** (`.ops-rooms__usage`). KPI + bảng giữ nguyên.
+- Nav: bỏ nhóm **Mặt ngoài** (Website · Portal · Bán hàng · AI tuyển sinh). Preview B1 vẫn mở từ Hướng dẫn.
+- Panel chi tiết (HV · Lớp · GV · Phòng · Khóa · Tác vụ): click dòng → `AiReveal` **1,5s** trong aside rồi hiện data.
+
 ## 2026-09-07
 
 - **Boot splash:** overlay sân khấu MA Dance (đen/ivory, logo jpeg trên ô trắng 10px, wordmark DANCE STUDIO, beat 2s) rồi fade vào CRM. Hardcode `BOOT_SPLASH_MS = 2000` — tạm, không fetch.

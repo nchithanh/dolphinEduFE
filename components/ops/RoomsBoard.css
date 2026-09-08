@@ -37,7 +37,6 @@
 .ops-rooms__main > .ops-crumb,
 .ops-rooms__main > .ops-page__head,
 .ops-rooms__main > .ops-kpi-row,
-.ops-rooms__main > .ops-rooms__usage,
 .ops-rooms__main > .ops-rooms__form {
   flex-shrink: 0;
 }
@@ -61,6 +60,8 @@
 }
 
 .ops-rooms__aside {
+  display: flex;
+  flex-direction: column;
   min-height: 0;
   height: 100%;
 }
@@ -83,95 +84,6 @@
 .ops-rooms__branch {
   color: var(--kuct-muted);
   font-size: 0.6875rem;
-}
-
-.ops-rooms__usage {
-  box-sizing: border-box;
-  padding: 0.7rem 0.85rem 0.75rem;
-  background: var(--kuct-surface);
-  border: 1px solid var(--kuct-border);
-  border-radius: var(--ops-radius);
-  box-shadow: var(--kuct-shadow);
-}
-
-.ops-rooms__usage-title {
-  margin: 0 0 0.55rem;
-  font-size: var(--ops-type-section, 1rem);
-  font-weight: 600;
-  letter-spacing: -0.02em;
-}
-
-.ops-rooms__usage-bar {
-  position: relative;
-  display: flex;
-  width: 100%;
-  height: 0.85rem;
-  overflow: hidden;
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--kuct-border) 55%, var(--kuct-surface));
-}
-
-.ops-rooms__usage-seg {
-  display: block;
-  height: 100%;
-}
-
-.ops-rooms__usage-seg--idle {
-  background: color-mix(in srgb, var(--kuct-muted) 18%, var(--kuct-surface));
-}
-
-.ops-rooms__usage-seg--mid {
-  background: color-mix(in srgb, #e8a838 45%, var(--kuct-surface));
-}
-
-.ops-rooms__usage-seg--busy {
-  background: color-mix(in srgb, var(--kuct-accent) 55%, var(--kuct-surface));
-}
-
-.ops-rooms__usage-seg--peak {
-  background: var(--kuct-accent);
-}
-
-.ops-rooms__usage-now {
-  position: absolute;
-  top: -0.15rem;
-  bottom: -0.15rem;
-  width: 0;
-  transform: translateX(-50%);
-  pointer-events: none;
-}
-
-.ops-rooms__usage-now i {
-  display: block;
-  width: 2px;
-  height: 100%;
-  margin: 0 auto;
-  background: var(--kuct-text);
-  border-radius: 99px;
-}
-
-.ops-rooms__usage-now em {
-  position: absolute;
-  top: -1.15rem;
-  left: 50%;
-  padding: 0.08rem 0.3rem;
-  font-size: 0.5625rem;
-  font-style: normal;
-  font-weight: 700;
-  color: var(--kuct-on-accent);
-  white-space: nowrap;
-  background: var(--kuct-text);
-  border-radius: 0.3rem;
-  transform: translateX(-50%);
-}
-
-.ops-rooms__usage-scale {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 0.35rem;
-  font-size: 0.625rem;
-  font-weight: 600;
-  color: var(--kuct-muted);
 }
 
 .ops-rooms__fill {

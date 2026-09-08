@@ -31,7 +31,6 @@ const GROUP_LABEL_EN: Record<string, string> = {
   finance: "Finance",
   sys: "Settings",
   ops: "Operations",
-  surface: "Public surface",
   care: "Care",
   biz: "Training",
   shop: "Studio",
@@ -76,6 +75,7 @@ export const CHROME = {
     opening: (label: string) => `Đang mở ${label}…`,
     reveal: {
       overview: "Đang mở tổng quan…",
+      guide: "Đang mở hướng dẫn sử dụng…",
       inbox: "Đang mở inbox…",
       classes: "Đang mở lớp học…",
       "course-form": "Đang mở form khóa…",
@@ -140,6 +140,7 @@ export const CHROME = {
     opening: (label: string) => `Opening ${label}…`,
     reveal: {
       overview: "Opening overview…",
+      guide: "Opening how to use…",
       inbox: "Opening inbox…",
       classes: "Opening classes…",
       "course-form": "Opening course form…",

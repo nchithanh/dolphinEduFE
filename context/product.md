@@ -4,7 +4,7 @@
 
 Hardcoded FE demo. Domain is **course enrollment + class sessions**, not spa 1:1 booking.
 
-B1 website / portal / store / AI Care on the quote are **preview canvases** in this app — not production public sites.
+B1 website / portal / store / AI Care on the quote are **preview canvases** (mở từ Hướng dẫn, không trên sidebar) — not production public sites.
 
 ## Model
 

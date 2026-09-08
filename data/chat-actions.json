@@ -112,6 +112,14 @@
       "extract": []
     },
     {
+      "id": "open-guide",
+      "phrases": ["hướng dẫn sử dụng", "hướng dẫn", "how to use", "playbook"],
+      "stage": "guide",
+      "view": "list",
+      "chip": "Đã mở Hướng dẫn sử dụng",
+      "extract": []
+    },
+    {
       "id": "open-classes-list",
       "phrases": [
         "danh sách lớp hôm nay",

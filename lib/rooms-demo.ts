@@ -9,22 +9,6 @@ export const ROOMS_KPI = [
   { id: "maint", label: "Phòng bảo trì", value: "0", trend: "0", up: true, ico: "⚒" },
 ];
 
-/** Timeline sử dụng 06:00–22:00 (tỉ lệ % trên thanh). */
-export const ROOMS_USAGE = {
-  startHour: 6,
-  endHour: 22,
-  /** Khớp DEMO_AS_OF 17:15 */
-  nowHour: 17.25,
-  segments: [
-    { id: "s1", from: 6, to: 9, tone: "idle" as const, label: "Sáng sớm" },
-    { id: "s2", from: 9, to: 12, tone: "busy" as const, label: "Ca sáng" },
-    { id: "s3", from: 12, to: 14, tone: "mid" as const, label: "Trưa" },
-    { id: "s4", from: 14, to: 18, tone: "busy" as const, label: "Ca chiều" },
-    { id: "s5", from: 18, to: 21, tone: "peak" as const, label: "Cao điểm" },
-    { id: "s6", from: 21, to: 22, tone: "idle" as const, label: "Đóng cửa" },
-  ],
-};
-
 export type RoomUiStatus = "busy" | "free" | "maint" | "soon";
 
 export function demoRoomCode(roomId: string): string {

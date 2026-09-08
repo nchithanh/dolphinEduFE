@@ -16,18 +16,6 @@
   color: var(--kuct-muted);
 }
 
-.ops-staff__today {
-  flex-shrink: 0;
-  margin: 0;
-}
-
-.ops-staff__today-title {
-  margin: 0 0 0.5rem;
-  font-size: 0.8125rem;
-  font-weight: 650;
-  color: var(--kuct-text);
-}
-
 .ops-staff .ops-staff__layout {
   flex: 1 1 auto;
   align-items: stretch;
@@ -51,8 +39,7 @@
 
 .ops-staff__main > .ops-crumb,
 .ops-staff__main > .ops-page__head,
-.ops-staff__main > .ops-kpi-row,
-.ops-staff__main > .ops-staff__today {
+.ops-staff__main > .ops-kpi-row {
   flex-shrink: 0;
 }
 
@@ -122,21 +109,6 @@
   flex-direction: column;
   min-height: 0;
   overflow: auto;
-}
-
-.ops-staff__today .ops-timeline__name {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.35rem;
-  -webkit-line-clamp: unset;
-}
-
-.ops-staff__today .ops-timeline__name > span:last-child {
-  display: -webkit-box;
-  overflow: hidden;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  line-clamp: 2;
 }
 
 .ops-staff__sort {

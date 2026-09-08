@@ -14,7 +14,9 @@ Canvas seed: `lib/seed.ts`. Domain helpers: `lib/edu.ts` (course/class status, g
 
 Shell: 2 cột **nav | canvas**. Chat là drawer phải (`translateX`), overlay, không đẩy layout bảng. Phone (`< 48rem`): **gate** thông báo tablet/desktop, ẩn shell. Tablet+: nav overlay không dùng trên phone. Mọi board: bảng | panel xếp dọc từ `64rem` (gồm Khóa học, Tác vụ).
 
-Boot splash: overlay sân khấu **2s hardcode** (`BOOT_SPLASH_MS`) rồi fade vào shell — không fetch, không auth.
+Boot splash: overlay **trắng** **2s hardcode** (`BOOT_SPLASH_MS`) rồi fade vào shell — không fetch, không auth. Logo không khung / không shadow.
+
+Click dòng trên bảng list+aside: panel chi tiết `AiReveal` **1,5s** (`DETAIL_REVEAL_MS` trong `lib/detail-reveal.ts`) — không che canvas.
 
 Auth **TODO**. No JWT. No fake admin login.
 

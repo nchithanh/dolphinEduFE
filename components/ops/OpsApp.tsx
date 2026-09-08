@@ -22,7 +22,6 @@ import { CHROME, readStoredLocale, writeStoredLocale, type OpsLocale } from "../
 import { getPhoneSnapshot, subscribePhone } from "../../lib/phone";
 import { applyDocumentTheme, readStoredTheme, writeStoredTheme, type EduTheme } from "../../lib/theme";
 import { isLiveStage, navItemFromGroups, type NavGroup } from "../../lib/nav";
-import { quoteScopeForStage } from "../../lib/quote-scope";
 import {
   cloneQuoteSeed,
   deductSession,
@@ -78,11 +77,12 @@ import {
   StorePreview,
   WebsitePreview,
 } from "./PreviewBoards";
-import { QuoteScopeBanner } from "./QuoteScopeBanner";
+import { GuideBoard } from "./GuideBoard";
 import "./nexaflow.css";
 
 const FOCUS: Record<string, string> = {
   overview: "ops-over-heading",
+  guide: "ops-guide-heading",
   classes: "ops-classes-heading",
   students: "ops-clist-heading",
   "student-360": "ops-360-heading",
@@ -394,6 +394,8 @@ export function OpsApp() {
         onOpen={selectNav}
       />
     );
+  } else if (stage === "guide") {
+    canvas = <GuideBoard title={stageTitle(menuGroups, "guide")} onOpen={selectNav} />;
   } else if (stage === "classes") {
     canvas = (
       <ClassesBoard
@@ -660,17 +662,6 @@ export function OpsApp() {
     );
   }
 
-  const scopeItem = !reveal && stage !== "overview" ? quoteScopeForStage(stage) : undefined;
-  const canvasWithScope =
-    scopeItem ? (
-      <>
-        <QuoteScopeBanner item={scopeItem} />
-        {canvas}
-      </>
-    ) : (
-      canvas
-    );
-
   return (
     <>
       {phone ? (
@@ -692,7 +683,7 @@ export function OpsApp() {
           onBranchChange={setBranch}
           role={role}
           onRoleChange={setRole}
-          canvas={canvasWithScope}
+          canvas={canvas}
           chat={
             <ChatPanel
               draft={draft}

@@ -15,6 +15,8 @@ import {
   taskDueBucket,
 } from "../../lib/tasks-demo";
 import type { DemoStudioTask, DemoStudioTaskComment, StudioTaskPriority, StudioTaskStatus } from "../../lib/types";
+import { shouldRevealDetail, useDetailReveal } from "../../lib/detail-reveal";
+import { AiReveal } from "./AiReveal";
 import { MoreMenu, copyId } from "./MoreMenu";
 import { StatusChip, workPriorityChip, workTaskChip } from "./StatusChip";
 import { UserAvatar, UserChip } from "./UserAvatar";
@@ -156,6 +158,7 @@ export function TasksBoard({ title, tasks, onChange }: TasksBoardProps) {
   const [draftPriority, setDraftPriority] = useState<StudioTaskPriority>("mid");
   const [commentDraft, setCommentDraft] = useState("");
   const [detailTab, setDetailTab] = useState<DetailTab>("overview");
+  const { busy: detailBusy, start: startDetail } = useDetailReveal();
 
   const kpis = useMemo(() => studioTaskKpis(tasks, today), [tasks, today]);
 
@@ -195,6 +198,7 @@ export function TasksBoard({ title, tasks, onChange }: TasksBoardProps) {
   const selected = tasks.find((t) => t.id === selectedId) ?? null;
 
   function pickTask(id: string) {
+    if (shouldRevealDetail(id, selectedId, panelDismissed)) startDetail();
     setAdding(false);
     setPanelDismissed(false);
     setSelectedId(id);
@@ -587,7 +591,9 @@ export function TasksBoard({ title, tasks, onChange }: TasksBoardProps) {
         </div>
 
         <aside className="ops-work__aside">
-          {adding ? (
+          {detailBusy ? (
+            <AiReveal compact label="Đang mở tác vụ…" />
+          ) : adding ? (
             <section className="ops-detail ops-work__detail" aria-labelledby="edu-task-add">
               <div className="ops-detail__head">
                 <div className="ops-detail__head-title">

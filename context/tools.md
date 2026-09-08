@@ -12,7 +12,7 @@ Each tool: capability → UI. Chat routes to canvas, not text-only.
 | `class` | Board lớp + filter status | “Lớp đang diễn ra”, “Lớp hôm nay” |
 | `student` | Student 360 | “Hồ sơ học viên Hương” |
 | `task` | Bảng việc + lọc kiểu Jira + avatar · panel tab Tổng quan / Comment (preview 1 comment mới nhất) · form thêm | “Tác vụ”, “quản lý tác vụ” |
-| `quote-scope` | Hub A1–A14 + banner as-is/to-be trên canvas (`lib/quote-scope.ts`) | Mở từ Tổng quan |
+| `guide` | Playbook nghiệp vụ MA — `GuideBoard` | “Hướng dẫn sử dụng”, “hướng dẫn” |
 | `ai-ops` | Câu lệnh demo → form thu; cảnh báo hết buổi / nợ | Preview B2 |
 | `intelligent` | Cảnh báo EOD + áp dụng giải pháp local | Preview B2 |
 

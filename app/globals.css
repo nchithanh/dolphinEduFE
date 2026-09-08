@@ -20,7 +20,7 @@
 :root,
 html[data-theme="light"] {
   color-scheme: light;
-  --kuct-bg: #f6f6f4;
+  --kuct-bg: #ffffff;
   --kuct-sidebar: #ffffff;
   --kuct-surface: #ffffff;
   --kuct-elevated: #f3f3f1;

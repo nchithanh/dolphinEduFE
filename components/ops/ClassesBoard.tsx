@@ -17,6 +17,8 @@ import {
   demoClassStudentPay,
 } from "../../lib/classes-demo";
 import type { AttendanceMap, ClassFilter, DemoClass, DemoCourse, DemoRoom, DemoStudent, DemoTeacher } from "../../lib/types";
+import { shouldRevealDetail, useDetailReveal } from "../../lib/detail-reveal";
+import { AiReveal } from "./AiReveal";
 import { MoreMenu, copyId } from "./MoreMenu";
 import { StatusChip, classChip } from "./StatusChip";
 import { UserAvatar } from "./UserAvatar";
@@ -98,6 +100,7 @@ export function ClassesBoard({
   const [query, setQuery] = useState("");
   const [page, setPage] = useState(0);
   const [detailTab, setDetailTab] = useState<DetailTab>("overview");
+  const { busy: detailBusy, start: startDetail } = useDetailReveal();
 
   const counts = useMemo(() => {
     const base = { all: classes.length, upcoming: 0, ongoing: 0, completed: 0, cancelled: 0 };
@@ -158,6 +161,7 @@ export function ClassesBoard({
   }, [selected, students]);
 
   function pickClass(id: string) {
+    if (shouldRevealDetail(id, selectedId, panelDismissed)) startDetail();
     setPanelDismissed(false);
     setSelectedId(id);
     setDetailTab("overview");
@@ -219,37 +223,6 @@ export function ClassesBoard({
               </li>
             ))}
           </ul>
-
-          {todayRows.length ? (
-            <div className="ops-classes__today">
-              <h2 className="ops-classes__today-title">
-                Hôm nay — <time dateTime={today}>{formatViDate(today)}</time>
-              </h2>
-              <ul className="ops-timeline" aria-label="Lớp hôm nay">
-                {todayRows.map((row) => {
-                  const on = row.id === selectedId;
-                  const name = courseName(courses, row.courseId);
-                  return (
-                    <li key={row.id}>
-                      <button
-                        type="button"
-                        className={on ? "ops-timeline__item ops-timeline__item--on" : "ops-timeline__item"}
-                        onClick={() => pickClass(row.id)}
-                      >
-                        <span className="ops-timeline__time">
-                          {row.startTime}–{row.endTime}
-                        </span>
-                        <span className="ops-timeline__name">{classSessionLabel(name, row.id)}</span>
-                        <span className="ops-timeline__meta">
-                          {roomLabel(rooms, row.roomId)} · {row.studentIds.length}/{row.capacity} · {demoClassAttend(row.id)}%
-                        </span>
-                      </button>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-          ) : null}
 
           <div className="ops-table-card">
             <div className="ops-table-tools">
@@ -459,7 +432,9 @@ export function ClassesBoard({
         </div>
 
         <aside className="ops-board__aside ops-classes__aside">
-          {selected ? (
+          {detailBusy ? (
+            <AiReveal compact label="Đang mở lớp…" />
+          ) : selected ? (
             <section className="ops-detail" aria-labelledby="edu-class-detail">
               <div className="ops-detail__head">
                 <h2 id="edu-class-detail">{classSessionLabel(courseName(courses, selected.courseId), selected.id)}</h2>

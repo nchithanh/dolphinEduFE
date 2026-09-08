@@ -20,6 +20,9 @@
   font-size: var(--ops-type-body);
   color: var(--kuct-text);
   background-color: var(--kuct-bg);
+}
+
+html[data-theme="dark"] .ops-shell__main {
   background-image:
     linear-gradient(rgba(var(--kuct-accent-rgb), 0.06) 1px, transparent 1px),
     linear-gradient(90deg, rgba(var(--kuct-accent-rgb), 0.06) 1px, transparent 1px);

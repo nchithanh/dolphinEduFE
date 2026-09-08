@@ -16,13 +16,6 @@ export function BootSplash({ leaving = false }: BootSplashProps) {
       aria-busy={!leaving}
       aria-label="MA Dance"
     >
-      <div className="ops-boot__stage" aria-hidden>
-        <span className="ops-boot__spot ops-boot__spot--top" />
-        <span className="ops-boot__spot ops-boot__spot--floor" />
-        <span className="ops-boot__ring" />
-        <span className="ops-boot__ring ops-boot__ring--mid" />
-        <span className="ops-boot__ring ops-boot__ring--wide" />
-      </div>
       <div className="ops-boot__mark">
         <div className="ops-boot__plate">
           <img

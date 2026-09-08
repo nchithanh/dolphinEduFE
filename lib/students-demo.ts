@@ -9,23 +9,6 @@ export const STUDENTS_KPI = [
   { id: "conv", label: "Tỷ lệ chuyển đổi", value: "92%", trend: "+4%", up: true, ico: "%" },
 ];
 
-export const STUDENTS_SEGMENTS = [
-  { id: "new", label: "Mới đăng ký", count: "156", pct: "12,5%", color: "#6b56d6" },
-  { id: "active", label: "Đang học", count: "982", pct: "78,7%", color: "#3b82f6" },
-  { id: "grad", label: "Sắp tốt nghiệp", count: "68", pct: "5,4%", color: "#22c55e" },
-  { id: "care", label: "Cần chăm sóc", count: "42", pct: "3,4%", color: "#f59e0b" },
-];
-
-/** Điểm chart tuyển sinh 6 tháng (demo). */
-export const STUDENTS_TREND = [
-  { m: "T3", v: 42 },
-  { m: "T4", v: 55 },
-  { m: "T5", v: 48 },
-  { m: "T6", v: 68 },
-  { m: "T7", v: 72 },
-  { m: "T8", v: 86 },
-];
-
 export function demoStudentCode(studentId: string): string {
   const n = studentId.replace(/\D/g, "").slice(-4).padStart(4, "0");
   return `HS-2026-${n || "0001"}`;

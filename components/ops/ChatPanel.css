@@ -83,6 +83,9 @@
   min-height: 0;
   overflow: auto;
   background-color: var(--kuct-bg);
+}
+
+html[data-theme="dark"] .ops-chat__dots {
   background-image:
     linear-gradient(rgba(var(--kuct-accent-rgb), 0.06) 1px, transparent 1px),
     linear-gradient(90deg, rgba(var(--kuct-accent-rgb), 0.06) 1px, transparent 1px);

@@ -6,6 +6,9 @@
 
 .ops-shell__main {
   background-color: var(--kuct-bg);
+}
+
+html[data-theme="dark"] .ops-shell__main {
   background-image:
     linear-gradient(rgba(var(--kuct-accent-rgb), 0.06) 1px, transparent 1px),
     linear-gradient(90deg, rgba(var(--kuct-accent-rgb), 0.06) 1px, transparent 1px);
@@ -57,7 +60,6 @@
 .ops-more__menu,
 .ops-over__board,
 .ops-wid,
-.ops-rooms__usage,
 .ops-seg__card {
   background: var(--kuct-surface);
   border-color: var(--kuct-border);

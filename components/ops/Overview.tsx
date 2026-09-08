@@ -14,7 +14,6 @@ import {
 import { formatViDate, localIsoDate } from "../../lib/edu";
 import type { DemoClass, DemoCourse, DemoRoom, DemoStudent, DemoTeacher, Stage } from "../../lib/types";
 import { UserAvatar } from "./UserAvatar";
-import { QuoteHub } from "./QuoteHub";
 import "./chrome.css";
 import "./EduTable.css";
 import "./Overview.css";
@@ -161,8 +160,6 @@ export function Overview({ title, courses, classes, students: _students, teacher
           </button>
         </div>
       </div>
-
-      <QuoteHub onOpen={onOpen} />
 
       <ul className="ops-kpi-row ops-kpi-row--6">
         {DASH_KPI.map((kpi) => (

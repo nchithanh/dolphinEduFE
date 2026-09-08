@@ -82,7 +82,8 @@ export const HARDCODED_MENU: MenuResponse = {
       icon: null,
       items: [
         item("overview", "overview", "Khóa đang tuyển, lớp hôm nay", 0, "live", "Tổng quan", "Dashboard"),
-        item("schedule", "schedule", "1 lịch Google trung tâm — nội bộ (A11)", 1, "live", "Lịch", "Schedule"),
+        item("guide", "guide", "Playbook nghiệp vụ MA Dance", 1, "live", "Hướng dẫn sử dụng", "How to use"),
+        item("schedule", "schedule", "1 lịch Google trung tâm — nội bộ (A11)", 2, "live", "Lịch", "Schedule"),
       ],
     },
     {
@@ -137,21 +138,9 @@ export const HARDCODED_MENU: MenuResponse = {
       ],
     },
     {
-      id: "surface",
-      label: "Mặt ngoài",
-      sort_order: 5,
-      icon: null,
-      items: [
-        item("website", "website", "Site giới thiệu — không login HV/GV (B1)", 0, "live", "Website công khai", "Public site"),
-        item("portal", "portal", "HV / GV xem lịch · lớp · KM (B1)", 1, "live", "Portal HV & GV", "Student portal"),
-        item("store", "store", "Catalog / giỏ — ngoài lớp (B1)", 2, "live", "Bán hàng", "Store"),
-        item("care-ai", "care-ai", "Dolphin Care đa kênh 24/7 (B1)", 3, "live", "AI tuyển sinh", "AI enrollment"),
-      ],
-    },
-    {
       id: "sys",
       label: "Cài đặt",
-      sort_order: 6,
+      sort_order: 5,
       icon: null,
       items: [
         item("access", "access", "Chủ / QL / lễ tân / GV (A1)", 0, "live", "Phân quyền", "Roles"),

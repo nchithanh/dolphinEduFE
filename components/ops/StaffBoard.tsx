@@ -14,6 +14,8 @@ import {
 import { DEMO_ROOMS } from "../../lib/seed";
 import { TEACHERS_KPI, demoTeacherCode, demoTeacherStats } from "../../lib/teachers-demo";
 import type { DemoClass, DemoCourse, DemoRoom, DemoTeacher } from "../../lib/types";
+import { shouldRevealDetail, useDetailReveal } from "../../lib/detail-reveal";
+import { AiReveal } from "./AiReveal";
 import { MoreMenu, copyId } from "./MoreMenu";
 import { StatusChip, classChip, courseChip } from "./StatusChip";
 import { UserAvatar } from "./UserAvatar";
@@ -55,6 +57,7 @@ export function StaffBoard({
   const [statusFilter, setStatusFilter] = useState<"all" | "active" | "leave">("all");
   const [page, setPage] = useState(0);
   const [detailTab, setDetailTab] = useState<DetailTab>("overview");
+  const { busy: detailBusy, start: startDetail } = useDetailReveal();
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -81,14 +84,6 @@ export function StaffBoard({
   const selectedStats = selected ? demoTeacherStats(selected.id) : null;
   const assigned = selected ? courses.filter((c) => c.teacherIds.includes(selected.id)) : [];
 
-  const studioToday = useMemo(
-    () =>
-      [...classes]
-        .filter((row) => row.date === today && !row.cancelled)
-        .sort((a, b) => a.startTime.localeCompare(b.startTime)),
-    [classes, today],
-  );
-
   const selectedToday = useMemo(() => {
     if (!selected) return [];
     return classes
@@ -97,6 +92,7 @@ export function StaffBoard({
   }, [classes, selected, today]);
 
   function pickTeacher(id: string) {
+    if (shouldRevealDetail(id, selectedId, panelDismissed)) startDetail();
     setPanelDismissed(false);
     setSelectedId(id);
     setDetailTab("overview");
@@ -155,41 +151,6 @@ export function StaffBoard({
               </li>
             ))}
           </ul>
-
-          {studioToday.length ? (
-            <div className="ops-staff__today">
-              <h2 className="ops-staff__today-title">
-                Lịch dạy hôm nay — <time dateTime={today}>{formatViDate(today)}</time>
-              </h2>
-              <ul className="ops-timeline" aria-label="Lịch dạy hôm nay">
-                {studioToday.slice(0, 8).map((row) => {
-                  const teacher = teachers.find((t) => t.id === row.teacherId);
-                  const course = courses.find((c) => c.id === row.courseId);
-                  const on = row.teacherId === selectedId;
-                  return (
-                    <li key={row.id}>
-                      <button
-                        type="button"
-                        className={on ? "ops-timeline__item ops-timeline__item--on" : "ops-timeline__item"}
-                        onClick={() => pickTeacher(row.teacherId)}
-                      >
-                        <span className="ops-timeline__time">
-                          {row.startTime}–{row.endTime}
-                        </span>
-                        <span className="ops-timeline__name">
-                          <UserAvatar id={row.teacherId} name={teacher?.name} size="xs" />
-                          <span>
-                            {teacher?.name ?? "GV"} · {course?.name ?? row.courseId}
-                          </span>
-                        </span>
-                        <span className="ops-timeline__meta">{roomLabel(rooms, row.roomId)}</span>
-                      </button>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-          ) : null}
 
           <div className="ops-table-card">
             <div className="ops-table-tools">
@@ -329,7 +290,9 @@ export function StaffBoard({
         </div>
 
         <aside className="ops-staff__aside">
-          {selected && selectedStats ? (
+          {detailBusy ? (
+            <AiReveal compact label="Đang mở giáo viên…" />
+          ) : selected && selectedStats ? (
             <section className="ops-detail ops-staff__detail" aria-labelledby="edu-teacher-detail">
               <div className="ops-detail__head">
                 <div className="ops-detail__head-title">

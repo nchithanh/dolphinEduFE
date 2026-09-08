@@ -244,6 +244,15 @@ function NavIcon({ id }: { id: Stage }) {
       </svg>
     );
   }
+  if (id === "guide") {
+    return (
+      <svg {...STROKE}>
+        <path d="M6 5.5h9.5A2.5 2.5 0 0118 8v11.5H8.2A2.2 2.2 0 016 17.3V5.5z" />
+        <path d="M6 17.3A2.2 2.2 0 018.2 19.5H18" strokeLinecap="round" />
+        <path d="M9 9h6M9 12.5h5" strokeLinecap="round" />
+      </svg>
+    );
+  }
   if (id === "inbox") {
     return (
       <svg {...STROKE}>

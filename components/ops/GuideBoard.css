@@ -1,0 +1,334 @@
+.ops-guide {
+  display: grid;
+  gap: var(--ops-space-section, 1.35rem);
+}
+
+.ops-guide__layout {
+  display: grid;
+  grid-template-columns: minmax(10.5rem, 12.5rem) minmax(0, 1fr);
+  gap: 1.25rem 1.5rem;
+  align-items: start;
+}
+
+.ops-guide__toc {
+  position: sticky;
+  top: 0.5rem;
+  padding: 0.75rem 0.8rem;
+  border: 1px solid var(--kuct-border);
+  border-radius: 10px;
+  background: var(--kuct-surface);
+}
+
+.ops-guide__toc-kicker,
+.ops-guide__kicker {
+  margin: 0 0 0.4rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--kuct-muted);
+}
+
+.ops-guide__toc ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.2rem;
+}
+
+.ops-guide__toc a {
+  display: block;
+  padding: 0.35rem 0.45rem;
+  border-radius: 10px;
+  color: var(--kuct-text);
+  text-decoration: none;
+  font-size: 0.78rem;
+  font-weight: 550;
+}
+
+.ops-guide__toc a:hover,
+.ops-guide__toc a:focus-visible {
+  background: var(--kuct-menu-hover);
+}
+
+.ops-guide__main {
+  display: grid;
+  gap: 1.75rem;
+  min-width: 0;
+}
+
+.ops-guide__block {
+  scroll-margin-top: 0.75rem;
+}
+
+.ops-guide__h2 {
+  margin: 0 0 0.35rem;
+  font-size: var(--ops-type-section, 1.05rem);
+  font-weight: 650;
+}
+
+.ops-guide__lede {
+  margin: 0 0 0.85rem;
+  font-size: 0.8rem;
+  color: var(--kuct-muted);
+}
+
+.ops-guide__flow {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 0.55rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ops-guide__flow-card {
+  display: grid;
+  gap: 0.25rem;
+  width: 100%;
+  min-height: 100%;
+  text-align: left;
+  padding: 0.7rem 0.75rem;
+  border: 1px solid var(--kuct-border);
+  border-radius: 10px;
+  cursor: pointer;
+  color: inherit;
+}
+
+.ops-guide__flow-n {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--kuct-muted);
+}
+
+.ops-guide__flow-title {
+  font-size: 0.85rem;
+  font-weight: 650;
+}
+
+.ops-guide__flow-note {
+  font-size: 0.72rem;
+  line-height: 1.4;
+  color: var(--kuct-muted);
+}
+
+.ops-guide__roles {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.55rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ops-guide__role {
+  padding: 0.8rem 0.85rem;
+  border: 1px solid var(--kuct-border);
+  border-radius: 10px;
+}
+
+.ops-guide__role-title {
+  margin: 0 0 0.25rem;
+  font-size: 0.95rem;
+  font-weight: 650;
+}
+
+.ops-guide__role-sum {
+  margin: 0 0 0.55rem;
+  font-size: 0.75rem;
+  color: var(--kuct-muted);
+}
+
+.ops-guide__role ul {
+  margin: 0 0 0.55rem;
+  padding: 0 0 0 1rem;
+  font-size: 0.75rem;
+  line-height: 1.45;
+}
+
+.ops-guide__role ul:last-child {
+  margin-bottom: 0;
+}
+
+.ops-guide__mods {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.ops-guide__mod {
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--kuct-border);
+  border-radius: 10px;
+  background: var(--kuct-surface);
+}
+
+.ops-guide__mod-head {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 0.65rem 0.85rem;
+  align-items: start;
+  margin-bottom: 0.65rem;
+}
+
+.ops-guide__code {
+  margin: 0;
+  min-width: 2.4rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--kuct-muted);
+}
+
+.ops-guide__mod-title {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 650;
+}
+
+.ops-guide__who {
+  margin: 0.15rem 0 0;
+  font-size: 0.72rem;
+  color: var(--kuct-muted);
+}
+
+.ops-guide__open {
+  white-space: nowrap;
+}
+
+.ops-guide__steps {
+  margin: 0 0 0.65rem;
+  padding: 0 0 0 1.15rem;
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+.ops-guide__asis {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem 1rem;
+  margin: 0 0 0.55rem;
+  font-size: 0.75rem;
+  line-height: 1.45;
+  color: var(--kuct-muted);
+}
+
+.ops-guide__asis p {
+  margin: 0;
+}
+
+.ops-guide__asis strong {
+  color: var(--kuct-text);
+  font-weight: 650;
+}
+
+.ops-guide__rules {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ops-guide__rules li {
+  padding: 0.15rem 0.5rem;
+  border: 1px solid var(--kuct-border);
+  border-radius: 10px;
+  background: var(--kuct-elevated, var(--kuct-soft));
+  font-size: 0.7rem;
+  font-weight: 550;
+}
+
+.ops-guide__out {
+  margin: 0;
+  padding: 0 0 0 1.15rem;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--kuct-text);
+}
+
+.ops-guide__tone--mint {
+  background: color-mix(in srgb, #86efac 22%, var(--kuct-surface));
+}
+
+.ops-guide__tone--peach {
+  background: color-mix(in srgb, #fdba74 24%, var(--kuct-surface));
+}
+
+.ops-guide__tone--sky {
+  background: color-mix(in srgb, #7dd3fc 22%, var(--kuct-surface));
+}
+
+.ops-guide__tone--lemon {
+  background: color-mix(in srgb, #fde047 24%, var(--kuct-surface));
+}
+
+.ops-guide__tone--lilac {
+  background: color-mix(in srgb, #c4b5fd 20%, var(--kuct-surface));
+}
+
+html[data-theme="dark"] .ops-guide__tone--mint {
+  background: color-mix(in srgb, #86efac 12%, var(--kuct-surface));
+}
+
+html[data-theme="dark"] .ops-guide__tone--peach {
+  background: color-mix(in srgb, #fdba74 14%, var(--kuct-surface));
+}
+
+html[data-theme="dark"] .ops-guide__tone--sky {
+  background: color-mix(in srgb, #7dd3fc 12%, var(--kuct-surface));
+}
+
+html[data-theme="dark"] .ops-guide__tone--lemon {
+  background: color-mix(in srgb, #fde047 12%, var(--kuct-surface));
+}
+
+html[data-theme="dark"] .ops-guide__tone--lilac {
+  background: color-mix(in srgb, #c4b5fd 12%, var(--kuct-surface));
+}
+
+@media (max-width: 63.99rem) {
+  .ops-guide__layout {
+    grid-template-columns: 1fr;
+  }
+
+  .ops-guide__toc {
+    position: static;
+  }
+
+  .ops-guide__toc ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+  }
+
+  .ops-guide__flow {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .ops-guide__roles {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ops-guide__asis {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 47.99rem) {
+  .ops-guide__flow,
+  .ops-guide__roles {
+    grid-template-columns: 1fr;
+  }
+
+  .ops-guide__mod-head {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .ops-guide__open {
+    grid-column: 1 / -1;
+    justify-self: start;
+  }
+}

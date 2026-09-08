@@ -18,6 +18,7 @@ export type NavGroup = {
 
 export const LIVE_STAGES: LiveStage[] = [
   "overview",
+  "guide",
   "inbox",
   "classes",
   "students",

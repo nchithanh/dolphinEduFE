@@ -1,5 +1,6 @@
 export type LiveStage =
   | "overview"
+  | "guide"
   | "inbox"
   | "classes"
   | "students"
