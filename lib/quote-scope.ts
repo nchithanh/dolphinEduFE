@@ -300,8 +300,8 @@ export const QUOTE_SCOPE: QuoteScopeItem[] = [
     stage: "campaigns",
     group: "A",
     asIs: "Chúc SN / nhắc phí nhắn tay.",
-    toBe: "Sinh nhật HV; Zalo / email hàng loạt cho HV hoặc PH (demo local).",
-    rules: ["Chưa nối Zalo OA / SMTP"],
+    toBe: "Sinh nhật HV; Zalo / email hàng loạt cho HV hoặc PH (demo local). Phí OA/SMTP ngoài giá Dolphin.",
+    rules: ["Chưa nối Zalo OA / SMTP", "Phí Zalo OA / tin lẻ / SMTP — khách trả NCC"],
     who: "Lễ tân · QL",
     howTo: [
       "Mở Chăm sóc: sinh nhật tuần này, Zalo / email hàng loạt (HV hoặc PH).",

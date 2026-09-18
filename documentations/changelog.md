@@ -1,7 +1,28 @@
 # Changelog — Dolphin Edu frontend
 
+## 2026-09-14
+
+- Báo giá MA Dance: giảm **10%** khi tổng thanh toán trước **trên 15.000.000đ**.
+- Báo giá MA Dance: bỏ default tick **Tích hợp thanh toán online**.
+- Báo giá MA Dance: default **CRM Base 12** + Website DN + portal HV/GV + thanh toán online; chi phí ngoài thêm **Domain**.
+- Báo giá MA Dance: gói **thuê lẻ Dolphin Care** (5,1tr/6 th · 9,6tr/12 th) — tick khi combo chưa gồm Care.
+- Báo giá MA Dance: Outsource lên trên; Landing/Website trong extras; khoảng giá tham khảo (không tick).
+- Báo giá MA Dance: Website/Landing **opt-in** — tặng/giảm chỉ áp khi tick hạng mục; mặc định phiếu chỉ có giá SaaS gói.
+- Báo giá MA Dance: viết lại `/demo/bao-gia-crm-nhay/` — React + `lib/quotes/ma-dance-pricing.ts`; 6 gói combo chính thức Dolphin; Intelligence add-on; outsource MA (tác vụ 2tr, studio 1tr, portal 3tr, ecom 4,5tr). Bỏ iframe `quote.html`. JSON `dolphin-quote-ma-dance/v2`. SoT `context/quotes/ma-dance.md`.
+
+## 2026-09-09
+
+- Báo giá MA Dance: bảng Tổng **không** lặp ưu đãi MA / Onboarding — chỉ còn dòng giảm 10%; CRM 5tr/năm vẫn trên gói A.
+- Báo giá MA Dance: bỏ hàng **VAT / hóa đơn nhà cung cấp khác** khỏi bảng Chi phí ngoài.
+- Báo giá MA Dance: nút toolbar (In / Xuất JSON) **màu accent đặc**, bỏ gradient.
+- Báo giá MA Dance: bỏ câu **Xem mục Chi phí ngoài giá Dolphin** (intro / A13 / combo AI); bảng chi phí ngoài vẫn giữ.
+- Báo giá MA Dance: **Website bán hàng cơ bản** mặc định **không tick**; giá **4.500.000đ/năm**. Mục **Chi phí ngoài giá Dolphin** (Zalo OA, Fanpage/Meta, SMTP, Google, phí cổng, VAT). A13: phần mềm trong gói A. SoT `context/quotes/ma-dance.md` + phiếu `/demo/bao-gia-crm-nhay/`.
+
 ## 2026-09-08
 
+- List CRM đồng bộ **Khóa học**: HV · Lớp · GV · Phòng · Tác vụ · quote (`FeatureBoard`) · stub — click hàng, thu panel `‹`, flush desktop (`ops-list`), bỏ nút Chi tiết trên dòng (HV giữ Hồ sơ → 360).
+- Báo giá MA Dance: thêm **cam kết chất lượng**, **quy trình bàn giao** (4 bước, không ghi số tháng), **bảo hành trong/ngoài** (website 36 tháng; CRM theo gói năm) — bố cục giống phiếu ecom. SoT `context/quotes/ma-dance.md` + phiếu `/demo/bao-gia-crm-nhay/`.
+- Báo giá MA Dance: gói AI **6 tháng mắc hơn 10%** so với đơn giá 12 tháng (tuyển sinh 5.940.000đ / vận hành 6.600.000đ). 12 tháng giữ linear. Combo vẫn **1 dòng** + checkbox kỳ hạn; JSON `term`. SoT `context/quotes/ma-dance.md` + phiếu `/demo/bao-gia-crm-nhay/`.
 - Gỡ banner xanh **Mô tả chức năng** (as-is → to-be) khỏi mọi tab vận hành.
 - Tab **Hướng dẫn sử dụng** (nhóm Tổng quan): playbook MA — luồng khóa→ghi danh→sinh lớp→điểm danh→thu phí→bảo lưu, 4 vai trò, A1–A14 + B, ngoài phạm vi.
 - Bỏ hub **Chức năng CRM · MA Dance** trên Tổng quan (lưới A1–A14 + B). Dashboard còn KPI / chart / list.
@@ -13,6 +34,21 @@
 - Phòng: bỏ thanh **Tổng quan sử dụng hôm nay** (`.ops-rooms__usage`). KPI + bảng giữ nguyên.
 - Nav: bỏ nhóm **Mặt ngoài** (Website · Portal · Bán hàng · AI tuyển sinh). Preview B1 vẫn mở từ Hướng dẫn.
 - Panel chi tiết (HV · Lớp · GV · Phòng · Khóa · Tác vụ): click dòng → `AiReveal` **1,5s** trong aside rồi hiện data.
+- Tổng quan: 5 list (lớp / học phí / chuyên cần / GV / phòng) — dòng cuối không `border-bottom`.
+- Hướng dẫn: 4 card **Vai trò** cùng chiều cao trong hàng.
+- Bảng: thanh filter + ô tìm/select/chip **#ffffff** (Light); Dark vẫn surface tối.
+- **Khóa học** UX: bỏ nút Chi tiết (click hàng mở panel) · lịch `T2, T5 · 19:00` · cột HV căn trái · badge đậm hơn · thu/phóng panel · CTA đáy ghost (Ghi danh vẫn chính).
+- Khóa học: panel chi tiết sát mép trên / phải / dưới canvas (desktop).
+- Khóa học: thanh filter (tìm / select / khoảng ngày) cùng chiều cao 40px.
+- Khóa học: bỏ nút **+ Thêm học viên** trên roster (vẫn ghi danh bằng form dưới).
+- Khóa học: nút **Thêm học viên** luôn đen cứng `#000` (kể cả disabled / Dark).
+- Khóa học roster: bỏ cột SĐT — số điện thoại dưới tên; hàng không xuống dòng.
+- Khóa học: bỏ nút **‹ Thu panel** trên header (vẫn thu bằng ‹ trên drawer; click hàng để hiện lại).
+- CanvasBar: bỏ search, vai trò demo, Light|Dark — còn **Ask Dolphin · VI|EN · notify · user**.
+- Canvas / list CRM (layout kiểu Leads): **title + count lên header**; nút tạo cùng hàng filter; KPI overview strip liền, không radius / box-shadow / border-bottom.
+- Bảng: header `th` nền gần trắng (`#fbfbfb`).
+- List filter: search / select / chip / CTA cùng height `40px` (`--ops-control-h`).
+- Bôi text: bỏ `::selection` custom (trắng/đen) — dùng highlight xanh mặc định của trình duyệt.
 
 ## 2026-09-07
 
